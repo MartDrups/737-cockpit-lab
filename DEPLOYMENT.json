@@ -1,0 +1,100 @@
+{
+  "url": "https://martdrups.github.io/737-cockpit-lab/",
+  "repository": "https://github.com/MartDrups/737-cockpit-lab",
+  "publishedCommit": "5054a2b244d30dc5ea4f24ba0c6e117bc9274f0a",
+  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/39682146502",
+  "workflowResult": "success",
+  "version": "github-f3ecfee54f603672427d",
+  "websiteFiles": 8665,
+  "websiteBytes": 261524921,
+  "originalUrl": "https://737cockpitlab.pages.dev",
+  "originalUnchanged": true,
+  "publicBrowsers": {
+    "chromium": {
+      "passed": true,
+      "checks": [
+        "27 current procedures and normal-2026-10-19-1 revision",
+        "Read and Do visible in memory; real cockpit action and reload/resume",
+        "632 CBT topics; actual lesson with source graphics in iframe",
+        "Valid MP3 byte-range response",
+        "PWA manifest and worker use new origin; offline download UI ready",
+        "Mobile viewport has no horizontal overflow",
+        "Fresh-browser player aliases and recovery return to the correct subpath"
+      ],
+      "sourceHashes": [
+        "app.js",
+        "visual/displays/lower-engine.svg",
+        "system-pages/1063.svg",
+        "fcom-pages/1.webp",
+        "cbt/course/graphics/00666f5ce92f5d80904dfb7d47d75f88.svg",
+        "cbt/course/lessons/004bdad7467a7524d58cef9fc0ddcc44.json",
+        "cbt/audio/F-1.1.wav",
+        "cbt/course/audio/00086ce331d0e54829cc8d658735f8f9.mp3"
+      ],
+      "jsErrors": 0,
+      "tlsVerification": true
+    },
+    "webkit": {
+      "passed": true,
+      "checks": [
+        "27 current procedures and normal-2026-10-19-1 revision",
+        "Read and Do visible in memory; real cockpit action and reload/resume",
+        "632 CBT topics; actual lesson with source graphics in iframe",
+        "Valid MP3 byte-range response",
+        "PWA manifest and worker use new origin; offline download UI ready",
+        "Mobile viewport has no horizontal overflow",
+        "Fresh-browser player aliases and recovery return to the correct subpath"
+      ],
+      "sourceHashes": [
+        "app.js",
+        "visual/displays/lower-engine.svg",
+        "system-pages/1063.svg",
+        "fcom-pages/1.webp",
+        "cbt/course/graphics/00666f5ce92f5d80904dfb7d47d75f88.svg",
+        "cbt/course/lessons/004bdad7467a7524d58cef9fc0ddcc44.json",
+        "cbt/audio/F-1.1.wav",
+        "cbt/course/audio/00086ce331d0e54829cc8d658735f8f9.mp3"
+      ],
+      "jsErrors": 0,
+      "tlsVerification": true
+    }
+  },
+  "russianNetworkChecks": [
+    {
+      "network": "Rostelecom",
+      "city": "Kostroma",
+      "asn": 12389,
+      "httpStatus": 200
+    },
+    {
+      "network": "MTS",
+      "city": "Novosibirsk",
+      "asn": 8359,
+      "httpStatus": 200
+    },
+    {
+      "network": "Vimpelcom",
+      "city": "Ufa",
+      "asn": 3216,
+      "httpStatus": 200
+    }
+  ],
+  "networkMeasurement": "https://api.globalping.io/v1/measurements/2MyjZjm0cTjhOhh5R00021MN2",
+  "offlineChecks": {
+    "environment": "local copy of the same published website files",
+    "browsers": [
+      "chromium",
+      "webkit"
+    ],
+    "coreFiles": 761,
+    "coreBytes": 165267605,
+    "downloadedLessonIds": [
+      "011a17i",
+      "301e17i"
+    ],
+    "coldRestart": true,
+    "webkitOriginReallyStopped": true,
+    "exerciseResumeAndAction": true
+  },
+  "browserData": "Progress, notes and offline downloads are stored separately for each website origin."
+}
