@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101719">
+  <meta name="737-cbt-update" content="1">
+  <title>Обновление · 737 Cockpit Lab</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #101719; color: #e5eae6; }
+    body { margin: 0; padding: max(28px, env(safe-area-inset-top)) 24px; }
+    main { max-width: 520px; margin: 10vh auto; }
+    .brand { color: #c5e99d; letter-spacing: .12em; font-size: 14px; }
+    h1 { font-size: 28px; line-height: 1.3; }
+    p { line-height: 1.65; color: #a9b5b4; }
+    button, a { display: inline-block; font: inherit; border-radius: 7px; padding: 14px 18px; margin: 8px 8px 8px 0; }
+    button { border: 0; color: #18251b; background: #c5e99d; cursor: pointer; }
+    button:disabled { opacity: .55; cursor: default; }
+    a { color: #c5e99d; }
+    #repair-status { min-height: 3.3em; color: #e5eae6; }
+  </style>
+  <script src="update.js" defer></script>
+</head>
+<body><main>
+  <p class="brand">737 COCKPIT LAB</p>
+  <h1>Обновить приложение</h1>
+  <p>Если в меню ещё нет CBT, проверьте обновление здесь. Сохранённые материалы и отметка о прохождении урока сохранятся.</p>
+  <p id="repair-status" role="status" aria-live="polite">Оставьте эту страницу открытой до завершения обновления.</p>
+  <button id="repair-update">Проверить и обновить</button>
+  <a href="./#cbt">Открыть CBT</a>
+  <p>Safari и значок приложения на главном экране могут хранить разные версии. Обновление применяется там, где открыта эта страница.</p>
+</main></body>
+</html>

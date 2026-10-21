@@ -1,0 +1,29 @@
+{
+  "originalUrl": "https://737cockpitlab.pages.dev",
+  "originalDeployment": "898b9ec8-e8bd-48eb-af42-31aad76d6245",
+  "sourceRepositoryCommit": "b3acd27df4133c2bf36821f9c22833a2ab33d31c",
+  "applicationCommit": "a10ed1c5ac4d406df480be4e0d82794782e47a4a",
+  "originalVersion": "114c16358cdcbe23edca",
+  "originalWorkerSHA256": "2ddaeaf08f148e63c5802d84b2401088c69e027010045c18b0263f8f1efbd175",
+  "copyVersion": "github-f3ecfee54f603672427d",
+  "basePath": "/737-cockpit-lab/",
+  "originalFiles": 8662,
+  "publishedFiles": 8665,
+  "publishedBytes": 261524921,
+  "hostingChanges": [
+    "404.html",
+    "offline-assets.json",
+    "sw.js",
+    "update.html",
+    "update.js"
+  ],
+  "removedHostingFiles": [
+    "_headers"
+  ],
+  "addedHostingFiles": [
+    ".nojekyll",
+    "cbt/course-player/index.html",
+    "cbt/player/index.html",
+    "update/index.html"
+  ]
+}

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8"><script src="../delivery-bootstrap.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="737-cbt-player" content="intro-native-v2"><meta name="theme-color" content="#101719">
+<title>Знакомство с CBT · 737 Cockpit Lab</title><link rel="stylesheet" href="player.css">
+</head><body>
+<header class="player-toolbar"><div><span class="lesson-number">01 / CBT</span><strong id="section-title">Знакомство с CBT</strong><span id="player-state" role="status" aria-live="polite">Подготовка урока…</span></div><button id="fullscreen">На весь экран</button></header>
+<section id="loading" class="loading"><div><h1>Знакомство с CBT</h1><p>Оригинальные анимации, озвучка и учебные задания Boeing 737.</p><p id="load-message">Подготавливаем урок…</p><button id="start-lesson" class="primary" disabled>Начать урок</button><button id="restart-lesson" hidden>Начать заново</button><button id="retry" hidden>Повторить</button><p>Озвучка и подписи — на английском. Нажатие «Начать урок» включает звук.</p></div></section>
+<main id="lesson" hidden>
+<div class="lesson-controls"><button id="pause" aria-pressed="false">Пауза</button><button id="repeat">Повторить</button><button id="audio-toggle" aria-pressed="true">Звук включён</button><button id="text-toggle" aria-pressed="true">Текст включён</button><button id="options-open">Настройки</button><div class="zoom-controls"><button id="zoom-out" aria-label="Уменьшить">−</button><button id="zoom-fit">Вписать</button><button id="zoom-in" aria-label="Увеличить">+</button></div></div>
+<p id="media-error" class="alert" role="alert" hidden></p><button id="enable-audio" class="primary" hidden>Включить звук</button>
+<div class="scene-layout"><div id="screen-scroll"><div id="screen-size"><div id="stage" aria-label="Оригинальная сцена урока">
+<img id="scene-image" alt="" draggable="false"><video id="scene-video" playsinline muted preload="metadata" hidden></video>
+<div id="source-caption"></div><div id="hotspots"></div><div id="selections"></div>
+</div></div></div>
+<div class="scene-info"><p id="caption" class="caption" lang="en"></p><p id="instruction" class="instruction" role="status" aria-live="polite"></p>
+<div id="exercise-actions" class="exercise-actions"></div>
+<nav class="playback-navigation" aria-label="Управление уроком"><button id="back">← Назад</button><button id="hint">Подсказка</button><span id="scene-counter"></span><button id="next" class="primary">Продолжить →</button></nav>
+<progress id="lesson-progress" aria-label="Прогресс урока" max="93" value="0"></progress></div></div>
+<details id="contents"><summary>Содержание урока</summary><div id="section-list"></div></details>
+<section id="completion" hidden><h2>Урок завершён</h2><p>Ты прошёл знакомство с CBT. Вводный урок объясняет устройство курса и показывает примеры заданий; собственного экзамена в нём нет.</p><button id="review-lesson">Повторить урок</button></section>
+</main>
+<dialog id="options-dialog"><div class="dialog-heading"><h2>Настройки урока</h2><button data-close-dialog aria-label="Закрыть">×</button></div><label>Темп переходов <select id="lesson-speed"><option value="slow">Медленно</option><option value="normal">Обычно</option><option value="fast">Быстро</option></select></label><p>Темп меняет паузу между пояснениями. Оригинальная озвучка воспроизводится с обычной скоростью.</p><div class="dialog-actions"><button id="glossary-open">Глоссарий</button><button id="comments-open">Комментарии</button><button id="menu-open">К содержанию</button><button data-close-dialog>Close · Закрыть</button></div></dialog>
+<dialog id="glossary-dialog"><div class="dialog-heading"><h2>Глоссарий</h2><button data-close-dialog aria-label="Закрыть">×</button></div><label>Сокращение <input id="glossary-search" type="search" placeholder="Например, MCP" autocomplete="off"></label><div id="glossary-results"></div><button data-close-dialog>Close · Закрыть</button></dialog>
+<dialog id="comments-dialog"><div class="dialog-heading"><h2>Комментарий к сцене</h2><button data-close-dialog aria-label="Закрыть">×</button></div><label>Твоя заметка <textarea id="comment-text" maxlength="4000" rows="6"></textarea></label><p>Заметка сохранится только на этом устройстве.</p><div class="dialog-actions"><button id="comment-save" class="primary">Save · Сохранить</button><button data-close-dialog>Cancel · Отмена</button></div></dialog>
+<footer class="credits"><details><summary>Об учебном материале</summary><p>Первый оригинальный урок Boeing / American Trans Air из предоставленного комплекта. Это исторический учебный курс. Для эксплуатации самолёта используйте действующую документацию.</p></details></footer>
+<audio id="narration" preload="auto"></audio><audio id="effect" preload="auto"></audio>
+<script src="player-layout.js"></script><script src="player.js"></script>
+</body></html>
