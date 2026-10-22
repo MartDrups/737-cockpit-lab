@@ -9,7 +9,7 @@ extras=json.loads((repo/'src/system-reading/extra-diagrams.json').read_text())
 plans=json.loads((repo/'src/system-reading/sections.json').read_text())
 report={'figures':[],'errors':[]}
 with sync_playwright() as p:
-    browser=launch(p,options.browser)
+    browser=launch(p,options.browser,remote=bool(options.url))
     context=browser.new_context(viewport={'width':1280,'height':1000})
     page=context.new_page()
     page.on('pageerror',lambda e:report['errors'].append(str(e)))

@@ -1,6 +1,7 @@
 """Run browser checks against the exact gzip delivery under the Pages subpath."""
 import argparse
 import atexit
+import os
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import shutil
@@ -39,8 +40,12 @@ def configure():
     return args, url, out
 
 
-def launch(playwright, browser):
+def launch(playwright, browser, remote=False):
+    options = {}
+    proxy = os.environ.get('HTTPS_PROXY') or os.environ.get('HTTP_PROXY')
+    if remote and proxy:
+        options['proxy'] = {'server':proxy,'bypass':'127.0.0.1,localhost'}
     if browser == 'webkit':
-        return playwright.webkit.launch(headless=True)
+        return playwright.webkit.launch(headless=True, **options)
     return playwright.chromium.launch(executable_path=shutil.which('chromium') or None,
-                                      args=['--no-sandbox'])
+                                      args=['--no-sandbox'], **options)

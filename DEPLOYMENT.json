@@ -1,12 +1,12 @@
 {
   "url": "https://martdrups.github.io/737-cockpit-lab/",
   "repository": "https://github.com/MartDrups/737-cockpit-lab",
-  "publishedCommit": "5054a2b244d30dc5ea4f24ba0c6e117bc9274f0a",
-  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/39682146502",
+  "publishedCommit": "d26e2bbabe6f19907f0682898c38dadf4f3b6f2f",
+  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/39741995833",
   "workflowResult": "success",
-  "version": "github-f3ecfee54f603672427d",
+  "version": "github-systems-8e0b9a060812a7ed66ec",
   "websiteFiles": 8665,
-  "websiteBytes": 261524921,
+  "websiteBytes": 261547840,
   "originalUrl": "https://737cockpitlab.pages.dev",
   "originalUnchanged": true,
   "publicBrowsers": {
@@ -118,6 +118,79 @@
       "offlineColdBrowserRestartChromium": true,
       "javascriptErrors": 0
     },
-    "publicVerification": "pending publication"
-  }
+    "publicVerification": {
+      "checkedAt": "2026-10-22T07:49:27.105686+00:00",
+      "publishedCommit": "d26e2bbabe6f19907f0682898c38dadf4f3b6f2f",
+      "browsers": {
+        "chromium": {
+          "passed": true,
+          "systems": 15,
+          "subsections": 148,
+          "blueLinks": 370,
+          "allTextsPreserved": true,
+          "allLinkTargetsValid": true,
+          "desktopSelectionPreservesReadingPosition": true,
+          "mobileModalAndReturn": true,
+          "newFigureDirectClickExplained": true,
+          "javascriptErrors": 0,
+          "tlsVerification": true
+        },
+        "webkit": {
+          "passed": true,
+          "systems": 15,
+          "subsections": 148,
+          "blueLinks": 370,
+          "allTextsPreserved": true,
+          "allLinkTargetsValid": true,
+          "desktopSelectionPreservesReadingPosition": true,
+          "mobileModalAndReturn": true,
+          "newFigureDirectClickExplained": true,
+          "javascriptErrors": 0,
+          "tlsVerification": true
+        }
+      },
+      "newHotspotsPhysicallyClicked": 96,
+      "newFigureCount": 13,
+      "filesMatchCheckedLocalBuild": [
+        {
+          "path": "index.html",
+          "bytes": 9148,
+          "sha256": "44a4afa699efcb9991addfcfa1f4817a55809f680bd58e673e10293700bccb52"
+        },
+        {
+          "path": "app.js.gz",
+          "bytes": 10070,
+          "sha256": "3e8984d2da5f5359cd6381d67f0627f60e50d2ee50657b939c382d71147b45f5"
+        },
+        {
+          "path": "system-view.js.gz",
+          "bytes": 25829,
+          "sha256": "9fc3e5d4c918289dcfe0d19204afaff9b566735684e9b1a4dbfe4bafce8ddb9c"
+        },
+        {
+          "path": "system-style.css.gz",
+          "bytes": 3305,
+          "sha256": "1342e32181e79596826f60bf85ccc55a5d03d925d95d40f6ff33728547159147"
+        },
+        {
+          "path": "offline-assets.json",
+          "bytes": 121023,
+          "sha256": "093a7f5f5abce950ab442d13bab44c036d3e4d15e43ae7387645d9188cb11d17"
+        },
+        {
+          "path": "sw.js",
+          "bytes": 1939153,
+          "sha256": "ad2f8c2c2559a16355bbd91832ee781296b52344196c8c36f0dc947baa300ce8"
+        }
+      ]
+    }
+  },
+  "initialGitHubDeployment": {
+    "publishedCommit": "5054a2b244d30dc5ea4f24ba0c6e117bc9274f0a",
+    "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/39682146502",
+    "version": "github-f3ecfee54f603672427d",
+    "websiteFiles": 8665,
+    "websiteBytes": 261524921
+  },
+  "verificationNotes": "publicBrowsers, russianNetworkChecks и offlineChecks сохраняют результаты первоначального переноса. Свежие проверки доработанных систем и обновления приложения записаны в systemsReading; полную повторную загрузку всех 761 файлов справочника при этой доработке не выполняли."
 }

@@ -6,7 +6,7 @@ from system_browser_support import configure, launch
 options, url, out = configure()
 report = {'errors': [], 'systems': []}
 with sync_playwright() as p:
-    browser = launch(p, options.browser)
+    browser = launch(p, options.browser, remote=bool(options.url))
     context = browser.new_context(viewport={'width':1280,'height':900})
     page = context.new_page()
     page.on('pageerror', lambda error: report['errors'].append(str(error)))
