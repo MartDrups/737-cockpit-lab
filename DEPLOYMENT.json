@@ -1,12 +1,12 @@
 {
   "url": "https://martdrups.github.io/737-cockpit-lab/",
   "repository": "https://github.com/MartDrups/737-cockpit-lab",
-  "publishedCommit": "d26e2bbabe6f19907f0682898c38dadf4f3b6f2f",
-  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/39741995833",
+  "publishedCommit": "96ad58cab65c778747092862c7b9bcc1980ad171",
+  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/39748511383",
   "workflowResult": "success",
-  "version": "github-systems-8e0b9a060812a7ed66ec",
+  "version": "github-systems-ef56a8229c20a5510310",
   "websiteFiles": 8665,
-  "websiteBytes": 261547840,
+  "websiteBytes": 261565158,
   "originalUrl": "https://737cockpitlab.pages.dev",
   "originalUnchanged": true,
   "publicBrowsers": {
@@ -192,5 +192,104 @@
     "websiteFiles": 8665,
     "websiteBytes": 261524921
   },
-  "verificationNotes": "publicBrowsers, russianNetworkChecks и offlineChecks сохраняют результаты первоначального переноса. Свежие проверки доработанных систем и обновления приложения записаны в systemsReading; полную повторную загрузку всех 761 файлов справочника при этой доработке не выполняли."
+  "verificationNotes": "publicBrowsers, russianNetworkChecks и offlineChecks сохраняют результаты первоначального переноса. systemsReading сохраняет проверки первого выпуска интерфейса схем. Последняя сверка текстов, публичные проверки Chromium/WebKit и локальная проверка обновления с холодным офлайн-запуском записаны в systemsTextReview. Полную повторную загрузку всех 761 файлов справочника при доработке текстов не выполняли.",
+  "systemsTextReview": {
+    "revision": "systems-text-2026-10-22-1",
+    "version": "github-systems-ef56a8229c20a5510310",
+    "source": "FCOM S7 D6-27370-800-SBR(P2), 15 November 2021",
+    "systemsReviewed": 15,
+    "subsectionsReviewed": 148,
+    "subsectionsExpanded": 109,
+    "subsectionsSufficientWithoutAdditions": 39,
+    "originalWords": 11906,
+    "addedWords": 2087,
+    "currentWords": 13993,
+    "wordGrowthPercent": 17.5,
+    "wordCountMethod": "whitespace-delimited words in subsection bodies; introductions excluded",
+    "originalParagraphsPreserved": true,
+    "nodeCardsSynchronized": 736,
+    "conciseNodeCardsReviewedAndRetained": 65,
+    "evidenceQuotes": 117,
+    "sourcesFile": "src/system-reading/text-additions.json",
+    "sourceAndDeliveryChecks": "python tests/check-system-text.py",
+    "publicVerification": {
+      "checkedAt": "2026-10-22T08:36:39.098458+00:00",
+      "publishedCommit": "96ad58cab65c778747092862c7b9bcc1980ad171",
+      "version": "github-systems-ef56a8229c20a5510310",
+      "tlsVerification": true,
+      "filesMatchCheckedLocalBuild": [
+        {
+          "path": "public/index.html",
+          "bytes": 9153,
+          "sha": "af0251bbc864e34c47620a5886ea73bf55a25622",
+          "sha256": "0f868834db9fb0d86d0c6bc4aa44dba83249e983f6efde3eeeb739b719e34700"
+        },
+        {
+          "path": "public/offline-assets.json",
+          "bytes": 121023,
+          "sha": "b6331e41bbf8d29108626359c6009207e189e01f",
+          "sha256": "29e859067a76675a2e8da20de609b7249a680c5692b29a9abdb9b7c566727e81"
+        },
+        {
+          "path": "public/sw.js",
+          "bytes": 1939153,
+          "sha": "9edc98621afe7f71665bb7b5ff2d726d81b77fb7",
+          "sha256": "0cd93a4f7eb04809978b2e7b5986b6b0c0e2968a9904ce93080894be510103ef"
+        },
+        {
+          "path": "public/system-data.js.gz",
+          "bytes": 138512,
+          "sha": "e218f942a2181dea038e7828f806af3d07e233d6",
+          "sha256": "d552d6660dd3e3c056a056d1a14a1074d21f6aa6f7967904ea3b7adfb3c51f39"
+        },
+        {
+          "path": "public/system-view.js.gz",
+          "bytes": 26389,
+          "sha": "1632feda38e159650a459204023e38d40851106c",
+          "sha256": "354e130fb12f809bc76572bc509e2fe1a666d0c0215c283ad34218b1d9a233fc"
+        }
+      ],
+      "browsers": {
+        "chromium": {
+          "passed": true,
+          "systems": 15,
+          "subsections": 148,
+          "blueLinks": 403,
+          "allDeliveryTextsRendered": true,
+          "allLinkTargetsValid": true,
+          "desktopSelectionPreservesReadingPosition": true,
+          "mobileModalAndReturn": true,
+          "diagramClickExplained": true,
+          "javascriptErrors": 0,
+          "tlsVerification": true
+        },
+        "webkit": {
+          "passed": true,
+          "systems": 15,
+          "subsections": 148,
+          "blueLinks": 403,
+          "allDeliveryTextsRendered": true,
+          "allLinkTargetsValid": true,
+          "desktopSelectionPreservesReadingPosition": true,
+          "mobileModalAndReturn": true,
+          "diagramClickExplained": true,
+          "javascriptErrors": 0,
+          "tlsVerification": true
+        }
+      }
+    },
+    "localUpgradeAndOffline": {
+      "browser": "chromium",
+      "errors": [],
+      "previousController": "http://127.0.0.1:46601/737-cockpit-lab/sw.js",
+      "upgradedFromPreviousSystemsRelease": true,
+      "newTextAndNodeCardsLoaded": true,
+      "existingDataPreserved": true,
+      "existingDiagramCarriedForward": true,
+      "newFigureAssetsCached": 13,
+      "offlineColdBrowserRestart": true
+    },
+    "unrelatedWebsiteFilesUnchanged": true,
+    "sourcePackagePreserved": true
+  }
 }
