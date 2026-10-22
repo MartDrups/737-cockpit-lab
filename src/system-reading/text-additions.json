@@ -1,0 +1,1124 @@
+{
+  "revision": "systems-text-2026-10-22-1",
+  "sections": {
+    "hydraulics": {
+      "reservoirs": {
+        "paragraph": "Количество жидкости меняется при запуске двигателей, перемещении шасси, механизации и охлаждении в длительном крейсерском полёте.",
+        "sources": [
+          {
+            "ref": "13.20.8",
+            "quote": "During normal operations, variations in hydraulic quantity indications occur"
+          }
+        ]
+      },
+      "pumps": {
+        "paragraph": "В ON блокирующий клапан EDP обесточен; в OFF соленоид под напряжением. Сохранение ENG в ON при остановке продлевает ресурс соленоида.",
+        "sources": [
+          {
+            "ref": "13.10.1",
+            "quote": "Should remain ON at shutdown to prolong solenoid life."
+          }
+        ]
+      },
+      "a-leak": {
+        "paragraph": "На высоте вспенивание жидкости также может сопровождаться колебаниями давления, миганием LOW PRESSURE и кратковременными MASTER CAUTION/HYD.",
+        "sources": [
+          {
+            "ref": "13.20.8",
+            "quote": "Foaming can be recognized by pressure fluctuations and the blinking of the related LOW PRESSURE lights."
+          }
+        ]
+      },
+      "standby": {
+        "paragraph": "На перечисленных в FCOM бортах ручной выбор STBY RUD также включает STBY RUD ON, MASTER CAUTION и FLT CONT. Применимость этой индикации определяется комплектацией и указанными изменениями SB.",
+        "sources": [
+          {
+            "ref": "13.20.4",
+            "quote": "illuminates the STBY RUD ON, Master Caution, and Flight Controls (FLT CONT) lights."
+          }
+        ]
+      },
+      "standby-loss": {
+        "paragraph": "LOW QUANTITY срабатывает при опустошении резервного бака примерно наполовину.",
+        "sources": [
+          {
+            "ref": "13.20.8",
+            "quote": "The LOW QUANTITY light illuminates when the standby reservoir is approximately half empty."
+          }
+        ]
+      }
+    },
+    "electric": {
+      "ac": {
+        "paragraph": "При подаче питания на обе AC TRANSFER BUS режим отдельного наземного обслуживания перестаёт определять питание служебных шин: его команда перекрывается штатной логикой.",
+        "sources": [
+          {
+            "ref": "6.20.2",
+            "quote": "The ground service switch is a momentary push button and is overridden when both AC transfer busses are powered."
+          }
+        ]
+      },
+      "shedding": {
+        "paragraph": "Для указанного в FCOM варианта GALLEY сначала отключаются кухни стороны 2, затем стороны 1 и после этого основные шины.",
+        "sources": [
+          {
+            "ref": "6.20.4",
+            "quote": "The galleys on transfer bus 2 are shed first"
+          }
+        ]
+      },
+      "monitoring": {
+        "paragraph": "Частота отображается только при электрическом возбуждении генератора; регулятор напряжения автоматически поддерживает его выходное напряжение.",
+        "sources": [
+          {
+            "ref": "6.20.7",
+            "quote": "Frequency is indicated only when the generator is electrically excited."
+          }
+        ]
+      },
+      "tr": {
+        "paragraph": "Разделение шин DC при захвате глиссады действует и при директорном ILS-заходе; оно предотвращает поражение обоих навигационных приёмников и FCC одним отказом.",
+        "sources": [
+          {
+            "ref": "6.20.9",
+            "quote": "This isolates the DC busses during approach to prevent a single failure from affecting both navigation receivers and flight control computers"
+          }
+        ]
+      },
+      "battery": {
+        "paragraph": "При отказе TR3 основное зарядное устройство в режиме выпрямителя также питает BATTERY BUS; регулирование заряда батарей выполняется автоматически.",
+        "sources": [
+          {
+            "ref": "6.20.10",
+            "quote": "The main battery charger TR also powers the battery bus if TR3 fails."
+          }
+        ]
+      }
+    },
+    "comms": {
+      "acp": {
+        "paragraph": "Динамики пилотов находятся на потолке над креслами; громкость обычного приёма зависит также от переключателя SPEAKER.",
+        "sources": [
+          {
+            "ref": "5.20.1",
+            "quote": "The Captain and First Officer have speakers on the ceiling above their seats."
+          }
+        ]
+      },
+      "microphones": {
+        "paragraph": "На YK177–YT066 дополнительная MIC-кнопка на козырьке выполняет ту же функцию, что MIC на штурвале, используя выбранный передатчик ACP.",
+        "sources": [
+          {
+            "ref": "5.20.2",
+            "quote": "Pushing the glareshield MIC switch is the same as pushing the control wheel MIC switch."
+          }
+        ]
+      },
+      "audio-alt": {
+        "paragraph": "Распределение в ALT: командир и наблюдатель — VHF 1, второй пилот — VHF 2; передача выполняется через MIC или R/T.",
+        "sources": [
+          {
+            "ref": "5.20.3",
+            "quote": "The mask and boom microphones can be keyed with the control wheel PTT switch MIC position or the ACP PTT switch R/T position."
+          }
+        ]
+      },
+      "pa": {
+        "paragraph": "PA допускает передачу через микрофон кислородной маски; отдельный PA-микрофон подключается к разъёму на P8.",
+        "sources": [
+          {
+            "ref": "5.20.5",
+            "quote": "the hand-held microphone connected to the Passenger Address microphone jack on the P8 aft electronic panel."
+          }
+        ]
+      },
+      "vhf": {
+        "paragraph": "Для YD301–YT066 FCOM перечисляет три независимые VHF-радиостанции, для YC498/YC499 — две.",
+        "sources": [
+          {
+            "ref": "5.20.7",
+            "quote": "Primary short-range voice communications is provided in the VHF range by three independent radios."
+          }
+        ]
+      },
+      "hf": {
+        "paragraph": "Последние 100 частот запоминаются; повторное согласование на них кратковременно, иногда без заметного тона.",
+        "sources": [
+          {
+            "ref": "5.20.8",
+            "quote": "Data for the last 100 tuned frequencies is stored in memory."
+          }
+        ]
+      }
+    },
+    "antiice": {
+      "windows": {
+        "paragraph": "У обогреваемого стекла 3 проводящий слой находится на внутреннем стекле и предназначен для предотвращения запотевания.",
+        "sources": [
+          {
+            "ref": "3.20.3",
+            "quote": "A conductive coating on the inner glass pane of window number 3 permits electrical heating to prevent fogging."
+          }
+        ]
+      },
+      "probes": {
+        "paragraph": "Два дополнительных приёмника полного давления системы загрузки руля высоты показаны у хвостовой части самолёта.",
+        "sources": [
+          {
+            "ref": "3.20.2",
+            "quote": "ELEVATOR PITOT PROBES (2 PLACES)"
+          }
+        ]
+      },
+      "wing-ai": {
+        "paragraph": "При наземном закрытии клапанов по блокировке переключатель остаётся в ON; его положение само по себе не подтверждает открытие клапанов.",
+        "sources": [
+          {
+            "ref": "3.20.10",
+            "quote": "the switch remains in the ON position regardless of control valve position."
+          }
+        ]
+      },
+      "wing-flight": {
+        "paragraph": "При этом изменяются порог stick shaker и положение полос минимальной скорости маневрирования на указателе скорости.",
+        "sources": [
+          {
+            "ref": "3.20.10",
+            "quote": "Stall warning logic adjusts stick shaker and minimum maneuver speed bars"
+          }
+        ]
+      },
+      "ice-detection": {
+        "paragraph": "Датчик расположен слева в передней части фюзеляжа; его отказ также включает MASTER CAUTION и системный сигнал ANTI-ICE.",
+        "sources": [
+          {
+            "ref": "3.20.7",
+            "quote": "Illumination of the ICE DETECTOR light also illuminates the MASTER CAUTION and ANTI-ICE system annunciator lights."
+          }
+        ]
+      }
+    },
+    "displays": {
+      "switching": {
+        "paragraph": "После обнаруженного отказа внешнего DU селектор OUTBD/INBD больше не имеет управления этим дисплеем и его форматом.",
+        "sources": [
+          {
+            "ref": "10.21.3",
+            "quote": "The OUTBD/INDB selector no longer has control over that display unit."
+          }
+        ]
+      },
+      "pfd": {
+        "paragraph": "На YD301–YT066 число M отображается начиная с 0,40; ниже этого значения вместо него показывается путевая скорость самолёта.",
+        "sources": [
+          {
+            "ref": "10.31.1",
+            "quote": "Ground speed is displayed when airspeed decreases below 0.40 Mach."
+          }
+        ]
+      },
+      "nd": {
+        "paragraph": "MAP также показывает прогноз траектории, дальность до заданной высоты и ожидаемое время прохождения следующей точки маршрута.",
+        "sources": [
+          {
+            "ref": "10.41.1",
+            "quote": "range to selected altitude"
+          }
+        ]
+      }
+    },
+    "fuel": {
+      "tanks": {
+        "paragraph": "Для горизонтального самолёта и плотности 0,8029 кг/л суммарный используемый запас по таблице составляет приблизительно 20 896 кг.",
+        "sources": [
+          {
+            "ref": "12.20.4",
+            "quote": "TOTAL 26,025 20,896"
+          }
+        ]
+      },
+      "pumps": {
+        "paragraph": "Один центральный насос может показать низкое давление раньше другого; это возможно и после нулевого показания количества центрального бака.",
+        "sources": [
+          {
+            "ref": "12.20.2",
+            "quote": "Low pressure indication may occur after center tank quantity reads zero."
+          }
+        ]
+      },
+      "suction": {
+        "paragraph": "После удаления растворённого воздуха двигатель может вновь поддерживать крейсерскую тягу при подаче топлива всасыванием из бака.",
+        "sources": [
+          {
+            "ref": "12.20.2",
+            "quote": "the engine may be capable of suction feed operation at cruise power."
+          }
+        ]
+      },
+      "crossfeed": {
+        "paragraph": "Тусклый синий VALVE OPEN подтверждает открытие; яркий означает перемещение клапана либо несоответствие команде.",
+        "sources": [
+          {
+            "ref": "12.10.2",
+            "quote": "bright - crossfeed valve is in transit, or valve position and CROSSFEED selector disagree."
+          }
+        ]
+      },
+      "shutoff": {
+        "paragraph": "Фактическое положение клапанов показывают отдельные ENG VALVE CLOSED и SPAR VALVE CLOSED на верхней панели.",
+        "sources": [
+          {
+            "ref": "7.20.8",
+            "quote": "SPAR VALVE CLOSED and ENG VALVE CLOSED lights located on the overhead panel indicate valve position."
+          }
+        ]
+      },
+      "apu-feed": {
+        "paragraph": "При работе ВСУ её топливо автоматически подогревается для предотвращения обледенения элементов топливной системы установки.",
+        "sources": [
+          {
+            "ref": "7.30.2",
+            "quote": "During APU operation, fuel is automatically heated to prevent icing."
+          }
+        ]
+      },
+      "indications": {
+        "paragraph": "Индикатор работоспособности NGS находится в основной нише шасси рядом с наземной панелью управления пожарной защитой ВСУ.",
+        "sources": [
+          {
+            "ref": "12.20.1",
+            "quote": "The NGS has an operability indicator located in the main wheel well adjacent to the APU fire control panel."
+          }
+        ]
+      }
+    },
+    "fire": {
+      "loops": {
+        "paragraph": "При отказе одного контура в NORMAL отдельной кабинной индикации нет; в A/B невыбранный контур не контролируется системой.",
+        "sources": [
+          {
+            "ref": "8.20.1",
+            "quote": "There is no flight deck indication of single loop failure."
+          }
+        ]
+      },
+      "engine-bottles": {
+        "paragraph": "Закрытие клапана отбора при вытягивании рукоятки лишает соответствующее крыло противообледенительного воздуха и закрывает пневматически управляемый клапан PACK.",
+        "sources": [
+          {
+            "ref": "8.20.2",
+            "quote": "closes the engine bleed air valve resulting in loss of wing anti-ice to the affected wing and closure of bleed air operated pack valve"
+          }
+        ]
+      },
+      "apu-fire": {
+        "paragraph": "Наземная панель расположена в правой основной нише и имеет собственные рукоятку, выключатель разряда баллона и APU HORN CUTOUT.",
+        "sources": [
+          {
+            "ref": "8.20.4",
+            "quote": "The APU ground control panel located in the right main wheel well"
+          }
+        ]
+      },
+      "wheel-well": {
+        "paragraph": "Лампа WHEEL WELL гаснет после охлаждения датчика ниже порога срабатывания, а не вследствие одного только отключения звонка.",
+        "sources": [
+          {
+            "ref": "8.20.5",
+            "quote": "The WHEEL WELL fire warning light remains illuminated until the temperature of the detector has decreased below the onset temperature."
+          }
+        ]
+      },
+      "cargo-detect": {
+        "paragraph": "Повторное появление FWD/AFT снова включает обе FIRE WARN и звонок; это предусмотрено и после первоначального предупреждения о пожаре.",
+        "sources": [
+          {
+            "ref": "8.20.6",
+            "quote": "both master FIRE WARN lights also re-illuminate and the fire warning bell sounds."
+          }
+        ]
+      },
+      "cargo-bottles": {
+        "paragraph": "Баллоны расположены в отсеке смешения воздуха у переднего лонжерона крыла; снятие подготовки может блокировать разряд второго баллона двухбаллонной системы.",
+        "sources": [
+          {
+            "ref": "8.20.7",
+            "quote": "Discharge of the second bottle may be disabled if the system is disarmed."
+          }
+        ]
+      },
+      "main-deck": {
+        "paragraph": "При CARGO TEST проверяется непрерывность цепей обоих отсечных клапанов главной палубы и клапана выпуска смесительного коллектора, а не только сигнализация пожара.",
+        "sources": [
+          {
+            "ref": "8.20.11",
+            "quote": "this circuit continuity includes the FWD and AFT MAIN DECK SHUTOFF VALVES and the MIX MANIFOLD EXHAUST SHUTOFF VALVE."
+          }
+        ]
+      },
+      "lavatory": {
+        "paragraph": "JAMCO сбрасывается кнопкой INTERRUPT, KIDDE — автоматически после исчезновения дыма в туалете.",
+        "sources": [
+          {
+            "ref": "8.20.9",
+            "quote": "ALARM MODE is reset by pressing the INTERRUPT switch."
+          }
+        ]
+      },
+      "tests": {
+        "paragraph": "Для включения WHEEL WELL при проверке OVHT/FIRE требуется доступное питание переменного тока на самолёте.",
+        "sources": [
+          {
+            "ref": "8.20.10",
+            "quote": "the WHEEL WELL fire warning light illuminates if AC power is available."
+          }
+        ]
+      }
+    },
+    "air": {
+      "engine-bleed": {
+        "paragraph": "После устранения причины BLEED TRIP OFF сохраняется до TRIP RESET; нажатие сбрасывает сигнал и вновь открывает клапан.",
+        "sources": [
+          {
+            "ref": "2.10.2",
+            "quote": "resets BLEED TRIP OFF, PACK or ZONE TEMP lights"
+          }
+        ]
+      },
+      "apu-bleed": {
+        "paragraph": "DUAL BLEED появляется при открытом клапане ВСУ и ENGINE BLEED 1 ON; для ENGINE BLEED 2 ON дополнительно нужен открытый разделительный клапан.",
+        "sources": [
+          {
+            "ref": "2.10.1",
+            "quote": "APU bleed air valve open and engine No. 1 BLEED air switch ON, or engine No. 2 BLEED air switch ON, APU bleed air valve and isolation valve open."
+          }
+        ]
+      },
+      "duct": {
+        "paragraph": "OVHT TEST проверяет цепи обнаружения перегрева и включает оба WING-BODY OVERHEAT.",
+        "sources": [
+          {
+            "ref": "2.10.2",
+            "quote": "tests wing–body overheat detector circuits"
+          }
+        ]
+      },
+      "pack-flow": {
+        "paragraph": "Повышение расхода связано и с рециркуляцией: в полёте HIGH любого PACK отключает левый RECIRC FAN, а HIGH обоих — также правый.",
+        "sources": [
+          {
+            "ref": "2.31.8",
+            "quote": "In flight, the left recirculation fan operates if both packs are operating unless either PACK switch is in HIGH."
+          }
+        ]
+      },
+      "pack-cycle": {
+        "paragraph": "После устранения перегрева TRIP RESET сбрасывает PACK и открывает его входной клапан. До сброса индикатор остаётся включённым.",
+        "sources": [
+          {
+            "ref": "2.10.7",
+            "quote": "related engine bleed air valve opens, or related pack valve opens, or related trim air modulating valve opens"
+          }
+        ]
+      },
+      "pack-controller": {
+        "paragraph": "При единичном отказе канала сигнал, вызванный через RECALL, гаснет после сброса MASTER CAUTION.",
+        "sources": [
+          {
+            "ref": "2.10.7",
+            "quote": "during Master Caution recall, indicates failure of either primary or standby pack control. Extinguishes when Master Caution is reset."
+          }
+        ]
+      },
+      "zones": {
+        "paragraph": "OFF отдельного селектора закрывает именно клапан TRIM AIR этой зоны. Для контроля температуры AIR TEMP позволяет выбрать воздуховод SUPPLY DUCT, переднюю или заднюю часть салона PASS CAB либо выход PACK.",
+        "sources": [
+          {
+            "ref": "2.10.6",
+            "quote": "PACK – selects left or right pack temperatures."
+          },
+          {
+            "ref": "2.10.5",
+            "quote": "OFF – closes the associated trim air modulating valve."
+          }
+        ]
+      },
+      "distribution": {
+        "paragraph": "Выходы под креслами дают постоянный поток при наддуве коллектора. Верхние выходы над окнами №3 регулируются винтом; обогрев ног и обдув стёкол №1 используют общий двухцелевой клапан.",
+        "sources": [
+          {
+            "ref": "2.31.7",
+            "quote": "Air diffusers on the floor under each seat deliver continuous air flow as long as the manifold is pressurized."
+          }
+        ]
+      },
+      "recirc": {
+        "paragraph": "Этот поток также проходит вокруг облицовки переднего грузового отсека и участвует в его обогреве. При закрытом overboard exhaust valve к нему добавляется тёплый воздух охлаждения оборудования.",
+        "sources": [
+          {
+            "ref": "2.31.9",
+            "quote": "The recirculation fan system circulates air from the passenger cabin around the lining of the forward cargo compartment."
+          }
+        ]
+      },
+      "equipment-cooling": {
+        "paragraph": "Приточный и вытяжной вентиляторы выбираются независимо переключателями SUPPLY и EXHAUST. Их OFF означает отсутствие потока от выбранного вентилятора.",
+        "sources": [
+          {
+            "ref": "2.10.8",
+            "quote": "Illuminated (amber) – no airflow from selected cooling exhaust fan."
+          }
+        ]
+      },
+      "pressure-control": {
+        "paragraph": "Штатная программа обеспечивает высоту кабины до 8000 ft при полёте самолёта на максимальной сертифицированной высоте 41 000 ft.",
+        "sources": [
+          {
+            "ref": "2.40.1",
+            "quote": "Cabin altitude is normally rate–controlled by the cabin pressure controller up to a cabin altitude of 8,000 feet at the airplane maximum certified ceiling of 41,000 feet."
+          }
+        ]
+      },
+      "outflow": {
+        "paragraph": "Часть воздуха выходит также через вентиляцию туалетов и кухонь, постоянные отверстия и неплотности уплотнений.",
+        "sources": [
+          {
+            "ref": "2.40.2",
+            "quote": "A small amount is also exhausted through toilet and galley vents, miscellaneous fixed vents, and by seal leakage."
+          }
+        ]
+      },
+      "pressure-profile": {
+        "paragraph": "Если заданная LAND ALT выше высоты кабины, рассчитанной по пределу перепада, контроллер поддерживает кабину немного ниже LAND ALT. При отклонении самолёта от крейсерской высоты перепад может меняться, пока автоматика сохраняет постоянную высоту кабины.",
+        "sources": [
+          {
+            "ref": "2.40.5",
+            "quote": "In certain circumstances the selected LAND ALT may exceed the target cabin altitude determined by the differential pressure limits."
+          }
+        ]
+      },
+      "pressure-fail": {
+        "paragraph": "AUTO FAIL вместе с ALTN указывает отказ одного контроллера; AUTO FAIL без ALTN — отказ обоих. В MAN результат перемещения клапана проверяют по CABIN ALT, CABIN CLIMB и указателю положения клапана.",
+        "sources": [
+          {
+            "ref": "2.10.11",
+            "quote": "indicates a dual controller failure when illuminated alone."
+          }
+        ]
+      }
+    },
+    "autoflight": {
+      "afds": {
+        "paragraph": "FMC передаёт автомату тяги ограничения и целевые N1, а AFDS — заданные скорости для выполнения расчётной траектории.",
+        "sources": [
+          {
+            "ref": "4.20.1",
+            "quote": "The flight management computer (FMC) provides N1 limits and target N1 for the A/T and command airspeeds for the A/T and AFDS."
+          }
+        ]
+      },
+      "engage": {
+        "paragraph": "Потеря насоса EDP системы A при большой нагрузке на неё может отключить A/P A. При неисправном радиовысотомере автопилот отключается через две секунды после захвата LOC и G/S.",
+        "sources": [
+          {
+            "ref": "4.20.3",
+            "quote": "With a radio altimeter inoperative, the autopilot will disengage two seconds after LOC and GS capture."
+          }
+        ]
+      },
+      "fd": {
+        "paragraph": "Независимую работу директоров обозначают одновременно горящие MA. После её окончания MA ведомой стороны гаснет; при потере генератора исправный FCC может обслуживать обе стороны.",
+        "sources": [
+          {
+            "ref": "4.20.4",
+            "quote": "Independent F/D operation is indicated by illumination of both MA lights."
+          }
+        ]
+      },
+      "fma": {
+        "paragraph": "В режимах MCP SPD и FMC SPD автомат тяги ограничен значением N1 на указателе режима тяги.",
+        "sources": [
+          {
+            "ref": "4.20.5",
+            "quote": "The autothrottle is limited to the N1 value shown on the thrust mode display"
+          }
+        ]
+      },
+      "vertical": {
+        "paragraph": "Захват высоты ALT ACQ выполняется также из V/S и LVL CHG. При переходе VNAV к высоте он включается без отдельной надписи ALT ACQ.",
+        "sources": [
+          {
+            "ref": "4.20.6",
+            "quote": "Engages but does not annunciate during VNAV transition"
+          }
+        ]
+      },
+      "lateral": {
+        "paragraph": "На бортах YC498, YC499, YK177–YT066 LNAV можно подготовить до взлёта: автоматическое включение происходит на 50 ft RA.",
+        "sources": [
+          {
+            "ref": "4.20.7",
+            "quote": "the AFDS is armed (prior to takeoff) to engage LNAV at 50 feet RA."
+          }
+        ]
+      },
+      "cws": {
+        "paragraph": "При CWS P с выбранным CMD приближение к высоте MCP вызывает ALT ACQ, затем ALT HOLD.",
+        "sources": [
+          {
+            "ref": "4.20.8",
+            "quote": "When approaching a selected altitude in CWS P with a CMD engage switch selected, CWS P changes to ALT ACQ."
+          }
+        ]
+      },
+      "at": {
+        "paragraph": "Для уменьшения расхождения рычагов FCOM рекомендует одинаковый режим EEC: оба ON либо оба ALTN. Нормальное расхождение при симметричной тяге — не более ширины рукоятки.",
+        "sources": [
+          {
+            "ref": "4.20.9",
+            "quote": "During A/T operation, it is recommended that both EECs be ON or both be in ALTN, as this produces minimum thrust lever separation."
+          },
+          {
+            "ref": "4.20.10",
+            "quote": "The thrust levers should normally be aligned to no more than one full knob width difference"
+          }
+        ]
+      },
+      "approach": {
+        "paragraph": "На 400 ft RA стабилизатор дополнительно триммируется на кабрирование. Если после этого отключить автопилоты, для сохранения тангажа может понадобиться усилие штурвалом от себя.",
+        "sources": [
+          {
+            "ref": "4.20.19",
+            "quote": "The stabilizer is automatically trimmed an additional amount nose up."
+          }
+        ]
+      },
+      "goaround": {
+        "paragraph": "При директорном уходе окно IAS/MACH гаснет, а маркер скорости переходит к расчётной цели. Ниже 400 ft RA для отмены TO/GA выключают оба F/D.",
+        "sources": [
+          {
+            "ref": "4.20.27",
+            "quote": "below 400 feet RA, both F/D switches must be turned off."
+          }
+        ]
+      }
+    },
+    "engines": {
+      "indications": {
+        "paragraph": "Автоматически вызванные дополнительные показания нельзя убрать, пока сохраняется причина их появления. При недоступности одного центрального DU используется компактный формат, объединяющий основные и дополнительные параметры.",
+        "sources": [
+          {
+            "ref": "7.20.2",
+            "quote": "When the secondary engine indications are automatically displayed, they cannot be cleared until the condition is no longer present."
+          }
+        ]
+      },
+      "eec": {
+        "paragraph": "Отказ любого DEU лишает оба EEC части данных: оба переходят в ALTN, чтобы двигатели не зависели от единственного источника информации. При автоматическом переходе надпись ON сохраняется.",
+        "sources": [
+          {
+            "ref": "7.20.5",
+            "quote": "Loss of either DEU results in a loss of signal to both EECs."
+          }
+        ]
+      },
+      "fuel": {
+        "paragraph": "Положение запорных клапанов контролируют по SPAR VALVE CLOSED и ENG VALVE CLOSED на верхней панели. Сигнал FILTER BYPASS также расположен на топливной панели.",
+        "sources": [
+          {
+            "ref": "7.20.8",
+            "quote": "SPAR VALVE CLOSED and ENG VALVE CLOSED lights located on the overhead panel indicate valve position."
+          }
+        ]
+      },
+      "oil": {
+        "paragraph": "При малых N2 во время запуска в полёте недостаточная откачка может временно уменьшить показание количества масла; после запуска оно должно восстановиться.",
+        "sources": [
+          {
+            "ref": "7.20.11",
+            "quote": "At low N2 values, the oil scavenge pump may not provide enough pressure to return oil to the tank, causing a low oil quantity indication."
+          }
+        ]
+      },
+      "start": {
+        "paragraph": "Начальная индикация расхода топлива запаздывает примерно на две секунды, поэтому EGT может начать расти раньше. При наземном wet start EEC прекращает зажигание и топливо через 15 секунд после IDLE.",
+        "sources": [
+          {
+            "ref": "7.20.10",
+            "quote": "Initial fuel flow indications lag actual fuel flow by approximately two seconds"
+          },
+          {
+            "ref": "7.20.11",
+            "quote": "the EEC turns off the ignition and shuts off fuel to the engine 15 seconds after the start lever is moved to IDLE."
+          }
+        ]
+      },
+      "ignition": {
+        "paragraph": "При запуске в полёте необходимость crossbleed определяется по высоте, скорости и N2; она обозначается X-BLD либо XB в компактном формате.",
+        "sources": [
+          {
+            "ref": "7.20.11",
+            "quote": "This indication is based on airplane altitude, airspeed and N2."
+          }
+        ]
+      },
+      "reverser": {
+        "paragraph": "Рычаги реверса механически заблокированы, пока прямая тяга не убрана на малый газ. REVERSER после команды уборки обычно гаснет через 10 секунд; свыше примерно 12 секунд появляется MASTER CAUTION/ENG.",
+        "sources": [
+          {
+            "ref": "7.20.15",
+            "quote": "Any time the REVERSER light illuminates for more than approximately 12 seconds, a malfunction has occurred"
+          }
+        ]
+      },
+      "apu": {
+        "paragraph": "Для работы ВСУ обе пожарные рукоятки — кабинная и наземная — должны быть утоплены. Подкачивающий DC-насос, если установлен, автоматически отключается после восстановления давления от AC-насоса.",
+        "sources": [
+          {
+            "ref": "7.30.2",
+            "quote": "The pump shuts off automatically when an AC fuel pump pressurizes the fuel manifold."
+          }
+        ]
+      },
+      "apu-control": {
+        "paragraph": "Автоматический запуск может длиться до 120 секунд. Перед отбором воздуха FCOM рекомендует две минуты стабилизации; вытягивание пожарной рукоятки обеспечивает немедленную остановку.",
+        "sources": [
+          {
+            "ref": "7.30.3",
+            "quote": "The start cycle may take as long as 120 seconds."
+          }
+        ]
+      }
+    },
+    "gear": {
+      "operation": {
+        "paragraph": "Вращение передних колёс при уборке останавливают специальные тормозящие упоры. При повреждении протектора защитный штуцер в проёме основной ниши может остановить уборку соответствующей стойки.",
+        "sources": [
+          {
+            "ref": "14.20.2",
+            "quote": "When a spinning tire with loose tread impacts a fitting in the wheel well ring opening, that gear stops retracting and free falls back to the down position."
+          }
+        ]
+      },
+      "transfer": {
+        "paragraph": "При утечке за агрегатом и потере жидкости B датчик закрывает клапан передачи.",
+        "sources": [
+          {
+            "ref": "14.20.3",
+            "quote": "a sensor closes the Landing Gear Transfer Valve and alternate steering will be lost."
+          }
+        ]
+      },
+      "manual": {
+        "paragraph": "Выпуск подтверждается хотя бы одним зелёным индикатором для каждой стойки: на центральной либо задней верхней панели.",
+        "sources": [
+          {
+            "ref": "14.10.2",
+            "quote": "Landing gear is down and locked as long as one green landing gear indicator light (center panel or overhead panel) for each gear is illuminated."
+          }
+        ]
+      },
+      "steering": {
+        "paragraph": "Указатель на рукоятке показывает отклонение колёс от нейтрали. Буксировочный штырь позволяет отключить управление без снятия давления с гидросистем.",
+        "sources": [
+          {
+            "ref": "14.20.3",
+            "quote": "This allows airplane pushback or towing without depressurizing the hydraulic systems."
+          }
+        ]
+      },
+      "brakes": {
+        "paragraph": "HYD BRAKE PRESS показывает давление аккумулятора: нормальное — 3000 psi, максимальное — 3500 psi; предварительная зарядка — 1000 psi.",
+        "sources": [
+          {
+            "ref": "14.10.6",
+            "quote": "normal precharge – 1000 psi."
+          }
+        ]
+      },
+      "rto": {
+        "paragraph": "При посадке с оставленным RTO автоматического торможения нет; DISARM загорается через две секунды после касания.",
+        "sources": [
+          {
+            "ref": "14.20.5",
+            "quote": "no automatic braking action occurs and the AUTO BRAKE DISARM light illuminates two seconds after touchdown."
+          }
+        ]
+      },
+      "landing-autobrake": {
+        "paragraph": "На сухой ВПП даже MAX даёт меньшее замедление, чем полное нажатие педалей. Автомат может довести самолёт до остановки.",
+        "sources": [
+          {
+            "ref": "14.20.5",
+            "quote": "on dry runways, the maximum autobrake deceleration rate in the landing mode is less than that produced by full pedal braking."
+          }
+        ]
+      },
+      "parking": {
+        "paragraph": "Красная лампа PARKING BRAKE питается от батареи. Установить тормоз можно педалями как командира, так и второго пилота.",
+        "sources": [
+          {
+            "ref": "14.10.5",
+            "quote": "parking brake is set (light operates from battery power)."
+          }
+        ]
+      }
+    },
+    "warnings": {
+      "configuration": {
+        "paragraph": "Взлётный диапазон закрылков — 1–25. Контроль включает их непроизвольное перемещение, перекос и асимметрию, а также наличие давления перед клапаном блокировки наземных спойлеров.",
+        "sources": [
+          {
+            "ref": "15.20.5",
+            "quote": "trailing edge flaps are not in the flaps 1 through 25 takeoff range"
+          }
+        ]
+      },
+      "gear-warning": {
+        "paragraph": "Для закрылков до 25 порог малой тяги — примерно 20° положения рычага; при одном неработающем двигателе используется порог 34° другого рычага.",
+        "sources": [
+          {
+            "ref": "15.20.7",
+            "quote": "either forward thrust lever set below approximately 20 degrees, or an engine not operating and the other thrust lever is less than 34 degrees."
+          }
+        ]
+      },
+      "stall": {
+        "paragraph": "Проверка STALL WARNING 1 включает вибратор командира, 2 — второго пилота. Благодаря механической связи любой из них заставляет вибрировать обе колонки.",
+        "sources": [
+          {
+            "ref": "15.20.8",
+            "quote": "Either stick shaker vibrates both columns through column interconnects."
+          }
+        ]
+      },
+      "altitude-alert": {
+        "paragraph": "При отклонении рамка текущей высоты становится жёлтой и мигает. Выбор новой высоты отменяет это мигание.",
+        "sources": [
+          {
+            "ref": "15.20.9",
+            "quote": "the current altitude box turns amber and begins to flash."
+          }
+        ]
+      },
+      "egpws": {
+        "paragraph": "На ND отображается рельеф в пределах 2000 ft от барометрической высоты самолёта. Для YC498–YD315 база не учитывает искусственные препятствия.",
+        "sources": [
+          {
+            "ref": "15.20.13",
+            "quote": "Terrain within 2,000 feet of airplane barometric altitude shows on the navigation display."
+          }
+        ]
+      },
+      "windshear": {
+        "paragraph": "Прогнозирующие предупреждения становятся доступны примерно через 12 секунд после начала сканирования. Их блокируют предупреждения GPWS о фактическом сдвиге ветра и опасном сближении с землёй.",
+        "sources": [
+          {
+            "ref": "15.20.17",
+            "quote": "Predictive windshear alerts are inhibited by an actual windshear warning (airplane in windshear), look-ahead terrain alerts, or radio altitude based alerts."
+          },
+          {
+            "ref": "15.20.19",
+            "quote": "Alerts are available approximately 12 seconds after the weather radar begins scanning for windshear."
+          }
+        ]
+      },
+      "pseu": {
+        "paragraph": "На YK177–YT066 одиночный отказ автоматически показывается после посадки; PSEU гаснет при установке стояночного тормоза либо выключении обоих двигателей.",
+        "sources": [
+          {
+            "ref": "15.20.7",
+            "quote": "The PSEU light extinguishes when a parking brake is set or when both engines are turned off."
+          }
+        ]
+      },
+      "tcas": {
+        "paragraph": "Если угроза выходит за выбранный масштаб ND, появляется OFFSCALE. При отсутствии пеленга данные выводятся текстом под TRAFFIC; стрелка вертикального движения появляется при изменении высоты быстрее 500 ft/min.",
+        "sources": [
+          {
+            "ref": "15.20.26",
+            "quote": "Vertical motion information is indicated by an arrow depicting a climb or descent if a change of greater than 500 feet per minute is detected."
+          },
+          {
+            "ref": "15.20.25",
+            "quote": "an OFFSCALE annunciation appears on the navigation display."
+          }
+        ]
+      }
+    },
+    "navigation": {
+      "gps": {
+        "paragraph": "Кнопка POS на EFIS выводит положения обоих GPS на ND; при совпадении они выглядят одним символом.",
+        "sources": [
+          {
+            "ref": "11.20.2",
+            "quote": "The GPS symbols are identical and show as a single symbol when the GPS receivers calculate the same position."
+          }
+        ]
+      },
+      "alignment": {
+        "paragraph": "Если введённая позиция удалена от аэродрома вылета более чем на 4 NM, появляется VERIFY POSITION. ENTER IRS POSITION означает непрохождение внутренних проверок IRS.",
+        "sources": [
+          {
+            "ref": "11.20.4",
+            "quote": "If the latitude/longitude position is not within 4 NM of the origin airport, the CDU scratchpad message VERIFY POSITION is displayed."
+          }
+        ]
+      },
+      "att": {
+        "paragraph": "В ATT ускорения могут вызывать ошибки пространственного положения, которые постепенно устраняются после прекращения ускорения.",
+        "sources": [
+          {
+            "ref": "11.20.5",
+            "quote": "Some attitude errors may occur during acceleration, but will be slowly removed after acceleration stops."
+          }
+        ]
+      },
+      "irs-power": {
+        "paragraph": "Для первоначального включения требуется питание BATTERY BUS. В течение задержки выключения OFF горит ALIGN, пока блок полностью не отключится.",
+        "sources": [
+          {
+            "ref": "11.20.6",
+            "quote": "Initial power–up requires battery bus power available"
+          }
+        ]
+      },
+      "radio-nav": {
+        "paragraph": "Коррекцию FMC по конкретной DME можно запретить на NAV OPTIONS 2/2. Используемые станции указаны на NAV STATUS 1/2.",
+        "sources": [
+          {
+            "ref": "11.20.8",
+            "quote": "Specific DME station tuning for FMC position updating can be inhibited on the NAV OPTIONS page 2/2."
+          }
+        ]
+      },
+      "transponder": {
+        "paragraph": "Для наземного наблюдения ответчик должен быть активен; FCOM отдельно запрещает использовать режимы TCAS для наземного сопровождения.",
+        "sources": [
+          {
+            "ref": "11.20.10",
+            "quote": "TCAS modes should not be used on the ground for ground tracking."
+          }
+        ]
+      },
+      "radar": {
+        "paragraph": "В IntuVue AUTO ручная установка наклона и усиления не требуется. Погода вне расчётной траектории отображается с чёрными полосами; объёмная память охватывает дальность до 320 NM.",
+        "sources": [
+          {
+            "ref": "11.20.11",
+            "quote": "Tilt and gain inputs are not required."
+          }
+        ]
+      },
+      "flight-plan": {
+        "paragraph": "Начало фазы approach привязано к удалению две мили от первой точки опубликованного захода или перехода, выбранного на ARRIVALS.",
+        "sources": [
+          {
+            "ref": "11.31.2",
+            "quote": "The approach phase begins two miles from the first waypoint of a published approach or approach transition selected from the ARRIVALS page."
+          }
+        ]
+      }
+    },
+    "flightcontrols": {
+      "roll": {
+        "paragraph": "Триммирование элеронов при включённом автопилоте не отражается положением штурвала: автопилот пересиливает триммер. После отключения возможны разбалансировка и резкий крен.",
+        "sources": [
+          {
+            "ref": "9.20.3",
+            "quote": "Any aileron trim applied when the autopilot is engaged can result in an out of trim condition and an abrupt rolling movement when the autopilot is disengaged."
+          }
+        ]
+      },
+      "pitch": {
+        "paragraph": "После разделения заклинившей колонки оставшегося хода достаточно для посадочного выравнивания. Длительное усилие на свободной колонке можно уменьшить триммированием стабилизатора.",
+        "sources": [
+          {
+            "ref": "9.20.6",
+            "quote": "Stabilizer trim is available to counteract the sustained control column force."
+          }
+        ]
+      },
+      "trim": {
+        "paragraph": "Условия speed trim включают задержки 10 секунд после взлёта и 5 секунд после отпускания переключателей триммирования.",
+        "sources": [
+          {
+            "ref": "9.20.8",
+            "quote": "10 seconds after takeoff"
+          }
+        ]
+      },
+      "rudder": {
+        "paragraph": "Выше примерно 135 kt без RSEP давление A уменьшается примерно наполовину; с RSEP давление A и B уменьшается примерно на 25% каждое.",
+        "sources": [
+          {
+            "ref": "9.20.12",
+            "quote": "both hydraulic system A and B pressure are each reduced within the main PCU by approximately 25% each."
+          },
+          {
+            "ref": "9.20.11",
+            "quote": "hydraulic system A pressure to the rudder PCU is limited by approximately 50%."
+          }
+        ]
+      },
+      "speedbrakes": {
+        "paragraph": "В полёте SPEEDBRAKES EXTENDED предупреждает о выпущенных воздушных тормозах при посадочной конфигурации либо ниже 800 ft AGL. В развороте их выпуск существенно увеличивает угловую скорость крена.",
+        "sources": [
+          {
+            "ref": "9.20.17",
+            "quote": "In-flight, the light illuminates to warn the crew that the speed brakes are extended while in the landing configuration or below 800 feet AGL."
+          }
+        ]
+      },
+      "flaps": {
+        "paragraph": "Механические упоры у положений 1 и 15 затрудняют непреднамеренное перемещение рычага при уходе. FCOM не допускает выпуск закрылков выше 20 000 ft.",
+        "sources": [
+          {
+            "ref": "9.20.20",
+            "quote": "flap extension above 20,000 feet should not be attempted."
+          },
+          {
+            "ref": "9.20.21",
+            "quote": "Mechanical gates hinder inadvertent FLAP lever movement beyond flaps 1 for one engine inoperative go–around and flaps 15 for normal go–around."
+          }
+        ]
+      },
+      "load-relief": {
+        "paragraph": "Ошибочно завышенная скорость командира также может вызвать уборку закрылков системой load relief. Указатель отражает фактическое движение.",
+        "sources": [
+          {
+            "ref": "9.20.21",
+            "quote": "If the Captain’s airspeed is erroneously high, the flap load relief function can activate and retract the flaps"
+          }
+        ]
+      },
+      "yaw-damper": {
+        "paragraph": "На бортах с отдельным указателем yaw damper он показывает только команды основного демпфера. Отображение команд резервного зависит от наличия индикации положения руля RUDDER.",
+        "sources": [
+          {
+            "ref": "9.20.13",
+            "quote": "Only main yaw damper inputs are shown on the yaw damper indicator."
+          }
+        ]
+      }
+    },
+    "general": {
+      "emergency": {
+        "paragraph": "Для зарядки фотолюминесцентных полос потолочное и боковое освещение салона включают на полную яркость. Полосы должны оставаться открытыми, без перекрывающих предметов.",
+        "sources": [
+          {
+            "ref": "1.40.6",
+            "quote": "For charging, the cabin ceiling, and sidewall lights need to be on at full intensity, and the strips should not be covered or blocked."
+          }
+        ]
+      },
+      "passenger-oxygen": {
+        "paragraph": "Фактический поток к маске обозначает зелёный индикатор в прозрачном шланге. Подача продолжается и тогда, когда маской никто не пользуется.",
+        "sources": [
+          {
+            "ref": "1.40.38",
+            "quote": "A green in–line flow indicator is visible in the transparent oxygen hose whenever oxygen is flowing to the mask."
+          },
+          {
+            "ref": "1.40.39",
+            "quote": "the flow of oxygen is constant, whether or not the mask is being worn."
+          }
+        ]
+      },
+      "portable": {
+        "paragraph": "При давлении 1800 psi и температуре 21 °C переносной баллон содержит 311 литров свободного кислорода; падение давления уменьшает доступную длительность подачи.",
+        "sources": [
+          {
+            "ref": "1.40.39",
+            "quote": "the cylinders have a capacity of 11 cubic feet (311 liters) of free oxygen."
+          }
+        ]
+      },
+      "doors": {
+        "paragraph": "FCOM запрещает перемещать входные и служебные двери при ветре у двери свыше 40 kt; оставлять их открытыми — при порывах свыше 65 kt.",
+        "sources": [
+          {
+            "ref": "1.40.57",
+            "quote": "Do not operate the entry or service doors with winds at the door of more than 40 knots."
+          }
+        ]
+      }
+    }
+  },
+  "unchanged": {
+    "air": [
+      "bleed-supply",
+      "isolation",
+      "ram-air",
+      "zone-control",
+      "safety-valves",
+      "ngs-tat"
+    ],
+    "hydraulics": [
+      "cooling",
+      "a-users",
+      "b-users",
+      "b-leak",
+      "ptu",
+      "gear-transfer",
+      "standby-auto"
+    ],
+    "autoflight": [],
+    "comms": [
+      "interphone",
+      "calls",
+      "cvr",
+      "selcal"
+    ],
+    "electric": [
+      "sources",
+      "standby"
+    ],
+    "engines": [
+      "rotors",
+      "idle"
+    ],
+    "fire": [],
+    "fuel": [
+      "scavenge",
+      "refuel"
+    ],
+    "antiice": [
+      "engine-ai"
+    ],
+    "gear": [
+      "antiskid",
+      "air-ground"
+    ],
+    "warnings": [
+      "signals",
+      "master"
+    ],
+    "displays": [
+      "cds",
+      "deu",
+      "efis"
+    ],
+    "navigation": [
+      "fms",
+      "irs"
+    ],
+    "flightcontrols": [
+      "primary",
+      "alternate",
+      "efs"
+    ],
+    "general": [
+      "lighting",
+      "crew-oxygen",
+      "water"
+    ]
+  },
+  "unchangedReason": "Тема уже раскрыта достаточно; дополнительные детали повторяют текст либо не нужны для понимания этого пункта.",
+  "scope": {
+    "systems": 15,
+    "sectionsReviewed": 148,
+    "originalParagraphs": "preserved",
+    "target": "Полезные дополнения по необходимости, без обязательной прибавки к каждому пункту."
+  }
+}

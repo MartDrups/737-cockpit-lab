@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from system_text import apply_additions, parse_assignment
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / 'public'
@@ -31,7 +32,8 @@ def replace_once(text, before, after):
 plans = json.loads((SOURCE / 'sections.json').read_text())
 aliases = json.loads((SOURCE / 'aliases.json').read_text())
 extra = json.loads((SOURCE / 'extra-diagrams.json').read_text())
-reference = json.loads(read_delivery('system-data.js').decode().split('=', 1)[1].strip().removesuffix(';'))
+reference = parse_assignment(read_delivery('system-data.js'))
+text_report = apply_additions(reference, extra, SOURCE, read_delivery)
 diagrams = dict(reference['diagrams'])
 for id, entry in extra.items():
     assert id not in diagrams, id
@@ -61,15 +63,19 @@ for system, sections in plans.items():
 view = (SOURCE / 'view.js').read_text()
 for marker, value in [('section-diagrams', plans), ('node-aliases', aliases), ('extra-diagrams', extra)]:
     view = replace_once(view, f'/* @{marker} */ {{}}', json.dumps(value, ensure_ascii=False, separators=(',', ':')))
-changed = {'system-view.js': view.encode(), 'system-style.css': (SOURCE / 'style.css').read_bytes()}
+changed = {
+    'system-view.js': view.encode(),
+    'system-style.css': (SOURCE / 'style.css').read_bytes(),
+    'system-data.js': ('window.FCOM_SYSTEM_REFERENCE = ' + json.dumps(reference, ensure_ascii=False, separators=(',', ':')) + ';\n').encode(),
+}
 app = read_delivery('app.js').decode()
 if "document.body.classList.toggle('system-reference-reading'" not in app:
     app = replace_once(app, 'function render(){const p=', 'function render(){window.SystemReferenceView.dispose();const p=')
     app = replace_once(app, "document.body.classList.toggle('cbt-view',cbt);", "document.body.classList.toggle('system-reference-reading',view==='systems'&&!!selectedSystem&&!query);document.body.classList.toggle('cbt-view',cbt);")
 changed['app.js'] = app.encode()
-tag = 'systems-reading-' + digest(changed['system-view.js'] + changed['system-style.css'])[:12]
+tag = 'systems-reading-' + digest(changed['system-view.js'] + changed['system-style.css'] + changed['system-data.js'])[:12]
 index = (PUBLIC / 'index.html').read_text()
-for url in ['system-view.js', 'system-style.css', 'app.js']:
+for url in ['system-view.js', 'system-style.css', 'system-data.js', 'app.js']:
     index, count = re.subn(r'(' + re.escape(url) + r'\?v=)[^"\s]+', lambda m: m[1]+tag, index)
     assert count == 1, url
 changed['index.html'] = index.encode()
@@ -94,4 +100,5 @@ files = sorted(p for p in PUBLIC.rglob('*') if p.is_file())
 (ROOT / 'PUBLIC_SHA256SUMS').write_text(''.join(f'{digest(p.read_bytes())}  {p.relative_to(ROOT).as_posix()}\n' for p in files))
 print(json.dumps({'version':inventory['version'],'files':len(files),'bytes':sum(p.stat().st_size for p in files),
                   'illustratedSections':sum(map(len,plans.values())),'newDiagrams':len(extra),
-                  'newElements':sum(len(x['diagram']['nodes']) for x in extra.values())},ensure_ascii=False))
+                  'newElements':sum(len(x['diagram']['nodes']) for x in extra.values()),
+                  'systemText':text_report},ensure_ascii=False))

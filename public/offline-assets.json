@@ -1,6 +1,6 @@
 {
-  "version": "github-systems-8e0b9a060812a7ed66ec",
-  "totalBytes": 165390461,
+  "version": "github-systems-ef56a8229c20a5510310",
+  "totalBytes": 165572603,
   "shell": [
     "index.html",
     "manifest.webmanifest",
@@ -61,8 +61,8 @@
   "assets": [
     {
       "url": "index.html",
-      "size": 9148,
-      "revision": "44a4afa699efcb9991addfcfa1f4817a55809f680bd58e673e10293700bccb52"
+      "size": 9153,
+      "revision": "0f868834db9fb0d86d0c6bc4aa44dba83249e983f6efde3eeeb739b719e34700"
     },
     {
       "url": "manifest.webmanifest",
@@ -181,8 +181,8 @@
     },
     {
       "url": "system-data.js",
-      "size": 1203617,
-      "revision": "bab6714c11d75f3eba4ac66c30f4abdb92c8dce4b452d774f45f46490c1f67af"
+      "size": 1377041,
+      "revision": "7f017c4c3b3775762d1fe2a9c557c379880790c9ba1c602398a7a6d7e2c7e669"
     },
     {
       "url": "system-pages.js",
@@ -196,8 +196,8 @@
     },
     {
       "url": "system-view.js",
-      "size": 127043,
-      "revision": "aebb392c04b94b19bf6186e47f58edecb60dafb1c486ceab4b3f4dc977b3aba7"
+      "size": 135756,
+      "revision": "5b8b5c1e0184b11dbe91c811379db86a03dffd51fa53ae6666adc914a5c3c5cc"
     },
     {
       "url": "update.js",
