@@ -1,6 +1,6 @@
 {
-  "version": "github-mobile-exercises-fbad8c15487c9293a3ae",
-  "totalBytes": 165572713,
+  "version": "github-mobile-exercises-e67148bbb05114950f95",
+  "totalBytes": 165572849,
   "shell": [
     "index.html",
     "manifest.webmanifest",
@@ -62,7 +62,7 @@
     {
       "url": "index.html",
       "size": 9194,
-      "revision": "16b5f577296d848b5264b77cbe0c1a23c204d3ffaef7cd342dcbabc76b8eced0"
+      "revision": "d7dd0c5db45b81e63a90fe9ba22c9782ef419c03781eb6807f9d64559dccbf42"
     },
     {
       "url": "manifest.webmanifest",
@@ -121,8 +121,8 @@
     },
     {
       "url": "exercises-style.css",
-      "size": 15635,
-      "revision": "cef77a6108f3c8c190412aff41b8a4ad7d5b5be378bb3de38a526dfd87fd77b1"
+      "size": 15771,
+      "revision": "9f94b1319f638d9c9c511ebb596d9bfc1714fa9e52a742ac5488f82a72affd0b"
     },
     {
       "url": "exercises-view.js",

@@ -97,8 +97,16 @@ with sync_playwright() as p:
                                   is_mobile=True, has_touch=True)
     page = context.new_page()
     page.on('pageerror', lambda error: report['errors'].append(str(error)))
-    page.goto(url + '#exercises', wait_until='networkidle')
+    page.goto(url, wait_until='networkidle')
+    page.wait_for_selector('[data-view="exercises"]')
+    nav = page.locator('#primary-nav')
+    nav.evaluate('(e)=>e.scrollLeft=e.scrollWidth')
+    entry = page.locator('[data-view="exercises"]')
+    entry_rect = entry.bounding_box()
+    assert 0 <= entry_rect['x'] and entry_rect['x'] + entry_rect['width'] <= 392, entry_rect
+    entry.tap()
     page.wait_for_selector('.ex-card')
+    report['exerciseEntryReachableFromHome'] = True
 
     if options.browser == 'chromium':
         # Use real touch input as well as phone-sized layout. Swiping in the
