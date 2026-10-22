@@ -1,12 +1,12 @@
 {
   "url": "https://martdrups.github.io/737-cockpit-lab/",
   "repository": "https://github.com/MartDrups/737-cockpit-lab",
-  "publishedCommit": "96ad58cab65c778747092862c7b9bcc1980ad171",
-  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/39748511383",
+  "publishedCommit": "8766ceb836f2e949c3e4b3b7bbebd4329151bbea",
+  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/39774075248",
   "workflowResult": "success",
-  "version": "github-systems-ef56a8229c20a5510310",
+  "version": "github-mobile-exercises-e67148bbb05114950f95",
   "websiteFiles": 8665,
-  "websiteBytes": 261565158,
+  "websiteBytes": 261565212,
   "originalUrl": "https://737cockpitlab.pages.dev",
   "originalUnchanged": true,
   "publicBrowsers": {
@@ -192,7 +192,7 @@
     "websiteFiles": 8665,
     "websiteBytes": 261524921
   },
-  "verificationNotes": "publicBrowsers, russianNetworkChecks и offlineChecks сохраняют результаты первоначального переноса. systemsReading сохраняет проверки первого выпуска интерфейса схем. Последняя сверка текстов, публичные проверки Chromium/WebKit и локальная проверка обновления с холодным офлайн-запуском записаны в systemsTextReview. Полную повторную загрузку всех 761 файлов справочника при доработке текстов не выполняли.",
+  "verificationNotes": "publicBrowsers, russianNetworkChecks и offlineChecks сохраняют результаты первоначального переноса. systemsReading — первый выпуск интерфейса схем, systemsTextReview — сверка текстов. Свежие функциональные проверки телефонных упражнений на публичном сайте и локальная проверка обновления с холодным офлайн-запуском записаны в mobileExercisesFix. Полную повторную загрузку всех 761 файлов справочника при этих доработках не выполняли.",
   "systemsTextReview": {
     "revision": "systems-text-2026-10-22-1",
     "version": "github-systems-ef56a8229c20a5510310",
@@ -291,5 +291,149 @@
     },
     "unrelatedWebsiteFilesUnchanged": true,
     "sourcePackagePreserved": true
+  },
+  "mobileExercisesFix": {
+    "version": "github-mobile-exercises-e67148bbb05114950f95",
+    "publishedCommit": "8766ceb836f2e949c3e4b3b7bbebd4329151bbea",
+    "cause": "At phone widths the exercise shell used display:block inside a fixed-height overflow:hidden wrapper, leaving main unbounded and unscrollable. The main menu also lacked horizontal scrolling before opening Exercises.",
+    "fixes": [
+      "Keep the mobile shell in a column flex layout with bounded scrolling main",
+      "Allow horizontal menu scrolling from the home screen",
+      "Start and resume at the current step instead of retaining the catalogue scroll position"
+    ],
+    "regressionReproducedBeforeFix": true,
+    "sourceDirectory": "src/exercises/",
+    "buildCommand": "python scripts/build-exercises.py",
+    "testCommand": "python tests/check-mobile-exercises.py --browser chromium; python tests/check-mobile-exercises.py --browser webkit",
+    "procedureRevision": "normal-2026-10-19-1",
+    "procedureDataUnchanged": true,
+    "procedures": 27,
+    "publicVerification": {
+      "checkedAt": "2026-10-22T11:54:50.685271+00:00",
+      "publishedCommit": "8766ceb836f2e949c3e4b3b7bbebd4329151bbea",
+      "version": "github-mobile-exercises-e67148bbb05114950f95",
+      "tlsVerification": true,
+      "filesMatchCheckedLocalBuild": [
+        {
+          "path": "public/exercises-style.css.gz",
+          "bytes": 3709,
+          "sha": "3ec5140725ced12d94f2634e50619ef93be45236",
+          "sha256": "7325de86718a8c3a3a93f3460e7d34f1749f305473bfb957d172df0797d0eaae"
+        },
+        {
+          "path": "public/index.html",
+          "bytes": 9194,
+          "sha": "c0c8289f6db0cbec204b9c87421740de95514baa",
+          "sha256": "d7dd0c5db45b81e63a90fe9ba22c9782ef419c03781eb6807f9d64559dccbf42"
+        },
+        {
+          "path": "public/offline-assets.json",
+          "bytes": 121032,
+          "sha": "b0ecc6bcdd04e0c52cc04df075eae7d7e4d7e684",
+          "sha256": "07eb845369f5a2875ac0267cf1d8f2c5bed33b2b917bd602ebdf9b357fad1e45"
+        },
+        {
+          "path": "public/sw.js",
+          "bytes": 1939162,
+          "sha": "f21031da68b55396e6718bb97414060af99913b1",
+          "sha256": "798d2bb6e97c4c67456173b4b8813bbb7ff09ef8a5e18f6901e3bafc8cd093db"
+        }
+      ],
+      "browsers": {
+        "chromium": {
+          "browser": "chromium",
+          "errors": [],
+          "viewports": [
+            {
+              "width": 320,
+              "height": 568,
+              "lastProcedureReachable": true,
+              "startVisible": true
+            },
+            {
+              "width": 390,
+              "height": 844,
+              "lastProcedureReachable": true,
+              "startVisible": true
+            },
+            {
+              "width": 430,
+              "height": 932,
+              "lastProcedureReachable": true,
+              "startVisible": true
+            },
+            {
+              "width": 844,
+              "height": 390,
+              "lastProcedureReachable": true,
+              "startVisible": true
+            },
+            {
+              "width": 932,
+              "height": 430,
+              "lastProcedureReachable": true,
+              "startVisible": true
+            }
+          ],
+          "exerciseEntryReachableFromHome": true,
+          "nativeTouchSwipeScrollsCatalogue": true,
+          "checklistPauseResumeAndCompletion": true,
+          "readAndDoWithRealCockpitAction": true,
+          "reloadAndResume": true,
+          "memoryHintAndCockpitAction": true
+        },
+        "webkit": {
+          "browser": "webkit",
+          "errors": [],
+          "viewports": [
+            {
+              "width": 320,
+              "height": 568,
+              "lastProcedureReachable": true,
+              "startVisible": true
+            },
+            {
+              "width": 390,
+              "height": 844,
+              "lastProcedureReachable": true,
+              "startVisible": true
+            },
+            {
+              "width": 430,
+              "height": 932,
+              "lastProcedureReachable": true,
+              "startVisible": true
+            },
+            {
+              "width": 844,
+              "height": 390,
+              "lastProcedureReachable": true,
+              "startVisible": true
+            },
+            {
+              "width": 932,
+              "height": 430,
+              "lastProcedureReachable": true,
+              "startVisible": true
+            }
+          ],
+          "exerciseEntryReachableFromHome": true,
+          "checklistPauseResumeAndCompletion": true,
+          "readAndDoWithRealCockpitAction": true,
+          "reloadAndResume": true,
+          "memoryHintAndCockpitAction": true
+        }
+      }
+    },
+    "localUpgradeAndOffline": {
+      "errors": [],
+      "upgradedFromPreviousRelease": true,
+      "oldExerciseAttemptPreserved": true,
+      "phoneScrollFixed": true,
+      "resumedCursor": 1,
+      "offlineColdRestartAndResume": true
+    },
+    "mobileWebKitScrollCheck": "Main-only programmatic scroll plus actual touchscreen taps; Playwright does not synthesize wheel input in mobile WebKit. Chromium also checks native touch swiping.",
+    "originalCloudflareUnchanged": true
   }
 }
