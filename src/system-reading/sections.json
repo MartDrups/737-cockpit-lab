@@ -1,0 +1,331 @@
+{
+  "air": {
+    "bleed-supply": [
+      "air-bleed"
+    ],
+    "engine-bleed": [
+      "air-bleed"
+    ],
+    "isolation": [
+      "air-bleed"
+    ],
+    "apu-bleed": [
+      "air-bleed"
+    ],
+    "duct": [
+      "air-bleed",
+      "air-duct-overheat"
+    ],
+    "pack-flow": [
+      "air-pack"
+    ],
+    "pack-cycle": [
+      "air-pack"
+    ],
+    "ram-air": [
+      "air-pack"
+    ],
+    "pack-controller": [
+      "air-pack"
+    ],
+    "zones": [
+      "air-distribution",
+      "air-pack"
+    ],
+    "zone-control": [
+      "air-distribution"
+    ],
+    "distribution": [
+      "air-distribution"
+    ],
+    "recirc": [
+      "air-distribution"
+    ],
+    "pressure-control": [
+      "air-pressure"
+    ],
+    "outflow": [
+      "air-outflow",
+      "air-pressure"
+    ],
+    "safety-valves": [
+      "air-pressure"
+    ],
+    "pressure-fail": [
+      "air-pressure"
+    ],
+    "ngs-tat": [
+      "air-bleed-ngs-tat",
+      "air-bleed-ngs",
+      "air-bleed-tat"
+    ],
+    "pressure-profile": [
+      "air-pressure-profile"
+    ]
+  },
+  "hydraulics": {
+    "reservoirs": [
+      "hyd-distribution"
+    ],
+    "pumps": [
+      "hyd-distribution"
+    ],
+    "a-users": [
+      "hyd-distribution"
+    ],
+    "b-users": [
+      "hyd-distribution"
+    ],
+    "a-leak": [
+      "hyd-distribution"
+    ],
+    "b-leak": [
+      "hyd-distribution"
+    ],
+    "ptu": [
+      "hyd-distribution"
+    ],
+    "gear-transfer": [
+      "hyd-distribution"
+    ],
+    "standby": [
+      "hyd-standby",
+      "hyd-standby-ffm"
+    ],
+    "standby-auto": [
+      "hyd-standby-ffm",
+      "hyd-standby"
+    ],
+    "standby-loss": [
+      "hyd-standby",
+      "hyd-standby-ffm"
+    ]
+  },
+  "electric": {
+    "sources": [
+      "electric-overview",
+      "electric-ac"
+    ],
+    "ac": [
+      "electric-ac",
+      "electric-overview"
+    ],
+    "shedding": [
+      "electric-ac"
+    ],
+    "tr": [
+      "electric-dc",
+      "electric-overview"
+    ],
+    "battery": [
+      "electric-dc",
+      "electric-standby"
+    ],
+    "standby": [
+      "electric-standby"
+    ],
+    "monitoring": [
+      "electric-monitoring"
+    ]
+  },
+  "engines": {
+    "rotors": [
+      "engine-powerplant"
+    ],
+    "indications": [
+      "engine-powerplant",
+      "engine-fuel-oil"
+    ],
+    "eec": [
+      "engine-fuel-oil",
+      "engine-powerplant"
+    ],
+    "fuel": [
+      "engine-fuel-oil"
+    ],
+    "oil": [
+      "engine-fuel-oil"
+    ],
+    "start": [
+      "engine-start",
+      "engine-start-early"
+    ],
+    "ignition": [
+      "engine-start",
+      "engine-start-early"
+    ],
+    "reverser": [
+      "engine-reverser"
+    ],
+    "apu": [
+      "engine-apu-location"
+    ]
+  },
+  "fire": {
+    "engine-bottles": [
+      "fire-engine"
+    ],
+    "cargo-detect": [
+      "fire-cargo-dual",
+      "fire-cargo-single"
+    ],
+    "cargo-bottles": [
+      "fire-cargo-dual",
+      "fire-cargo-single"
+    ]
+  },
+  "fuel": {
+    "tanks": [
+      "fuel-feed-boost",
+      "fuel-feed"
+    ],
+    "pumps": [
+      "fuel-feed-boost",
+      "fuel-feed"
+    ],
+    "suction": [
+      "fuel-feed-boost",
+      "fuel-feed"
+    ],
+    "crossfeed": [
+      "fuel-feed-boost",
+      "fuel-feed"
+    ],
+    "shutoff": [
+      "fuel-feed-boost",
+      "fuel-feed"
+    ],
+    "scavenge": [
+      "fuel-feed-boost",
+      "fuel-feed"
+    ],
+    "apu-feed": [
+      "fuel-feed-boost",
+      "fuel-feed"
+    ],
+    "refuel": [
+      "fuel-feed-boost",
+      "fuel-feed"
+    ],
+    "indications": [
+      "fuel-feed-boost",
+      "fuel-feed"
+    ]
+  },
+  "antiice": {
+    "windows": [
+      "antiice-window",
+      "antiice-window-early"
+    ],
+    "engine-ai": [
+      "antiice-engine"
+    ],
+    "wing-ai": [
+      "antiice-wing"
+    ],
+    "wing-flight": [
+      "antiice-wing"
+    ],
+    "probes": [
+      "antiice-locations"
+    ],
+    "ice-detection": [
+      "antiice-locations"
+    ]
+  },
+  "displays": {
+    "cds": [
+      "display-sources"
+    ],
+    "deu": [
+      "display-sources"
+    ],
+    "efis": [
+      "display-sources"
+    ],
+    "switching": [
+      "display-sources"
+    ]
+  },
+  "navigation": {
+    "fms": [
+      "navigation-gps"
+    ],
+    "gps": [
+      "navigation-gps"
+    ],
+    "irs": [
+      "navigation-irs"
+    ],
+    "irs-power": [
+      "navigation-irs"
+    ],
+    "radar": [
+      "navigation-irs"
+    ]
+  },
+  "flightcontrols": {
+    "roll": [
+      "controls-roll"
+    ],
+    "pitch": [
+      "controls-pitch"
+    ],
+    "trim": [
+      "controls-pitch"
+    ],
+    "rudder": [
+      "controls-yaw-rsep",
+      "controls-yaw"
+    ],
+    "speedbrakes": [
+      "controls-speedbrake"
+    ],
+    "flaps": [
+      "controls-flaps"
+    ],
+    "load-relief": [
+      "controls-flaps"
+    ],
+    "alternate": [
+      "controls-flaps"
+    ],
+    "yaw-damper": [
+      "controls-yaw-rsep",
+      "controls-yaw"
+    ],
+    "efs": [
+      "controls-pitch"
+    ],
+    "primary": [
+      "controls-surface-locations"
+    ]
+  },
+  "general": {
+    "crew-oxygen": [
+      "general-oxygen",
+      "general-mask-stowing"
+    ],
+    "passenger-oxygen": [
+      "general-passenger-psu",
+      "general-oxygen"
+    ],
+    "portable": [
+      "general-portable"
+    ],
+    "water": [
+      "general-water"
+    ],
+    "doors": [
+      "general-cabin-door"
+    ]
+  },
+  "warnings": {
+    "altitude-alert": [
+      "warning-altitude-profile"
+    ],
+    "windshear": [
+      "warning-predictive-windshear"
+    ]
+  }
+}

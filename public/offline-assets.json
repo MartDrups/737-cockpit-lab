@@ -1,6 +1,6 @@
 {
-  "version": "github-f3ecfee54f603672427d",
-  "totalBytes": 165267605,
+  "version": "github-systems-8e0b9a060812a7ed66ec",
+  "totalBytes": 165390461,
   "shell": [
     "index.html",
     "manifest.webmanifest",
@@ -61,8 +61,8 @@
   "assets": [
     {
       "url": "index.html",
-      "size": 9108,
-      "revision": "273d4a75bfff15cede9604141c263be25c48e8648aa16bb3ac1dde0a71e9b6cb"
+      "size": 9148,
+      "revision": "44a4afa699efcb9991addfcfa1f4817a55809f680bd58e673e10293700bccb52"
     },
     {
       "url": "manifest.webmanifest",
@@ -76,8 +76,8 @@
     },
     {
       "url": "app.js",
-      "size": 31906,
-      "revision": "f3e4a3fbf2ba345fe9d7a36c083ff1a9fd560095cd9540e2e1ae6de083cf44e9"
+      "size": 32045,
+      "revision": "217c4fbdaaf037e5e0489d415ce833c6bb82366c48255d1ff27a47c45c48eda1"
     },
     {
       "url": "cbt-course-data.js",
@@ -191,13 +191,13 @@
     },
     {
       "url": "system-style.css",
-      "size": 7213,
-      "revision": "9192131f71fd43be5c4d2fc10862c114e17ef65f11020565b48118c93153456d"
+      "size": 13754,
+      "revision": "1982533f51ad09467a51384a63d8a45316ebf94af255215c35e4854206af1343"
     },
     {
       "url": "system-view.js",
-      "size": 10907,
-      "revision": "512760622a37322e04aec53222c65e92515d970b55685a41438eb444a344362e"
+      "size": 127043,
+      "revision": "aebb392c04b94b19bf6186e47f58edecb60dafb1c486ceab4b3f4dc977b3aba7"
     },
     {
       "url": "update.js",

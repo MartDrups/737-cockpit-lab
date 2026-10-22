@@ -1,0 +1,1629 @@
+{
+  "hydraulics": [
+    {
+      "pattern": "бак(?:а|у|ом|е)? (?:системы )?A",
+      "nodes": [
+        "reservoir-a"
+      ]
+    },
+    {
+      "pattern": "бак(?:а|у|ом|е)? (?:системы )?B",
+      "nodes": [
+        "reservoir-b"
+      ]
+    },
+    {
+      "pattern": "бак(?:а|у|ом|е)? резервной (?:гидро)?системы",
+      "nodes": [
+        "reservoir-stby",
+        "stby-reservoir",
+        "reservoir"
+      ]
+    },
+    {
+      "pattern": "бак(?:и|ов|ам|ами|ах)? A и B",
+      "nodes": [
+        "reservoir-a",
+        "reservoir-b"
+      ]
+    },
+    {
+      "pattern": "EDP (?:системы )?A",
+      "nodes": [
+        "pump-a-edp"
+      ]
+    },
+    {
+      "pattern": "EDP (?:системы )?B",
+      "nodes": [
+        "pump-b-edp"
+      ]
+    },
+    {
+      "pattern": "EDP",
+      "nodes": [
+        "pump-a-edp",
+        "pump-b-edp"
+      ]
+    },
+    {
+      "pattern": "насос с приводом от двигателя",
+      "nodes": [
+        "pump-a-edp",
+        "pump-b-edp"
+      ]
+    },
+    {
+      "pattern": "насос с электроприводом переменного тока",
+      "nodes": [
+        "pump-a-elec",
+        "pump-b-elec"
+      ]
+    },
+    {
+      "pattern": "электронасос(?:а|у|ом|е|ы|ов)?",
+      "nodes": [
+        "pump-a-elec",
+        "pump-b-elec"
+      ]
+    },
+    {
+      "pattern": "ENG 1",
+      "nodes": [
+        "pump-a-edp"
+      ]
+    },
+    {
+      "pattern": "ENG 2",
+      "nodes": [
+        "pump-b-edp"
+      ]
+    },
+    {
+      "pattern": "ELEC 2",
+      "nodes": [
+        "pump-a-elec"
+      ]
+    },
+    {
+      "pattern": "ELEC 1",
+      "nodes": [
+        "pump-b-elec"
+      ]
+    },
+    {
+      "pattern": "резервн(?:ый|ого|ому|ым|ом) (?:электро)?насос(?:а|у|ом|е)?",
+      "nodes": [
+        "pump-stby",
+        "stby-pump",
+        "pump"
+      ]
+    },
+    {
+      "pattern": "насос(?:а|у|ом|е)? резервной (?:гидро)?системы",
+      "nodes": [
+        "pump-stby",
+        "stby-pump",
+        "pump"
+      ]
+    },
+    {
+      "pattern": "клапан(?:а|у|ом|е)? управления PTU",
+      "nodes": [
+        "ptu-control"
+      ]
+    },
+    {
+      "pattern": "агрегат(?:а|у|ом|е)? передачи мощности PTU|PTU",
+      "nodes": [
+        "ptu"
+      ]
+    },
+    {
+      "pattern": "агрегат(?:а|у|ом|е)? передачи мощности для уборки шасси",
+      "nodes": [
+        "gear-transfer"
+      ]
+    },
+    {
+      "pattern": "элерон(?:ы|ов|ам|ами|ах)?",
+      "nodes": [
+        "ailerons"
+      ]
+    },
+    {
+      "pattern": "рул(?:ь|я|ю|ём|ем|е|и|ей|ям|ями|ях) высоты",
+      "nodes": [
+        "elevator",
+        "elevators"
+      ]
+    },
+    {
+      "pattern": "рул(?:ь|я|ю|ём|ем|е) направления",
+      "nodes": [
+        "rudder"
+      ]
+    },
+    {
+      "pattern": "реверс(?:а|у|ом|е)? двигателя 1",
+      "nodes": [
+        "reverser-1"
+      ]
+    },
+    {
+      "pattern": "реверс(?:а|у|ом|е)? двигателя 2",
+      "nodes": [
+        "reverser-2"
+      ]
+    },
+    {
+      "pattern": "реверс(?:ы|ов|ам|ами|ах)?",
+      "nodes": [
+        "reversers",
+        "reverse",
+        "reverser-1",
+        "reverser-2"
+      ]
+    },
+    {
+      "pattern": "альтернативн(?:ые|ых|ым|ыми) тормоз(?:а|ов|ам|ами|ах)",
+      "nodes": [
+        "alt-brakes"
+      ]
+    },
+    {
+      "pattern": "нормальн(?:ые|ых|ым|ыми) тормоз(?:а|ов|ам|ами|ах)",
+      "nodes": [
+        "normal-brakes"
+      ]
+    },
+    {
+      "pattern": "автопилот(?:а|у|ом|е)? A",
+      "nodes": [
+        "autopilot-a"
+      ]
+    },
+    {
+      "pattern": "автопилот(?:а|у|ом|е)? B",
+      "nodes": [
+        "autopilot-b"
+      ]
+    },
+    {
+      "pattern": "наземн(?:ые|ых|ым|ыми) спойлер(?:ы|ов|ам|ами|ах)",
+      "nodes": [
+        "ground-spoilers"
+      ]
+    },
+    {
+      "pattern": "передн(?:яя|юю|ей) механизаци(?:я|ю|и|ей)",
+      "nodes": [
+        "le-devices",
+        "leading-edge",
+        "le"
+      ]
+    },
+    {
+      "pattern": "автоматическ(?:ий|ого|ому|им|ом) выпуск(?:а|у|ом|е)? предкрылков",
+      "nodes": [
+        "le-devices"
+      ]
+    },
+    {
+      "pattern": "демпфер(?:а|у|ом|е)? рыскания",
+      "nodes": [
+        "yaw",
+        "stby-yaw"
+      ]
+    },
+    {
+      "pattern": "FLT CONTROL",
+      "nodes": [
+        "flt-a",
+        "flt-b",
+        "flt-controls"
+      ]
+    },
+    {
+      "pattern": "ALTERNATE FLAPS(?: ARM)?",
+      "nodes": [
+        "alt-flaps"
+      ]
+    },
+    {
+      "pattern": "FFM",
+      "nodes": [
+        "ffm"
+      ]
+    },
+    {
+      "pattern": "AUTO-ON",
+      "nodes": [
+        "auto-on"
+      ]
+    },
+    {
+      "pattern": "LOW QUANTITY|LOW PRESSURE",
+      "nodes": [
+        "stby-indications",
+        "indication"
+      ],
+      "sections": [
+        "standby-loss"
+      ]
+    }
+  ],
+  "air": [
+    {
+      "pattern": "клапан(?:а|у|ом|е)? (?:отбора )?9-й ступени|HIGH STAGE VALVE",
+      "nodes": [
+        "high-stage"
+      ]
+    },
+    {
+      "pattern": "клапан(?:а|у|ом|е)? отбора двигателя|ENGINE BLEED AIR VALVE",
+      "nodes": [
+        "engine-bleed"
+      ]
+    },
+    {
+      "pattern": "BLEED TRIP(?: OFF)?",
+      "nodes": [
+        "bleed-trip"
+      ]
+    },
+    {
+      "pattern": "разделительн(?:ый|ого|ому|ым|ом) клапан(?:а|у|ом|е)?|ISOLATION VALVE",
+      "nodes": [
+        "isolation"
+      ]
+    },
+    {
+      "pattern": "клапан(?:а|у|ом|е)? отбора ВСУ|APU BLEED",
+      "nodes": [
+        "apu-valve"
+      ]
+    },
+    {
+      "pattern": "внешн(?:яя|юю|ей) воздушн(?:ая|ую|ой) установк(?:а|у|и|ой)|наземн(?:ый|ого|ому|ым|ом) источник(?:а|у|ом|е)?",
+      "nodes": [
+        "external"
+      ]
+    },
+    {
+      "pattern": "датчик(?:а|у|ом|е)? давления магистрали|DUCT PRESS(?:URE)?",
+      "nodes": [
+        "duct-pressure"
+      ]
+    },
+    {
+      "pattern": "клапан(?:а|у|ом|е)? PACK|PACK VALVE",
+      "nodes": [
+        "pack-valve",
+        "pack-feed"
+      ]
+    },
+    {
+      "pattern": "ACM|воздушн(?:ая|ую|ой) холодильн(?:ая|ую|ой) машин(?:а|у|ы|ой)",
+      "nodes": [
+        "acm"
+      ]
+    },
+    {
+      "pattern": "водоотделител(?:ь|я|ю|ем|е)",
+      "nodes": [
+        "separator"
+      ]
+    },
+    {
+      "pattern": "теплообменник(?:а|у|ом|е|и|ов|ам|ами|ах)?",
+      "nodes": [
+        "heat-exchanger"
+      ]
+    },
+    {
+      "pattern": "створк(?:а|у|и|ой|е) (?:входа )?RAM AIR|RAM AIR",
+      "nodes": [
+        "ram-door"
+      ]
+    },
+    {
+      "pattern": "смесительн(?:ый|ого|ому|ым|ом) коллектор(?:а|у|ом|е)?",
+      "nodes": [
+        "mix"
+      ]
+    },
+    {
+      "pattern": "вентилятор(?:ы|ов|ам|ами|ах)? рециркуляции",
+      "nodes": [
+        "recirc-left",
+        "recirc-right"
+      ]
+    },
+    {
+      "pattern": "лев(?:ый|ого|ому|ым|ом) вентилятор(?:а|у|ом|е)? рециркуляции",
+      "nodes": [
+        "recirc-left"
+      ]
+    },
+    {
+      "pattern": "прав(?:ый|ого|ому|ым|ом) вентилятор(?:а|у|ом|е)? рециркуляции",
+      "nodes": [
+        "recirc-right"
+      ]
+    },
+    {
+      "pattern": "выпускн(?:ый|ого|ому|ым|ом) клапан(?:а|у|ом|е)?|OUTFLOW VALVE",
+      "nodes": [
+        "outflow",
+        "valve"
+      ]
+    },
+    {
+      "pattern": "ADIRU",
+      "nodes": [
+        "adiru-l",
+        "adiru-r"
+      ]
+    },
+    {
+      "pattern": "NGS",
+      "nodes": [
+        "ngs-feed"
+      ]
+    },
+    {
+      "pattern": "аспирируем(?:ый|ого|ому|ым|ом) (?:датчик(?:а|у|ом|е)? )?TAT",
+      "nodes": [
+        "tat-feed"
+      ]
+    },
+    {
+      "pattern": "WING-BODY OVERHEAT",
+      "nodes": [
+        "overheat-left",
+        "overheat-right"
+      ],
+      "sections": [
+        "duct"
+      ]
+    },
+    {
+      "pattern": "килева(?:я|ую|ой) балк(?:а|у|и|ой|е)",
+      "nodes": [
+        "overheat-keel"
+      ],
+      "sections": [
+        "duct"
+      ]
+    },
+    {
+      "pattern": "магистраль ВСУ|магистрали ВСУ",
+      "nodes": [
+        "overheat-apu-duct"
+      ],
+      "sections": [
+        "duct"
+      ]
+    },
+    {
+      "pattern": "пилон(?:ы|ов|ам|ами|ах) двигателей",
+      "nodes": [
+        "overheat-struts"
+      ],
+      "sections": [
+        "duct"
+      ]
+    },
+    {
+      "pattern": "отсек(?:и|ов|ам|ами|ах) кондиционирования",
+      "nodes": [
+        "overheat-bays"
+      ],
+      "sections": [
+        "duct"
+      ]
+    },
+    {
+      "pattern": "крейсерском полёте|крейсерская программа",
+      "nodes": [
+        "pressure-cruise"
+      ],
+      "sections": [
+        "pressure-profile"
+      ]
+    },
+    {
+      "pattern": "программа снижения|программы снижения",
+      "nodes": [
+        "pressure-descent"
+      ],
+      "sections": [
+        "pressure-profile"
+      ]
+    },
+    {
+      "pattern": "набор(?:е|а|у|ом)? высоты",
+      "nodes": [
+        "pressure-climb"
+      ],
+      "sections": [
+        "pressure-profile"
+      ]
+    },
+    {
+      "pattern": "высот(?:а|ы|е|у|ой) кабины",
+      "nodes": [
+        "cabin-alt"
+      ],
+      "sections": [
+        "pressure-profile"
+      ]
+    },
+    {
+      "pattern": "высот(?:а|ы|е|у|ой) самолёт(?:а|у|ом|е)?",
+      "nodes": [
+        "airplane-alt"
+      ],
+      "sections": [
+        "pressure-profile"
+      ]
+    }
+  ],
+  "electric": [
+    {
+      "pattern": "генератор(?:а|у|ом|е)? (?:двигателя )?1|IDG 1",
+      "nodes": [
+        "gen1"
+      ]
+    },
+    {
+      "pattern": "генератор(?:а|у|ом|е)? (?:двигателя )?2|IDG 2",
+      "nodes": [
+        "gen2"
+      ]
+    },
+    {
+      "pattern": "генератор(?:а|у|ом|е)? ВСУ|APU GEN",
+      "nodes": [
+        "apu"
+      ]
+    },
+    {
+      "pattern": "внешн(?:ее|его|ему|им|ем) питани(?:е|я|ю|ем|и)|GRD PWR",
+      "nodes": [
+        "external"
+      ]
+    },
+    {
+      "pattern": "GCB",
+      "nodes": [
+        "gcb1",
+        "gcb2"
+      ]
+    },
+    {
+      "pattern": "BTB",
+      "nodes": [
+        "btb1",
+        "btb2"
+      ]
+    },
+    {
+      "pattern": "AC TRANSFER BUS 1|TRANSFER BUS 1",
+      "nodes": [
+        "transfer1"
+      ]
+    },
+    {
+      "pattern": "AC TRANSFER BUS 2|TRANSFER BUS 2",
+      "nodes": [
+        "transfer2"
+      ]
+    },
+    {
+      "pattern": "TR1",
+      "nodes": [
+        "tr1"
+      ]
+    },
+    {
+      "pattern": "TR2",
+      "nodes": [
+        "tr2"
+      ]
+    },
+    {
+      "pattern": "TR3",
+      "nodes": [
+        "tr3"
+      ]
+    },
+    {
+      "pattern": "DC BUS 1",
+      "nodes": [
+        "dc1"
+      ]
+    },
+    {
+      "pattern": "DC BUS 2",
+      "nodes": [
+        "dc2"
+      ]
+    },
+    {
+      "pattern": "AC STANDBY(?: BUS)?",
+      "nodes": [
+        "ac-stby",
+        "standby"
+      ]
+    },
+    {
+      "pattern": "DC STANDBY(?: BUS)?",
+      "nodes": [
+        "dc-stby"
+      ]
+    },
+    {
+      "pattern": "инвертор(?:а|у|ом|е)?",
+      "nodes": [
+        "inverter",
+        "inv"
+      ]
+    },
+    {
+      "pattern": "основн(?:ая|ую|ой) батаре(?:я|ю|и|ей)",
+      "nodes": [
+        "main-bat"
+      ]
+    },
+    {
+      "pattern": "вспомогательн(?:ая|ую|ой) батаре(?:я|ю|и|ей)",
+      "nodes": [
+        "aux-bat"
+      ]
+    },
+    {
+      "pattern": "BATTERY BUS",
+      "nodes": [
+        "battery-bus",
+        "bat-bus"
+      ]
+    },
+    {
+      "pattern": "SWITCHED HOT BATTERY BUS",
+      "nodes": [
+        "sw-hot"
+      ]
+    },
+    {
+      "pattern": "HOT BATTERY BUS",
+      "nodes": [
+        "hot"
+      ]
+    },
+    {
+      "pattern": "STANDBY POWER",
+      "nodes": [
+        "stby-switch"
+      ]
+    },
+    {
+      "pattern": "DRIVE",
+      "nodes": [
+        "drive-light"
+      ],
+      "sections": [
+        "monitoring"
+      ]
+    },
+    {
+      "pattern": "DISCONNECT",
+      "nodes": [
+        "idg-disconnect"
+      ],
+      "sections": [
+        "monitoring"
+      ]
+    },
+    {
+      "pattern": "GEN OFF BUS",
+      "nodes": [
+        "gen-off-bus"
+      ],
+      "sections": [
+        "monitoring"
+      ]
+    },
+    {
+      "pattern": "селектор AC",
+      "nodes": [
+        "ac-selector"
+      ],
+      "sections": [
+        "monitoring"
+      ]
+    },
+    {
+      "pattern": "селектор DC",
+      "nodes": [
+        "dc-selector"
+      ],
+      "sections": [
+        "monitoring"
+      ]
+    },
+    {
+      "pattern": "IDG",
+      "nodes": [
+        "idg-monitor"
+      ],
+      "sections": [
+        "monitoring"
+      ]
+    }
+  ],
+  "engines": [
+    {
+      "pattern": "EEC",
+      "nodes": [
+        "eec"
+      ]
+    },
+    {
+      "pattern": "HMU",
+      "nodes": [
+        "hmu"
+      ]
+    },
+    {
+      "pattern": "IDG",
+      "nodes": [
+        "idg",
+        "idg-cooler"
+      ]
+    },
+    {
+      "pattern": "вентилятор(?:а|у|ом|е)?",
+      "nodes": [
+        "fan"
+      ]
+    },
+    {
+      "pattern": "камер(?:а|у|ы|ой|е) сгорания",
+      "nodes": [
+        "combustor"
+      ]
+    },
+    {
+      "pattern": "топливн(?:ый|ого|ому|ым|ом) фильтр(?:а|у|ом|е)?",
+      "nodes": [
+        "fuel-filter"
+      ]
+    },
+    {
+      "pattern": "маслян(?:ый|ого|ому|ым|ом) насос(?:а|у|ом|е)?",
+      "nodes": [
+        "oil-pump"
+      ]
+    },
+    {
+      "pattern": "маслян(?:ый|ого|ому|ым|ом) бак(?:а|у|ом|е)?",
+      "nodes": [
+        "oil-tank"
+      ]
+    },
+    {
+      "pattern": "насос(?:ы|ов|ам|ами|ах)? откачки",
+      "nodes": [
+        "scavenge"
+      ]
+    },
+    {
+      "pattern": "топливно-маслян(?:ый|ого|ому|ым|ом) теплообменник(?:а|у|ом|е)?",
+      "nodes": [
+        "main-cooler"
+      ]
+    },
+    {
+      "pattern": "топливн(?:ый|ого|ому|ым|ом) клапан(?:а|у|ом|е)? двигателя",
+      "nodes": [
+        "engine-valve"
+      ]
+    },
+    {
+      "pattern": "клапан(?:а|у|ом|е)? стартера|START VALVE(?: OPEN)?",
+      "nodes": [
+        "start-valve",
+        "starter-indication"
+      ]
+    },
+    {
+      "pattern": "стартер(?:а|у|ом|е)?",
+      "nodes": [
+        "starter",
+        "starter-drive"
+      ]
+    },
+    {
+      "pattern": "ENGINE START",
+      "nodes": [
+        "switch"
+      ]
+    },
+    {
+      "pattern": "воспламенител(?:и|ей|ям|ями|ях)",
+      "nodes": [
+        "igniter-l",
+        "igniter-r"
+      ]
+    },
+    {
+      "pattern": "IGN L|IGN R|BOTH",
+      "nodes": [
+        "ignition-switch"
+      ]
+    },
+    {
+      "pattern": "блокирующ(?:ие|их|им|ими) створк(?:и|ах|ам|ами)|отклоняющ(?:ие|их|им|ими) заслонк(?:и|ах|ам|ами)",
+      "nodes": [
+        "blocker"
+      ]
+    },
+    {
+      "pattern": "каскадн(?:ые|ых|ым|ыми) реш[её]тк(?:и|ах|ам|ами)",
+      "nodes": [
+        "cascade"
+      ]
+    },
+    {
+      "pattern": "гидравлическ(?:ий|ого|ому|им|ом) привод(?:а|у|ом|е)?",
+      "nodes": [
+        "actuator"
+      ]
+    },
+    {
+      "pattern": "входн(?:ая|ую|ой) заслонк(?:а|у|и|ой|е)",
+      "nodes": [
+        "apu-inlet"
+      ],
+      "sections": [
+        "apu"
+      ]
+    },
+    {
+      "pattern": "охлаждающ(?:ий|его|ему|им|ем) воздух(?:а|у|ом|е)?",
+      "nodes": [
+        "apu-cooling"
+      ],
+      "sections": [
+        "apu"
+      ]
+    },
+    {
+      "pattern": "отбор(?:а|у|ом|е)? воздуха",
+      "nodes": [
+        "apu-bleed-duct"
+      ],
+      "sections": [
+        "apu"
+      ]
+    }
+  ],
+  "fuel": [
+    {
+      "pattern": "основн(?:ый|ого|ому|ым|ом) бак(?:а|у|ом|е)? 1|бак(?:а|у|ом|е)? 1",
+      "nodes": [
+        "tank1"
+      ]
+    },
+    {
+      "pattern": "основн(?:ый|ого|ому|ым|ом) бак(?:а|у|ом|е)? 2|бак(?:а|у|ом|е)? 2",
+      "nodes": [
+        "tank2"
+      ]
+    },
+    {
+      "pattern": "центральн(?:ый|ого|ому|ым|ом) бак(?:а|у|ом|е)?",
+      "nodes": [
+        "center"
+      ]
+    },
+    {
+      "pattern": "перекр[её]стн(?:ое|ого|ому|ым|ом) питани(?:е|я|ю|ем|и)|CROSSFEED",
+      "nodes": [
+        "crossfeed"
+      ]
+    },
+    {
+      "pattern": "струйн(?:ый|ого|ому|ым|ом) насос(?:а|у|ом|е)?",
+      "nodes": [
+        "scavenge"
+      ]
+    },
+    {
+      "pattern": "подкачивающ(?:ий|его|ему|им|ем) насос(?:а|у|ом|е)? постоянного тока",
+      "nodes": [
+        "apu-pump"
+      ]
+    },
+    {
+      "pattern": "насос(?:а|у|ом|е)? (?:питания )?ВСУ",
+      "nodes": [
+        "apu-pump"
+      ]
+    },
+    {
+      "pattern": "клапан(?:а|у|ом|е)? ВСУ",
+      "nodes": [
+        "apu-valve"
+      ]
+    },
+    {
+      "pattern": "обходн(?:ые|ых|ым|ыми) клапан(?:ы|ов|ам|ами|ах)",
+      "nodes": [
+        "bypass1",
+        "bypass2"
+      ]
+    },
+    {
+      "pattern": "основн(?:ые|ых|ым|ыми) бак(?:а|и|ов|ам|ами|ах)",
+      "nodes": [
+        "tank1",
+        "tank2"
+      ]
+    },
+    {
+      "pattern": "центральн(?:ые|ых|ым|ыми) насос(?:ы|ов|ам|ами|ах)|насос(?:ы|ов|ам|ами|ах) центрального бака",
+      "nodes": [
+        "pump-center-l",
+        "pump-center-r"
+      ],
+      "sections": [
+        "pumps"
+      ]
+    },
+    {
+      "pattern": "два насоса",
+      "nodes": [
+        "pump1-fwd",
+        "pump1-aft",
+        "pump2-fwd",
+        "pump2-aft",
+        "pump-center-l",
+        "pump-center-r"
+      ],
+      "sections": [
+        "pumps"
+      ]
+    },
+    {
+      "pattern": "насос(?:ы|ов|ам|ами|ах) основных баков",
+      "nodes": [
+        "pump1-fwd",
+        "pump1-aft",
+        "pump2-fwd",
+        "pump2-aft"
+      ],
+      "sections": [
+        "pumps",
+        "suction"
+      ]
+    },
+    {
+      "pattern": "обходн(?:ой|ого|ому|ым|ом) клапан(?:а|у|ом|е)?",
+      "nodes": [
+        "bypass1",
+        "bypass2"
+      ],
+      "sections": [
+        "suction"
+      ]
+    },
+    {
+      "pattern": "запорн(?:ые|ых|ым|ыми) клапан(?:ы|ов|ам|ами|ах) SPAR|SPAR",
+      "nodes": [
+        "spar1",
+        "spar2"
+      ],
+      "sections": [
+        "shutoff"
+      ]
+    },
+    {
+      "pattern": "запорн(?:ые|ых|ым|ыми) клапан(?:ы|ов|ам|ами|ах) ENGINE|ENGINE",
+      "nodes": [
+        "engine1",
+        "engine2"
+      ],
+      "sections": [
+        "shutoff"
+      ]
+    },
+    {
+      "pattern": "топливн(?:ый|ого|ому|ым|ом) запорн(?:ый|ого|ому|ым|ом) клапан(?:а|у|ом|е)? ВСУ",
+      "nodes": [
+        "apu-valve"
+      ],
+      "sections": [
+        "shutoff"
+      ]
+    },
+    {
+      "pattern": "FUEL PUMP 1 FWD",
+      "nodes": [
+        "pump1-fwd"
+      ],
+      "sections": [
+        "scavenge"
+      ]
+    },
+    {
+      "pattern": "пункт централизованной заправки|заправочн(?:ая|ую|ой) станци(?:я|ю|и|ей)",
+      "nodes": [
+        "fueling"
+      ],
+      "sections": [
+        "refuel"
+      ]
+    },
+    {
+      "pattern": "ручн(?:ой|ого|ому|ым|ом) клапан(?:а|у|ом|е)? слива",
+      "nodes": [
+        "defuel"
+      ],
+      "sections": [
+        "refuel"
+      ]
+    },
+    {
+      "pattern": "FUEL TEMP",
+      "nodes": [
+        "temp"
+      ],
+      "sections": [
+        "indications"
+      ]
+    }
+  ],
+  "flightcontrols": [
+    {
+      "pattern": "элерон(?:ы|ов|ам|ами|ах)",
+      "nodes": [
+        "aileron-l",
+        "aileron-r"
+      ]
+    },
+    {
+      "pattern": "смесител(?:ь|я|ю|ем|е) команд спойлеров",
+      "nodes": [
+        "mixer"
+      ]
+    },
+    {
+      "pattern": "SPOILER A|SPOILER B|SPOILER A/B",
+      "nodes": [
+        "switch"
+      ]
+    },
+    {
+      "pattern": "рул(?:и|ей|ям|ями|ях) высоты",
+      "nodes": [
+        "elevator-l",
+        "elevator-r"
+      ]
+    },
+    {
+      "pattern": "вычислител(?:ь|я|ю|ем|е) загрузки руля высоты",
+      "nodes": [
+        "feel"
+      ]
+    },
+    {
+      "pattern": "EFS",
+      "nodes": [
+        "efs"
+      ]
+    },
+    {
+      "pattern": "SMYD",
+      "nodes": [
+        "smyd"
+      ]
+    },
+    {
+      "pattern": "FSEU",
+      "nodes": [
+        "fseu"
+      ]
+    },
+    {
+      "pattern": "FFM",
+      "nodes": [
+        "ffm"
+      ]
+    },
+    {
+      "pattern": "основн(?:ой|ого|ому|ым|ом) PCU",
+      "nodes": [
+        "main-pcu"
+      ]
+    },
+    {
+      "pattern": "резервн(?:ый|ого|ому|ым|ом) PCU",
+      "nodes": [
+        "stby-pcu",
+        "standby-pcu"
+      ]
+    },
+    {
+      "pattern": "рул(?:ь|я|ю|ём|ем|е) направления",
+      "nodes": [
+        "rudder"
+      ]
+    },
+    {
+      "pattern": "педал(?:и|ей|ям|ями|ях)",
+      "nodes": [
+        "pedals"
+      ]
+    },
+    {
+      "pattern": "YAW DAMPER",
+      "nodes": [
+        "switch"
+      ]
+    },
+    {
+      "pattern": "SPEED BRAKE",
+      "nodes": [
+        "lever"
+      ]
+    },
+    {
+      "pattern": "ALTERNATE FLAPS",
+      "nodes": [
+        "alternate"
+      ]
+    },
+    {
+      "pattern": "электродвигател(?:ь|я|ю|ем|е) альтернативного привода",
+      "nodes": [
+        "te-electric"
+      ]
+    },
+    {
+      "pattern": "перепускн(?:ой|ого|ому|ым|ом) клапан(?:а|у|ом|е)?",
+      "nodes": [
+        "bypass"
+      ]
+    },
+    {
+      "pattern": "PTU",
+      "nodes": [
+        "ptu"
+      ]
+    },
+    {
+      "pattern": "автоматическ(?:ий|ого|ому|им|ом) выпуск(?:а|у|ом|е)? предкрылков",
+      "nodes": [
+        "autoslats"
+      ]
+    },
+    {
+      "pattern": "элерон(?:ы|ов|ам|ами|ах)",
+      "nodes": [
+        "surface-ailerons"
+      ],
+      "sections": [
+        "primary"
+      ]
+    },
+    {
+      "pattern": "рул(?:и|ей|ям|ями|ях) высоты",
+      "nodes": [
+        "surface-elevators"
+      ],
+      "sections": [
+        "primary"
+      ]
+    },
+    {
+      "pattern": "рул(?:ь|я|ю|ём|ем|е) направления",
+      "nodes": [
+        "surface-rudder"
+      ],
+      "sections": [
+        "primary"
+      ]
+    },
+    {
+      "pattern": "стабилизатор(?:а|у|ом|е)?",
+      "nodes": [
+        "surface-stabilizer"
+      ],
+      "sections": [
+        "primary"
+      ]
+    },
+    {
+      "pattern": "полётн(?:ые|ых|ым|ыми) спойлер(?:ы|ов|ам|ами|ах)",
+      "nodes": [
+        "surface-flight-spoilers"
+      ],
+      "sections": [
+        "primary"
+      ]
+    },
+    {
+      "pattern": "задни(?:е|х|м|ми) закрылк(?:и|ов|ам|ами|ах)",
+      "nodes": [
+        "surface-te-flaps"
+      ],
+      "sections": [
+        "primary"
+      ]
+    }
+  ],
+  "antiice": [
+    {
+      "pattern": "WINDOW HEAT",
+      "nodes": [
+        "switches"
+      ]
+    },
+    {
+      "pattern": "POWER TEST|OVERHEAT TEST",
+      "nodes": [
+        "test"
+      ]
+    },
+    {
+      "pattern": "клапан(?:а|у|ом|е)? обогрева воздухозаборника",
+      "nodes": [
+        "cowl-valve"
+      ]
+    },
+    {
+      "pattern": "COWL VALVE OPEN|COWL ANTI-ICE",
+      "nodes": [
+        "cowl-lights"
+      ]
+    },
+    {
+      "pattern": "ENGINE ANTI-ICE",
+      "nodes": [
+        "antiice-switch"
+      ]
+    },
+    {
+      "pattern": "WING ANTI-ICE",
+      "nodes": [
+        "switch"
+      ]
+    },
+    {
+      "pattern": "клапан(?:ы|ов|ам|ами|ах) (?:обогрева )?крыла",
+      "nodes": [
+        "valve-l",
+        "valve-r"
+      ]
+    },
+    {
+      "pattern": "приёмник(?:и|а|у|ом|е|ов|ам|ами|ах)? полного давления",
+      "nodes": [
+        "pitot-probes"
+      ],
+      "sections": [
+        "probes"
+      ]
+    },
+    {
+      "pattern": "флюгер(?:ы|ов|ам|ами|ах)? угла атаки",
+      "nodes": [
+        "alpha-vanes"
+      ],
+      "sections": [
+        "probes"
+      ]
+    },
+    {
+      "pattern": "датчик(?:а|у|ом|е)? полной температуры(?: TAT)?|TAT",
+      "nodes": [
+        "temperature-probe"
+      ],
+      "sections": [
+        "probes"
+      ]
+    },
+    {
+      "pattern": "датчик(?:а|у|ом|е)? обледенения",
+      "nodes": [
+        "ice-detector"
+      ],
+      "sections": [
+        "ice-detection"
+      ]
+    },
+    {
+      "pattern": "стеклоочистител(?:и|ей|ям|ями|ях)",
+      "nodes": [
+        "heated-windows"
+      ],
+      "sections": [
+        "ice-detection"
+      ]
+    }
+  ],
+  "displays": [
+    {
+      "pattern": "DEU 1",
+      "nodes": [
+        "deu1"
+      ]
+    },
+    {
+      "pattern": "DEU 2",
+      "nodes": [
+        "deu2"
+      ]
+    },
+    {
+      "pattern": "DEU",
+      "nodes": [
+        "deu1",
+        "deu2"
+      ]
+    },
+    {
+      "pattern": "DISPLAYS SOURCE|SOURCE",
+      "nodes": [
+        "source"
+      ]
+    },
+    {
+      "pattern": "CONTROL PANEL",
+      "nodes": [
+        "control"
+      ]
+    },
+    {
+      "pattern": "верхн(?:ий|его|ему|им|ем) центральн(?:ый|ого|ому|ым|ом) диспле(?:й|я|ю|ем|е)",
+      "nodes": [
+        "upper"
+      ]
+    },
+    {
+      "pattern": "нижн(?:ий|его|ему|им|ем) центральн(?:ый|ого|ому|ым|ом) диспле(?:й|я|ю|ем|е)",
+      "nodes": [
+        "lower"
+      ]
+    }
+  ],
+  "navigation": [
+    {
+      "pattern": "FMC",
+      "nodes": [
+        "fmc"
+      ]
+    },
+    {
+      "pattern": "GPS",
+      "nodes": [
+        "receiver-l",
+        "receiver-r"
+      ]
+    },
+    {
+      "pattern": "POS REF(?: 2/3)?",
+      "nodes": [
+        "pos-ref"
+      ]
+    },
+    {
+      "pattern": "NAV OPTIONS|GPS UPDATE",
+      "nodes": [
+        "nav-options"
+      ]
+    },
+    {
+      "pattern": "лев(?:ый|ого|ому|ым|ом) IRS",
+      "nodes": [
+        "left"
+      ]
+    },
+    {
+      "pattern": "прав(?:ый|ого|ому|ым|ом) IRS",
+      "nodes": [
+        "right"
+      ]
+    },
+    {
+      "pattern": "IRS TRANSFER",
+      "nodes": [
+        "transfer"
+      ]
+    },
+    {
+      "pattern": "метеорадар(?:а|у|ом|е)?",
+      "nodes": [
+        "weather"
+      ]
+    }
+  ],
+  "general": [
+    {
+      "pattern": "баллон(?:а|у|ом|е)?",
+      "nodes": [
+        "cylinder",
+        "bottle"
+      ]
+    },
+    {
+      "pattern": "редуктор(?:а|у|ом|е)?",
+      "nodes": [
+        "reducer",
+        "regulator"
+      ]
+    },
+    {
+      "pattern": "манометр(?:а|у|ом|е)?",
+      "nodes": [
+        "gauge"
+      ]
+    },
+    {
+      "pattern": "маск(?:а|и|е|у|ой|ам|ами|ах) экипажа",
+      "nodes": [
+        "mask"
+      ]
+    },
+    {
+      "pattern": "PSU",
+      "nodes": [
+        "psu"
+      ]
+    },
+    {
+      "pattern": "PASS OXYGEN",
+      "nodes": [
+        "pass-switch"
+      ]
+    },
+    {
+      "pattern": "водян(?:ой|ого|ому|ым|ом) бак(?:а|у|ом|е)?",
+      "nodes": [
+        "tank"
+      ]
+    },
+    {
+      "pattern": "панел(?:ь|и|ью) обслуживания",
+      "nodes": [
+        "service"
+      ]
+    },
+    {
+      "pattern": "устройств(?:а|ами|ам|ах)? выравнивания давления",
+      "nodes": [
+        "blowout"
+      ],
+      "sections": [
+        "doors"
+      ]
+    },
+    {
+      "pattern": "электрическ(?:ий|ого|ому|им|ом) зам(?:ок|ка|ку|ком|ке)",
+      "nodes": [
+        "door-handle"
+      ],
+      "sections": [
+        "doors"
+      ]
+    },
+    {
+      "pattern": "источник(?:а|у|ом|е)?(?: кислорода)?",
+      "nodes": [
+        "oxygen-source"
+      ],
+      "sections": [
+        "passenger-oxygen"
+      ]
+    },
+    {
+      "pattern": "маск(?:и|е|у|ой|ам|ами|ах)",
+      "nodes": [
+        "oxygen-mask"
+      ],
+      "sections": [
+        "passenger-oxygen"
+      ]
+    },
+    {
+      "pattern": "блок(?:а|у|ом|е)? PSU|PSU",
+      "nodes": [
+        "mask-door"
+      ],
+      "sections": [
+        "passenger-oxygen"
+      ]
+    }
+  ],
+  "fire": [
+    {
+      "pattern": "пожарн(?:ая|ую|ой) рукоятк(?:а|у|и|ой|е) двигателя 1",
+      "nodes": [
+        "handle1"
+      ]
+    },
+    {
+      "pattern": "пожарн(?:ая|ую|ой) рукоятк(?:а|у|и|ой|е) двигателя 2",
+      "nodes": [
+        "handle2"
+      ]
+    },
+    {
+      "pattern": "лев(?:ый|ого|ому|ым|ом) баллон(?:а|у|ом|е)?",
+      "nodes": [
+        "left-bottle"
+      ]
+    },
+    {
+      "pattern": "прав(?:ый|ого|ому|ым|ом) баллон(?:а|у|ом|е)?",
+      "nodes": [
+        "right-bottle"
+      ]
+    },
+    {
+      "pattern": "перв(?:ый|ого|ому|ым|ом) баллон(?:а|у|ом|е)?",
+      "nodes": [
+        "bottle1",
+        "bottle"
+      ]
+    },
+    {
+      "pattern": "втор(?:ой|ого|ому|ым|ом) (?:дозированный )?баллон(?:а|у|ом|е)?",
+      "nodes": [
+        "bottle2"
+      ]
+    },
+    {
+      "pattern": "передн(?:ий|его|ему|им|ем) грузов(?:ой|ого|ому|ым|ом) отсек(?:а|у|ом|е)?",
+      "nodes": [
+        "fwd"
+      ]
+    },
+    {
+      "pattern": "задн(?:ий|его|ему|им|ем) грузов(?:ой|ого|ому|ым|ом) отсек(?:а|у|ом|е)?",
+      "nodes": [
+        "aft"
+      ]
+    },
+    {
+      "pattern": "пожарн(?:ая|ую|ой) рукоятк(?:а|у|и|ой|е)|рукоятк(?:а|у|и|ой|е)",
+      "nodes": [
+        "handle1",
+        "handle2"
+      ],
+      "sections": [
+        "engine-bottles"
+      ]
+    },
+    {
+      "pattern": "огнетушащ(?:их|ие|им|ими) баллон(?:а|ов|ам|ами|ах)",
+      "nodes": [
+        "left-bottle",
+        "right-bottle"
+      ],
+      "sections": [
+        "engine-bottles"
+      ]
+    },
+    {
+      "pattern": "пиропатрон(?:ы|ов|ам|ами|ах)?",
+      "nodes": [
+        "squib-l1",
+        "squib-l2",
+        "squib-r1",
+        "squib-r2"
+      ],
+      "sections": [
+        "engine-bottles"
+      ]
+    },
+    {
+      "pattern": "L/R BOTTLE DISCHARGE",
+      "nodes": [
+        "left-discharge",
+        "right-discharge"
+      ],
+      "sections": [
+        "engine-bottles"
+      ]
+    },
+    {
+      "pattern": "передн(?:ий|его|ему|им|ем) и задн(?:ий|его|ему|им|ем) нижни(?:е|х|м|ми) грузов(?:ые|ых|ым|ыми) отсек(?:и|ов|ам|ами|ах)",
+      "nodes": [
+        "fwd",
+        "aft"
+      ],
+      "sections": [
+        "cargo-detect"
+      ]
+    },
+    {
+      "pattern": "FWD",
+      "nodes": [
+        "fwd"
+      ],
+      "sections": [
+        "cargo-detect"
+      ]
+    },
+    {
+      "pattern": "AFT",
+      "nodes": [
+        "aft"
+      ],
+      "sections": [
+        "cargo-detect"
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "pattern": "приближени(?:е|я|и|ю|ем) к (?:выбранной )?высоте(?: MCP)?",
+      "nodes": [
+        "altitude-acquisition"
+      ],
+      "sections": [
+        "altitude-alert"
+      ]
+    },
+    {
+      "pattern": "отклонени(?:е|я|и|ю|ем)(?: от неё)?",
+      "nodes": [
+        "altitude-deviation"
+      ],
+      "sections": [
+        "altitude-alert"
+      ]
+    },
+    {
+      "pattern": "рамк(?:и|ах|ам|ами) заданной и текущей высоты",
+      "nodes": [
+        "altitude-display"
+      ],
+      "sections": [
+        "altitude-alert"
+      ]
+    },
+    {
+      "pattern": "высоте MCP",
+      "nodes": [
+        "selected-altitude"
+      ],
+      "sections": [
+        "altitude-alert"
+      ]
+    },
+    {
+      "pattern": "метеорадар(?:а|у|ом|е)?",
+      "nodes": [
+        "windshear-flight"
+      ],
+      "sections": [
+        "windshear"
+      ]
+    },
+    {
+      "pattern": "прогнозирующ(?:ая|ую|ей) систем(?:а|у|ы|ой|е)",
+      "nodes": [
+        "windshear-ground",
+        "windshear-flight"
+      ],
+      "sections": [
+        "windshear"
+      ]
+    }
+  ]
+}

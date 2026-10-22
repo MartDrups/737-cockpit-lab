@@ -96,5 +96,28 @@
     "webkitOriginReallyStopped": true,
     "exerciseResumeAndAction": true
   },
-  "browserData": "Progress, notes and offline downloads are stored separately for each website origin."
+  "browserData": "Progress, notes and offline downloads are stored separately for each website origin.",
+  "systemsReading": {
+    "version": "github-systems-8e0b9a060812a7ed66ec",
+    "illustratedSections": 91,
+    "sections": 148,
+    "blueTermLinks": 370,
+    "addedFigures": 13,
+    "addedInteractiveElements": 96,
+    "checks": {
+      "chromium": true,
+      "webkit": true,
+      "allSubsectionTextsPreserved": true,
+      "allLinkTargetsExist": true,
+      "allNewElementsPhysicallyClickable": true,
+      "mobileModalPreservesReadingPosition": true,
+      "upgradeFromOriginalGitHubCopy": true,
+      "existingBrowserDataPreserved": true,
+      "unchangedCachedDiagramCarriedForward": true,
+      "newFigureAssetsCached": 13,
+      "offlineColdBrowserRestartChromium": true,
+      "javascriptErrors": 0
+    },
+    "publicVerification": "pending publication"
+  }
 }
