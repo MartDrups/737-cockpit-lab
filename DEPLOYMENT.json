@@ -1,12 +1,12 @@
 {
   "url": "https://martdrups.github.io/737-cockpit-lab/",
   "repository": "https://github.com/MartDrups/737-cockpit-lab",
-  "publishedCommit": "8766ceb836f2e949c3e4b3b7bbebd4329151bbea",
-  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/39774075248",
+  "publishedCommit": "2dc4356fe0e13403dcb9c1d1069303288c7c50c9",
+  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/40748377389",
   "workflowResult": "success",
-  "version": "github-mobile-exercises-e67148bbb05114950f95",
+  "version": "github-cbt-fullscreen-9b069a94e3cb42bf9b4f",
   "websiteFiles": 8665,
-  "websiteBytes": 261565212,
+  "websiteBytes": 261566118,
   "originalUrl": "https://737cockpitlab.pages.dev",
   "originalUnchanged": true,
   "publicBrowsers": {
@@ -192,7 +192,7 @@
     "websiteFiles": 8665,
     "websiteBytes": 261524921
   },
-  "verificationNotes": "publicBrowsers, russianNetworkChecks и offlineChecks сохраняют результаты первоначального переноса. systemsReading — первый выпуск интерфейса схем, systemsTextReview — сверка текстов. Свежие функциональные проверки телефонных упражнений на публичном сайте и локальная проверка обновления с холодным офлайн-запуском записаны в mobileExercisesFix. Полную повторную загрузку всех 761 файлов справочника при этих доработках не выполняли.",
+  "verificationNotes": "publicBrowsers, russianNetworkChecks и offlineChecks сохраняют результаты первоначального переноса. systemsReading — первый выпуск интерфейса схем, systemsTextReview — сверка текстов. Свежие функциональные проверки телефонных упражнений на публичном сайте и локальная проверка обновления с холодным офлайн-запуском записаны в mobileExercisesFix. Полную повторную загрузку всех 761 файлов справочника при этих доработках не выполняли. Исправление полноэкранного режима CBT от 28.10.2026 и свежие проверки обоих плееров в Chromium/WebKit на публичном сайте записаны в cbtFullscreenFix. Полную загрузку всего справочника при этом исправлении не повторяли.",
   "systemsTextReview": {
     "revision": "systems-text-2026-10-22-1",
     "version": "github-systems-ef56a8229c20a5510310",
@@ -435,5 +435,109 @@
     },
     "mobileWebKitScrollCheck": "Main-only programmatic scroll plus actual touchscreen taps; Playwright does not synthesize wheel input in mobile WebKit. Chromium also checks native touch swiping.",
     "originalCloudflareUnchanged": true
+  },
+  "cbtFullscreenFix": {
+    "revision": "cbt-fullscreen-2026-10-28",
+    "version": "github-cbt-fullscreen-9b069a94e3cb42bf9b4f",
+    "publishedCommit": "2dc4356fe0e13403dcb9c1d1069303288c7c50c9",
+    "cause": "The fullscreen button relied exclusively on the browser Fullscreen API and had no fallback when it was unavailable.",
+    "behavior": "Expand the entire embedded player, retaining its upper controls, text and navigation; exit with the same button or Escape without replacing the iframe or restarting the lesson.",
+    "sourceDirectory": "src/cbt/",
+    "buildCommand": "python scripts/build-cbt.py",
+    "nativeFullscreenAPIRequired": false,
+    "regressionReproducedBeforeFix": true,
+    "existingSystemsAndExerciseImprovementsPreserved": true,
+    "lessonDataAudioAndGraphicsUnchanged": true,
+    "localVerification": {
+      "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/40747454170",
+      "browsers": [
+        {
+          "browser": "chromium",
+          "origin": "http://127.0.0.1:33217/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "iPad landscape: entire viewport, upper controls and text, same live lesson",
+            "Settings and text controls remain usable; closing a dialog keeps fullscreen",
+            "Orientation and phone resizing retain graphics, text and controls",
+            "Escape and repeated button toggles restore the lesson without resetting it",
+            "Fullscreen works without a network connection",
+            "Intro player expands too; leaving CBT removes the fullscreen lock",
+            "Direct player link supports the same controls without the browser Fullscreen API"
+          ],
+          "version": "github-cbt-fullscreen-9b069a94e3cb42bf9b4f"
+        },
+        {
+          "browser": "webkit",
+          "origin": "http://127.0.0.1:34217/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "iPad landscape: entire viewport, upper controls and text, same live lesson",
+            "Settings and text controls remain usable; closing a dialog keeps fullscreen",
+            "Orientation and phone resizing retain graphics, text and controls",
+            "Escape and repeated button toggles restore the lesson without resetting it",
+            "Fullscreen works without a network connection",
+            "Intro player expands too; leaving CBT removes the fullscreen lock",
+            "Direct player link supports the same controls without the browser Fullscreen API"
+          ],
+          "version": "github-cbt-fullscreen-9b069a94e3cb42bf9b4f"
+        }
+      ]
+    },
+    "publicVerification": {
+      "checkedAt": "2026-10-28T18:52:31.485Z",
+      "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/40748571613",
+      "artifactId": 12842782430,
+      "browsers": {
+        "chromium": {
+          "browser": "chromium",
+          "origin": "https://martdrups.github.io/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "iPad landscape: entire viewport, upper controls and text, same live lesson",
+            "Settings and text controls remain usable; closing a dialog keeps fullscreen",
+            "Orientation and phone resizing retain graphics, text and controls",
+            "Escape and repeated button toggles restore the lesson without resetting it",
+            "Fullscreen works without a network connection",
+            "Intro player expands too; leaving CBT removes the fullscreen lock",
+            "Direct player link supports the same controls without the browser Fullscreen API"
+          ],
+          "version": "github-cbt-fullscreen-9b069a94e3cb42bf9b4f"
+        },
+        "webkit": {
+          "browser": "webkit",
+          "origin": "https://martdrups.github.io/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "iPad landscape: entire viewport, upper controls and text, same live lesson",
+            "Settings and text controls remain usable; closing a dialog keeps fullscreen",
+            "Orientation and phone resizing retain graphics, text and controls",
+            "Escape and repeated button toggles restore the lesson without resetting it",
+            "Fullscreen works without a network connection",
+            "Intro player expands too; leaving CBT removes the fullscreen lock",
+            "Direct player link supports the same controls without the browser Fullscreen API"
+          ],
+          "version": "github-cbt-fullscreen-9b069a94e3cb42bf9b4f"
+        }
+      },
+      "nativeFullscreenAPIDisabledDuringChecks": true,
+      "isMobile": true,
+      "hasTouch": true,
+      "viewports": [
+        {
+          "width": 1180,
+          "height": 820
+        },
+        {
+          "width": 820,
+          "height": 1180
+        },
+        {
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "physicalIPadTested": false
+    },
+    "offlineVerification": "Toggle fullscreen in an already loaded lesson while network access is disabled. No new full-core download or cold restart was performed for this UI change."
   }
 }
