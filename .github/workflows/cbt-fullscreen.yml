@@ -1,0 +1,108 @@
+name: Check CBT fullscreen
+
+on:
+  push:
+    branches: [fix/cbt-fullscreen-20261028]
+  workflow_run:
+    workflows: [Publish 737 Cockpit Lab copy]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install browser checks
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium webkit
+      - name: Reproduce the iPad failure before building
+        run: |
+          if python -c "import gzip,sys;sys.exit(b'CBT_FULLSCREEN' in gzip.decompress(open('public/cbt-library.js.gz','rb').read()))"; then
+            python tests/check-cbt-fullscreen.py --browser webkit --expect-bug
+          fi
+      - name: Build and verify the changed player files
+        run: |
+          python scripts/build-cbt.py
+          python - <<'PY'
+          import hashlib, subprocess
+          from pathlib import Path
+          allowed={'public/cbt-library.js.gz','public/cbt-style.css.gz','public/cbt/player-layout.js.gz','public/cbt/player.css.gz','public/cbt/player.js.gz','public/cbt/course-player.js.gz','public/index.html','public/cbt/player.html','public/cbt/course-player.html','public/offline-assets.json','public/sw.js'}
+          changed=set(subprocess.check_output(['git','diff','--name-only','--','public'],text=True).splitlines())
+          assert changed <= allowed, changed-allowed
+          before={p:hashlib.sha256(p.read_bytes()).hexdigest() for p in Path('public').rglob('*') if p.is_file()}
+          subprocess.run(['python','scripts/build-cbt.py'],check=True)
+          assert all(hashlib.sha256(p.read_bytes()).hexdigest()==digest for p,digest in before.items())
+          print('Unrelated website files preserved; player build is reproducible.')
+          PY
+          sha256sum --check --quiet PUBLIC_SHA256SUMS
+      - name: Check actual player controls and fullscreen
+        run: |
+          python tests/check-cbt-fullscreen.py --browser chromium
+          python tests/check-cbt-fullscreen.py --browser webkit
+      - name: Save tested delivery on this branch
+        run: |
+          git config user.name '737 Cockpit Lab delivery'
+          git config user.email 'deployment@localhost'
+          git add public PUBLIC_SHA256SUMS
+          if ! git diff --cached --quiet; then
+            git commit -m 'Build verified CBT fullscreen delivery'
+            git push origin HEAD:fix/cbt-fullscreen-20261028
+          fi
+          git rev-parse HEAD
+      - name: Save browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cbt-fullscreen-local-checks
+          path: artifacts/cbt-fullscreen
+          retention-days: 7
+
+  public:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install browser checks
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium webkit
+      - name: Check the published site
+        run: |
+          python tests/check-cbt-fullscreen.py --browser chromium --origin https://martdrups.github.io/737-cockpit-lab/
+          python tests/check-cbt-fullscreen.py --browser webkit --origin https://martdrups.github.io/737-cockpit-lab/
+      - name: Print verification reports
+        if: always()
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for path in Path('artifacts/cbt-fullscreen').glob('*.json'):
+              print(path.name, path.read_text())
+          PY
+      - name: Save public browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cbt-fullscreen-public-checks
+          path: artifacts/cbt-fullscreen
+          retention-days: 7
