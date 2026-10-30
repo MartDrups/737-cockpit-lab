@@ -158,7 +158,7 @@ with tempfile.TemporaryDirectory(prefix='737-question-banks-') as profile:
             advance(frame, scene_state(frame)['current']) if scene_state(frame)['scene']['bankQuestion']['number'] == 2 else None
             frame.wait_for_function('CBTCourseNative.lesson.scenes[CBTCourseNative.state.index].bankQuestion.number===3')
             assert frame.evaluate('window.__questionBankFrame') == 'unchanged'
-            page.wait_for_load_state('networkidle')
+            frame.wait_for_function("[...document.querySelectorAll('#scene-layers use')].some(e=>e.getBBox().width>0)", timeout=15000)
             page.screenshot(path=str(output / 'question-bank-ipad.png'))
             report['checks'].append('Old progress and notes imported; wrong answer rejected; consecutive questions keep the same iframe and fullscreen')
             frame.locator('#fullscreen').tap()
