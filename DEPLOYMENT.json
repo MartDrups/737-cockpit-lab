@@ -1,12 +1,12 @@
 {
   "url": "https://martdrups.github.io/737-cockpit-lab/",
   "repository": "https://github.com/MartDrups/737-cockpit-lab",
-  "publishedCommit": "2dc4356fe0e13403dcb9c1d1069303288c7c50c9",
-  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/40748377389",
+  "publishedCommit": "97fdced85beae82a9b246b07714f93117471225a",
+  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/41036170398",
   "workflowResult": "success",
-  "version": "github-cbt-fullscreen-9b069a94e3cb42bf9b4f",
+  "version": "github-cbt-questions-ce1d93382163ada69ec6",
   "websiteFiles": 8665,
-  "websiteBytes": 261566118,
+  "websiteBytes": 261570983,
   "originalUrl": "https://737cockpitlab.pages.dev",
   "originalUnchanged": true,
   "publicBrowsers": {
@@ -192,7 +192,7 @@
     "websiteFiles": 8665,
     "websiteBytes": 261524921
   },
-  "verificationNotes": "publicBrowsers, russianNetworkChecks и offlineChecks сохраняют результаты первоначального переноса. systemsReading — первый выпуск интерфейса схем, systemsTextReview — сверка текстов. Свежие функциональные проверки телефонных упражнений на публичном сайте и локальная проверка обновления с холодным офлайн-запуском записаны в mobileExercisesFix. Полную повторную загрузку всех 761 файлов справочника при этих доработках не выполняли. Исправление полноэкранного режима CBT от 28.10.2026 и свежие проверки обоих плееров в Chromium/WebKit на публичном сайте записаны в cbtFullscreenFix. Полную загрузку всего справочника при этом исправлении не повторяли.",
+  "verificationNotes": "publicBrowsers, russianNetworkChecks и offlineChecks сохраняют результаты первоначального переноса. systemsReading — первый выпуск интерфейса схем, systemsTextReview — сверка текстов. Свежие функциональные проверки телефонных упражнений на публичном сайте и локальная проверка обновления с холодным офлайн-запуском записаны в mobileExercisesFix. Полную повторную загрузку всех 761 файлов справочника при этих доработках не выполняли. Исправление полноэкранного режима CBT от 28.10.2026 и свежие проверки обоих плееров в Chromium/WebKit на публичном сайте записаны в cbtFullscreenFix. Полную загрузку всего справочника при этом исправлении не повторяли. В cbtQuestionBanks записано объединение вопросов по разделам от 30.10.2026: свежие проверки Chromium/WebKit локально и на публичном сайте, холодный офлайн-запуск локально, сохранение исходных данных и повторная проверка полноэкранного режима.",
   "systemsTextReview": {
     "revision": "systems-text-2026-10-22-1",
     "version": "github-systems-ef56a8229c20a5510310",
@@ -539,5 +539,218 @@
       "physicalIPadTested": false
     },
     "offlineVerification": "Toggle fullscreen in an already loaded lesson while network access is disabled. No new full-core download or cold restart was performed for this UI change."
+  },
+  "cbtQuestionBanks": {
+    "revision": "cbt-questions-2026-10-30",
+    "version": "github-cbt-questions-ce1d93382163ada69ec6",
+    "publishedCommit": "97fdced85beae82a9b246b07714f93117471225a",
+    "sourceTopics": 632,
+    "sourceQuestionTopics": 267,
+    "questionBanks": 54,
+    "sourceQuestionScenes": 537,
+    "displayedCatalogueRows": 419,
+    "behavior": "Group source test questions by course section, preserving original lessons and practices separately. Show explicit full or partial completion in both players.",
+    "sourceDirectory": "src/cbt/",
+    "buildCommand": "python scripts/build-cbt.py",
+    "documentation": "CBT_QUESTIONS.md",
+    "sourceScenesAnswersAudioAndGraphicsUnchanged": true,
+    "oldProgressAndNotesPreserved": true,
+    "sourceABVariantsPreserved": true,
+    "unavailableClearwayAndStopwayUnchanged": true,
+    "systemsAndSOPExercisesUnchanged": true,
+    "originalCloudflareUnchanged": true,
+    "localVerification": {
+      "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/41035982001",
+      "browsers": {
+        "chromium": {
+          "browser": "chromium",
+          "origin": "http://127.0.0.1:42487/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "54 question banks replace 267 question rows; all lessons and practice stay separate",
+            "Old progress and notes imported; wrong answer rejected; consecutive questions keep the same iframe and fullscreen",
+            "Reload resumes at the current question",
+            "Lesson completion is visible; skipped scenes are not falsely marked complete",
+            "Intro player also shows a completion dialog after the final scene",
+            "One download action saves all original question packs",
+            "Cold offline resume, remaining real answers, completion and return to catalogue work"
+          ],
+          "browserExecutable": "/usr/bin/google-chrome",
+          "offlineSimulation": "Network disabled before cold Chromium restart",
+          "version": "github-cbt-questions-ce1d93382163ada69ec6"
+        },
+        "webkit": {
+          "browser": "webkit",
+          "origin": "http://127.0.0.1:42077/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "54 question banks replace 267 question rows; all lessons and practice stay separate",
+            "Old progress and notes imported; wrong answer rejected; consecutive questions keep the same iframe and fullscreen",
+            "Reload resumes at the current question",
+            "Lesson completion is visible; skipped scenes are not falsely marked complete",
+            "Intro player also shows a completion dialog after the final scene",
+            "One download action saves all original question packs",
+            "Cold offline resume, remaining real answers, completion and return to catalogue work"
+          ],
+          "offlineSimulation": "Origin server stopped before cold WebKit restart",
+          "version": "github-cbt-questions-ce1d93382163ada69ec6"
+        }
+      },
+      "coldOfflineRestartBothBrowsers": true
+    },
+    "publicVerification": {
+      "checkedAt": "2026-10-30T09:51:41.388553+00:00",
+      "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/41036263291",
+      "browsers": {
+        "chromium": {
+          "browser": "chromium",
+          "origin": "https://martdrups.github.io/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "54 question banks replace 267 question rows; all lessons and practice stay separate",
+            "Old progress and notes imported; wrong answer rejected; consecutive questions keep the same iframe and fullscreen",
+            "Reload resumes at the current question",
+            "Lesson completion is visible; skipped scenes are not falsely marked complete",
+            "Intro player also shows a completion dialog after the final scene",
+            "One download action saves all original question packs",
+            "Offline resume, remaining real answers, completion and return to catalogue work"
+          ],
+          "browserExecutable": "/usr/bin/google-chrome",
+          "offlineSimulation": "Public site: network disabled in the existing browser context",
+          "version": "github-cbt-questions-ce1d93382163ada69ec6"
+        },
+        "webkit": {
+          "browser": "webkit",
+          "origin": "https://martdrups.github.io/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "54 question banks replace 267 question rows; all lessons and practice stay separate",
+            "Old progress and notes imported; wrong answer rejected; consecutive questions keep the same iframe and fullscreen",
+            "Reload resumes at the current question",
+            "Lesson completion is visible; skipped scenes are not falsely marked complete",
+            "Intro player also shows a completion dialog after the final scene",
+            "One download action saves all original question packs",
+            "Offline resume, remaining real answers, completion and return to catalogue work"
+          ],
+          "offlineSimulation": "Public site: network disabled in the existing browser context",
+          "version": "github-cbt-questions-ce1d93382163ada69ec6"
+        }
+      },
+      "tlsVerification": true,
+      "filesMatchCheckedLocalBuild": [
+        {
+          "path": "public/cbt-library.js.gz",
+          "bytes": 7077,
+          "sha256": "1f9840c2f70d415c89770a58a26835e24ffd2ac0a51e5c4668ef138a98a465e5"
+        },
+        {
+          "path": "public/cbt-style.css.gz",
+          "bytes": 2132,
+          "sha256": "c1e19048bc7a3d782ff45ee5a87e6627594d67fe4292fcc555ebbc03ea73b20e"
+        },
+        {
+          "path": "public/cbt/course-player.html",
+          "bytes": 5813,
+          "sha256": "7830fb81785a7ec25e3ecc356f527b7c80577e7d88815a068290ca5dd2dfcfde"
+        },
+        {
+          "path": "public/cbt/course-player.js.gz",
+          "bytes": 9703,
+          "sha256": "0dab030a1de77f8ab43162fd27d3711aac8002b13c09cccdf09350dc7283bf99"
+        },
+        {
+          "path": "public/cbt/player-layout.js.gz",
+          "bytes": 1843,
+          "sha256": "c69a80408dfb4bda10283772d66260f4f5a98c1e3d9dbd2da5ab1ab042101e08"
+        },
+        {
+          "path": "public/cbt/player.css.gz",
+          "bytes": 2593,
+          "sha256": "3b8604282d7cf67499e515f023a36632e66699e401d9a7ceda15c886818f33ef"
+        },
+        {
+          "path": "public/cbt/player.html",
+          "bytes": 5991,
+          "sha256": "bbae32067d2ad3068f79d1bc37fc3ba2f721855efe732e7f8dcba9135945a821"
+        },
+        {
+          "path": "public/cbt/player.js.gz",
+          "bytes": 7004,
+          "sha256": "e0b4f4bfd5707ae5a126044c5e122f4cdc5521068892a47e365a8383e9b84375"
+        },
+        {
+          "path": "public/index.html",
+          "bytes": 9229,
+          "sha256": "cab0860bcfb62fd382766f103529f3c44a473f602e0b3150fcf80df64cebc4d7"
+        },
+        {
+          "path": "public/offline-assets.json",
+          "bytes": 121029,
+          "sha256": "da925f6371033b71d46b49364bbb26e385b99c7845533a286975707a7ec7e76f"
+        },
+        {
+          "path": "public/sw.js",
+          "bytes": 1939159,
+          "sha256": "83758d11c16feaffe013ce158c2e4c7ea0ca9b328798002d054dbc707eb8b5c5"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 12967957536,
+          "name": "cbt-question-bank-checks-chromium"
+        },
+        {
+          "id": 12967708746,
+          "name": "cbt-question-bank-checks-webkit"
+        }
+      ]
+    },
+    "fullscreenRegression": {
+      "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/41036263184",
+      "browsers": {
+        "chromium": {
+          "browser": "chromium",
+          "origin": "https://martdrups.github.io/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "iPad landscape: entire viewport, upper controls and text, same live lesson",
+            "Settings and text controls remain usable; closing a dialog keeps fullscreen",
+            "Orientation and phone resizing retain graphics, text and controls",
+            "Escape and repeated button toggles restore the lesson without resetting it",
+            "Fullscreen works without a network connection",
+            "Intro player expands too; leaving CBT removes the fullscreen lock",
+            "Direct player link supports the same controls without the browser Fullscreen API"
+          ],
+          "version": "github-cbt-questions-ce1d93382163ada69ec6"
+        },
+        "webkit": {
+          "browser": "webkit",
+          "origin": "https://martdrups.github.io/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "iPad landscape: entire viewport, upper controls and text, same live lesson",
+            "Settings and text controls remain usable; closing a dialog keeps fullscreen",
+            "Orientation and phone resizing retain graphics, text and controls",
+            "Escape and repeated button toggles restore the lesson without resetting it",
+            "Fullscreen works without a network connection",
+            "Intro player expands too; leaving CBT removes the fullscreen lock",
+            "Direct player link supports the same controls without the browser Fullscreen API"
+          ],
+          "version": "github-cbt-questions-ce1d93382163ada69ec6"
+        }
+      }
+    },
+    "testContext": {
+      "isMobile": true,
+      "hasTouch": true,
+      "viewport": {
+        "width": 1180,
+        "height": 820
+      },
+      "physicalIPadTested": false,
+      "chromiumCIExecutable": "/usr/bin/google-chrome",
+      "chromiumCIReason": "Installed Chrome supports the original H.264 ending video; the runner Chromium build does not."
+    },
+    "offlineVerification": "One action downloads all nine original electrical-question packs. Both browsers resume and finish after a cold restart locally (WebKit origin stopped); published-site checks disable network in the existing context. No full-core redownload performed."
   }
 }
