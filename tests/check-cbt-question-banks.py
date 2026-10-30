@@ -128,7 +128,8 @@ with tempfile.TemporaryDirectory(prefix='737-question-banks-') as profile:
         launch = {'headless': True, 'viewport': {'width': 1180, 'height': 820},
                   'is_mobile': True, 'has_touch': True, 'ignore_https_errors': False}
         if options.browser == 'chromium':
-            launch.update(executable_path=shutil.which('chromium') or shutil.which('google-chrome'), args=['--no-sandbox'])
+            launch.update(executable_path=shutil.which('google-chrome') or shutil.which('chromium'), args=['--no-sandbox'])
+            report['browserExecutable'] = launch['executable_path'] or 'playwright-chromium'
         if options.url and os.environ.get('HTTPS_PROXY'):
             launch['proxy'] = {'server': os.environ['HTTPS_PROXY']}
         browser_type = getattr(p, options.browser)
