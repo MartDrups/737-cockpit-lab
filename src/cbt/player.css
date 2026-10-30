@@ -15,3 +15,9 @@ html.player-expanded{height:100%;overflow:hidden}
 .player-expanded .lesson-controls{position:sticky;top:0;z-index:10;background:var(--bg)}
 .player-expanded #loading{flex:1;min-height:0;overflow:auto}
 .player-expanded .credits{display:none}
+
+.lesson-completion-dialog{width:min(460px,calc(100vw - 28px));max-height:calc(100dvh - 28px);text-align:center;border-color:#78965b;padding:26px}
+.lesson-completion-dialog::backdrop{background:#07100dd9}
+.lesson-completion-dialog h2{margin:8px 0 12px;font-size:27px;line-height:1.2}
+.lesson-completion-dialog .lesson-completion-mark{font:40px/1 sans-serif;color:var(--lime);margin:0}
+.lesson-completion-dialog .dialog-actions{justify-content:center}

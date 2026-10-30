@@ -188,10 +188,16 @@
     saved ||= {}; saved.finished = full;
     $('completion').hidden = false; stateText(full ? 'Урок завершён' : 'Конец урока · часть разделов ещё не просмотрена');
     $('lesson-progress').value = visited.size; persist(); sectionMenu();
+    $('completion').querySelector('h2').textContent=full?'Урок завершён':'Есть непройденные сцены';
+    const missing=lesson.scenes.findIndex(s=>!visited.has(s.id)||required.includes(s)&&!completed.has(s.id));
+    window.CBTPlayerLayout.complete({title:full?'Урок завершён':'Есть непройденные сцены',
+      detail:full?'Прогресс сохранён. Можно перейти к следующему уроку.':'Пройдите оставшиеся сцены и задания, чтобы завершить урок.',
+      repeat:()=>start(true),resume:full?null:()=>enter(Math.max(0,missing))});
     if (full) parent.postMessage({type:'CBT_LESSON_COMPLETE',id:'intro'}, location.origin);
   }
   function enter(nextIndex) {
     if (nextIndex < 0 || nextIndex >= lesson.scenes.length) return;
+    window.CBTPlayerLayout.dismissCompletion();
     epoch++; const token = epoch; clearClock(); narration.pause(); video.pause(); $('effect').pause(); $('effect').onended = null;
     index = nextIndex; scene = lesson.scenes[index]; heard = false; blocked = false; paused = false;
     sceneStart = performance.now(); wrong = 0; selected = new Set();
@@ -334,7 +340,7 @@
   }
   $('start-lesson').onclick = () => start();
   $('restart-lesson').onclick = () => start(true);
-  addEventListener('pagehide',() => { persist(); narration.pause(); video.pause(); });
+  addEventListener('pagehide',() => { if(started)persist(); narration.pause(); video.pause(); });
   document.addEventListener('visibilitychange',() => { if (document.hidden && started) pause(true); });
   fetch('lesson.json').then(r => { if (!r.ok) throw new Error(); return r.json(); }).then(data => {
     lesson = data; $('start-lesson').disabled = false;

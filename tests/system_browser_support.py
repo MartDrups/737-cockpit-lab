@@ -15,6 +15,7 @@ def configure():
     parser.add_argument('--url', help='Optional deployed app URL; otherwise serve public/ locally.')
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
+    args.preview_server = None
     out = args.output or Path(tempfile.mkdtemp(prefix='737-system-reading-'))
     out.mkdir(parents=True, exist_ok=True)
     if args.url:
@@ -33,6 +34,7 @@ def configure():
             def log_message(self, *a):
                 pass
         server = ThreadingHTTPServer(('127.0.0.1',0),Handler)
+        args.preview_server = server
         threading.Thread(target=server.serve_forever,daemon=True).start()
         atexit.register(server.server_close)
         atexit.register(server.shutdown)

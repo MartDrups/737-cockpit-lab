@@ -54,5 +54,28 @@
     }
   });
   if(parent!==window)parent.postMessage({type:'CBT_FULLSCREEN',action:'state'},location.origin);
-  window.CBTPlayerLayout={fit,fullscreen};
+  let completionDialog;
+  function dismissCompletion(){if(completionDialog?.open)completionDialog.close()}
+  function complete({title,detail,repeat,resume}){
+    if(!completionDialog){
+      completionDialog=document.createElement('dialog');
+      completionDialog.id='lesson-completion-dialog';completionDialog.className='lesson-completion-dialog';
+      completionDialog.setAttribute('aria-labelledby','lesson-completion-title');
+      completionDialog.innerHTML='<p class="lesson-completion-mark" aria-hidden="true">✓</p><h2 id="lesson-completion-title"></h2><p data-completion-detail></p><div class="dialog-actions"><button data-completion-resume class="primary">Продолжить</button><button data-completion-catalog class="primary">К урокам</button><button data-completion-repeat>Повторить</button></div>';
+      document.body.append(completionDialog);
+    }
+    completionDialog.querySelector('h2').textContent=title;
+    completionDialog.querySelector('[data-completion-detail]').textContent=detail;
+    completionDialog.querySelector('.lesson-completion-mark').textContent=resume?'…':'✓';
+    const next=completionDialog.querySelector('[data-completion-resume]');next.hidden=!resume;
+    next.onclick=()=>{dismissCompletion();resume?.()};
+    completionDialog.querySelector('[data-completion-repeat]').onclick=()=>{dismissCompletion();repeat()};
+    completionDialog.querySelector('[data-completion-catalog]').onclick=()=>{
+      dismissCompletion();
+      if(parent!==window)parent.postMessage({type:'CBT_RETURN_TO_CATALOG'},location.origin);
+      else location.assign(new URL('../',location.href).href+'#cbt');
+    };
+    if(!completionDialog.open)completionDialog.showModal();
+  }
+  window.CBTPlayerLayout={fit,fullscreen,complete,dismissCompletion};
 })();

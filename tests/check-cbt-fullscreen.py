@@ -122,7 +122,8 @@ with sync_playwright() as p:
     try:
         page.goto(origin + '#cbt', wait_until='commit')
         page.locator('#cbt-search').wait_for(timeout=120000)
-        assert page.locator('.cbt-topic').count() == 632
+        expected = page.evaluate("window.CBTQuestionBanks?CBT_COURSE.groups.flatMap(g=>CBTQuestionBanks.entries(CBT_COURSE,g)).length:CBT_COURSE.topics.length")
+        assert page.locator('.cbt-topic').count() == expected
         iframe, frame, engine = open_lesson(page)
         before = frame.evaluate('name=>({current:window[name].current,index:window[name].state.index})', engine)
         old_box = iframe.bounding_box()

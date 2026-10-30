@@ -19,7 +19,10 @@ modules = {'cbt-library.js': 'library.js', 'cbt-style.css': 'style.css',
            'cbt/player-layout.js': 'player-layout.js', 'cbt/player.css': 'player.css',
            'cbt/player.js': 'player.js', 'cbt/course-player.js': 'course-player.js'}
 changed = {url: (SOURCE / name).read_bytes() for url, name in modules.items()}
-tag = 'cbt-fullscreen-' + digest(b''.join(changed.values()))[:12]
+shared = (SOURCE / 'question-banks.js').read_bytes()
+for url in ['cbt-library.js', 'cbt/course-player.js']:
+    changed[url] = shared + b'\n' + changed[url]
+tag = 'cbt-questions-' + digest(b''.join(changed.values()))[:12]
 index = (PUBLIC / 'index.html').read_text()
 for url in ['cbt-library.js', 'cbt-style.css']:
     index, count = re.subn(r'(' + re.escape(url) + r')(?:\?v=[^"\s]+)?(?=")',
@@ -47,7 +50,7 @@ for row in inventory['assets']:
         seen.add(row['url'])
 assert seen == set(changed)
 inventory['totalBytes'] = sum(row['size'] for row in inventory['assets'])
-inventory['version'] = 'github-cbt-fullscreen-' + digest(json.dumps(inventory['assets'], sort_keys=True).encode())[:20]
+inventory['version'] = 'github-cbt-questions-' + digest(json.dumps(inventory['assets'], sort_keys=True).encode())[:20]
 worker = (PUBLIC / 'sw.js').read_text()
 for key, value in [('VERSION', inventory['version']), ('ASSETS', inventory['assets'])]:
     worker, count = re.subn(r'^const ' + key + r' = .*;$',

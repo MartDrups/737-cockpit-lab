@@ -1,7 +1,9 @@
 'use strict';
 (() => {
  const $=id=>document.getElementById(id),audio=$('narration'),root=new URL('../',location.href);
- const item=window.CBT_COURSE.topics.find(t=>t.id===new URLSearchParams(location.search).get('lesson'));
+ const banks=window.CBTQuestionBanks;
+ const item=banks.find(window.CBT_COURSE,new URLSearchParams(location.search).get('lesson'));
+ const spriteSession=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
  const url=path=>new URL(path,root).href,escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  let lesson,scene,index=0,token=0,started=false,paused=false,blocked=false,heard=false,zoom=1,clipIndex=0,timer=null,remaining=0,timerAt=0,scheduled=null,startTime=0,pauseTime=0,dialogPaused=false;
  let saved={};const storage='737-cbt-course-'+(item?.id||'unknown');try{saved=JSON.parse(localStorage.getItem(storage)||'{}')}catch{}
@@ -28,7 +30,7 @@
   if(actor.composition){image=document.createElement('canvas')}
   else if(actor.symbol){
    image=document.createElementNS('http://www.w3.org/2000/svg','svg');image.setAttribute('viewBox',actor.viewBox);image.setAttribute('preserveAspectRatio','none');
-   const use=document.createElementNS('http://www.w3.org/2000/svg','use');use.setAttribute('href',url(actor.file)+'#'+actor.symbol);
+   const use=document.createElementNS('http://www.w3.org/2000/svg','use');use.setAttribute('href',url(actor.file)+(item.questionBank?'?cbt-view='+spriteSession+'-'+current:'')+'#'+actor.symbol);
    // A symbol creates its own viewport. Place that viewport at the original
    // PIG origin so the parent's viewBox does not translate artwork twice.
    const [x,y,w,h]=actor.viewBox.split(/\s+/).map(Number);for(const [key,value] of Object.entries({x,y,width:w,height:h}))use.setAttribute(key,value);image.append(use);
@@ -164,13 +166,18 @@
  }
  function enter(nextIndex){
   if(nextIndex<0||nextIndex>=lesson.scenes.length)return;
+  window.CBTPlayerLayout.dismissCompletion();
   const carried=new Map(),carryAll=!!(scene?.sourceSequence&&lesson.scenes[nextIndex].sourceSequence&&lesson.scenes[nextIndex].sourceStateScope!=='independent-root'&&nextIndex===index+1);
   if(carryAll)$('scene-layers').querySelectorAll('[data-actor]').forEach(e=>carried.set(e.dataset.actor,e));
   else if(scene&&nextIndex===index+1)lesson.scenes[nextIndex].layers.forEach(a=>{if(a.movie&&movieControllers.has(a.id)){const e=$('scene-layers').querySelector('[data-actor="'+a.id+'"]');if(e)carried.set(a.id,e)}});
   token++;renderPending=false;renderResume=false;clear(new Set(carried.keys()));index=nextIndex;scene=lesson.scenes[index];blocked=false;paused=false;heard=false;selected=new Set();appliedOperations=new Set();queuedOperations=scene.sourceSequence?[]:[...(scene.operations||[])];postStarted=false;clipIndex=0;startTime=performance.now();sequenceIndex=0;waitingForAudio=false;waitingForUser=false;sequenceDone=false;activeClip=null;audioActive=false;exerciseReady=!scene.sourceSequence;
   $('media-error').hidden=true;$('enable-audio').hidden=true;$('completion').hidden=true;$('scene-layers').replaceChildren();$('hotspots').replaceChildren();$('exercise-actions').replaceChildren();$('selections').replaceChildren();
   if(carryAll)carried.forEach(e=>$('scene-layers').append(e));else scene.layers.forEach(a=>draw(a,carried.get(a.id)));
-  movieControllers.forEach(m=>m.resume());labels();$('section-title').textContent=(lesson.sourceVariant?lesson.sourceVariant.label+' · ':'')+(scene.sectionTitle||item.title);$('scene-counter').textContent=`${index+1} / ${lesson.scenes.length}`;$('next').disabled=true;$('back').disabled=index===0;$('pause').textContent='Пауза';$('pause').setAttribute('aria-pressed','false');
+  movieControllers.forEach(m=>m.resume());labels();$('section-title').textContent=(lesson.sourceVariant?lesson.sourceVariant.label+' · ':'')+(scene.sectionTitle||item.title);
+  const question=scene.bankQuestion;
+  $('scene-counter').textContent=question?`Вопрос ${question.number} из ${question.total} · ${question.variant?'Вариант '+question.variant:'Экран '+question.screen+' / '+question.screens}`:`${index+1} / ${lesson.scenes.length}`;
+  $('next').textContent=index+1===lesson.scenes.length?(item.questionBank?'Завершить проверку':'Завершить урок'):question&&question.screen===question.screens?'Следующий вопрос →':'Продолжить →';
+  $('next').disabled=true;$('back').disabled=index===0;$('pause').textContent='Пауза';$('pause').setAttribute('aria-pressed','false');
   $('instruction').textContent=scene.exercise?.instruction||'Слушайте оригинальное пояснение.';$('scene-note').hidden=!scene.note;$('scene-note').textContent=scene.note||'';
   if(scene.exercise?.supported){
    scene.exercise.targets.forEach((t,i)=>{
@@ -192,9 +199,17 @@
   }
   if(scene.exercise?.kind==='explore'){completed.add(scene.id);persist();afterNarration()}
   if(scene.exercise?.supported&&!completed.has(scene.id))return;
-  if(index+1<lesson.scenes.length)enter(index+1);else{
-   clear();saved.finished=visited.size===lesson.scenes.length&&lesson.scenes.filter(s=>s.exercise?.supported).every(s=>completed.has(s.id));persist();state('Урок завершён');$('completion').hidden=false;menu();parent.postMessage({type:'CBT_LESSON_COMPLETE',id:item.id},location.origin);
-  }
+  if(index+1<lesson.scenes.length)enter(index+1);else finish();
+ }
+ function finish(){
+  clear();saved.finished=visited.size===lesson.scenes.length&&lesson.scenes.filter(s=>s.exercise?.supported).every(s=>completed.has(s.id));
+  const full=saved.finished,title=full?(item.questionBank?'Проверка завершена':'Урок завершён'):(item.questionBank?'Есть непройденные вопросы':'Есть непройденные сцены');
+  persist();state(title);$('completion').hidden=false;$('completion').querySelector('h2').textContent=title;menu();
+  const missing=lesson.scenes.findIndex(s=>!visited.has(s.id)||s.exercise?.supported&&!completed.has(s.id));
+  window.CBTPlayerLayout.complete({title,
+   detail:full?(item.questionBank?'Все вопросы раздела пройдены. Прогресс сохранён.':'Прогресс сохранён. Можно перейти к следующему уроку.'):'Пройдите оставшиеся сцены и задания, чтобы завершить '+(item.questionBank?'проверку.':'урок.'),
+   repeat:()=>start(true),resume:full?null:()=>enter(Math.max(0,missing))});
+  if(full)parent.postMessage({type:'CBT_LESSON_COMPLETE',id:item.id},location.origin);
  }
  function pause(value){
   if(!started||paused===value)return;paused=value;
@@ -231,10 +246,22 @@
  $('zoom-in').onclick=()=>{zoom=Math.min(3,zoom+.5);fit()};$('zoom-out').onclick=()=>{zoom=Math.max(1,zoom-.5);fit()};$('zoom-fit').onclick=()=>{zoom=1;fit()};$('fullscreen').onclick=()=>window.CBTPlayerLayout.fullscreen();
  audio.onended=voiceEnded;audio.onerror=()=>{if(started&&(scene.audio?.length||activeClip)&&settings.audio)error('Озвучка не загружена. Завершите сохранение урока или повторите с интернетом.')};
  function start(reset=false){if(reset){visited.clear();completed.clear();saved={};settings.audio=true;settings.text=true}started=true;$('loading').hidden=true;$('lesson').hidden=false;$('lesson-speed').value=settings.speed;enter(reset?0:Math.min(saved.index||0,lesson.scenes.length-1))}
- $('start-lesson').onclick=()=>start();$('restart-lesson').onclick=()=>start(true);$('review-lesson').onclick=()=>start(true);document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(true)});addEventListener('pagehide',()=>{persist();clear()});
+ $('start-lesson').onclick=()=>start(!!saved.finished);$('restart-lesson').onclick=()=>start(true);$('review-lesson').onclick=()=>start(true);document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(true)});addEventListener('pagehide',()=>{if(started)persist();clear()});
  if(!item||item.player==='intro'){$('load-error').textContent='Такого урока нет в каталоге.';$('load-error').hidden=false;return}
- $('lesson-title').textContent=item.title;fetch(url(item.manifest)).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(data=>{
-  lesson=data;lesson.glossary=lesson.glossary||[];$('lesson-progress').max=lesson.scenes.length;$('load-message').textContent=`Материалы готовы: ${lesson.scenes.length} сцен. `+(lesson.sourceMode==='test'?'Исходные варианты вопросов доступны для тренировки; экзаменационная оценка не рассчитывается.':'Управляйте показанными органами и выполняйте инструкции.');if(lesson.restorationNotice)$('load-message').textContent+=' '+lesson.restorationNotice;$('start-lesson').disabled=false;$('start-lesson').textContent=saved.index?'Продолжить урок':'Начать урок';$('restart-lesson').hidden=!saved.index;state('Готов к запуску');
+ const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'null')}catch{return null}};
+ const fetchLesson=topic=>fetch(url(topic.manifest)).then(r=>{if(!r.ok)throw new Error();return r.json()});
+ const loading=item.questionBank?Promise.all(banks.parts(window.CBT_COURSE,item).map(fetchLesson)).then(parts=>banks.compose(item,parts)):fetchLesson(item);
+ $('lesson-title').textContent=item.title;loading.then(data=>{
+  lesson=data;lesson.glossary=lesson.glossary||[];
+  if(item.questionBank){
+   const previous=banks.restore(item,lesson,read);Object.assign(saved,previous);Object.assign(settings,previous.settings||{});Object.assign(comments,previous.comments||{});
+   (previous.visited||[]).forEach(id=>visited.add(id));(previous.completed||[]).forEach(id=>completed.add(id));
+  }
+  $('lesson-progress').max=lesson.scenes.length;
+  $('load-message').textContent=item.questionBank?`${item.questionCount} вопросов · ${lesson.scenes.length} исходных экранов. Проходите их подряд; прогресс сохраняется на этом устройстве.`:`Материалы готовы: ${lesson.scenes.length} сцен. `+(lesson.sourceMode==='test'?'Исходные варианты вопросов доступны для тренировки; экзаменационная оценка не рассчитывается.':'Управляйте показанными органами и выполняйте инструкции.');
+  if(lesson.restorationNotice)$('load-message').textContent+=' '+lesson.restorationNotice;
+  $('start-lesson').disabled=false;$('start-lesson').textContent=saved.finished?(item.questionBank?'Повторить проверку':'Повторить урок'):saved.index?(item.questionBank?'Продолжить проверку':'Продолжить урок'):item.questionBank?'Начать проверку':'Начать урок';
+  $('restart-lesson').hidden=!saved.index;state('Готов к запуску');
   window.CBTCourseNative={get current(){return scene?.id},get state(){return {index,paused,heard,blocked,exerciseReady,waitingForUser,waitingForAudio,sequenceIndex,visited:[...visited],completed:[...completed],settings,finished:!!saved.finished,movies:Object.fromEntries([...movieControllers].map(([id,m])=>[id,{frame:m.frame,...m.snapshot}]))}},get lesson(){return lesson},goTo:id=>enter(lesson.scenes.findIndex(s=>s.id===id))};
  }).catch(()=>{$('load-error').textContent='Урок не загружен. Подключитесь к интернету или вернитесь в каталог и сохраните этот урок целиком.';$('load-error').hidden=false;state('Материал не загружен')});
 })();
