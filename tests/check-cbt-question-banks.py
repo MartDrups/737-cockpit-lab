@@ -106,7 +106,16 @@ def complete_bank(frame):
 
 def assert_dialog(frame, title):
     modal = frame.locator('#lesson-completion-dialog')
-    modal.wait_for(state='visible', timeout=30000)
+    try:
+        modal.wait_for(state='visible', timeout=30000)
+    except Exception:
+        print('Completion state:', frame.evaluate('''() => ({
+          state:window.CBTNative?.state||window.CBTCourseNative?.state,
+          status:document.querySelector('#player-state')?.textContent,
+          error:document.querySelector('#media-error')?.textContent,
+          video:[...document.querySelectorAll('video')].map(v=>({error:v.error?.message,ready:v.readyState,src:v.currentSrc}))
+        })'''), flush=True)
+        raise
     actual = modal.get_by_role('heading').inner_text()
     assert actual == title, (actual, title)
     dims = modal.evaluate('''e=>{const r=e.getBoundingClientRect();return {top:r.top,bottom:r.bottom,left:r.left,right:r.right,w:innerWidth,h:innerHeight}}''')
@@ -119,7 +128,7 @@ with tempfile.TemporaryDirectory(prefix='737-question-banks-') as profile:
         launch = {'headless': True, 'viewport': {'width': 1180, 'height': 820},
                   'is_mobile': True, 'has_touch': True, 'ignore_https_errors': False}
         if options.browser == 'chromium':
-            launch.update(executable_path=shutil.which('chromium'), args=['--no-sandbox'])
+            launch.update(executable_path=shutil.which('chromium') or shutil.which('google-chrome'), args=['--no-sandbox'])
         if options.url and os.environ.get('HTTPS_PROXY'):
             launch['proxy'] = {'server': os.environ['HTTPS_PROXY']}
         browser_type = getattr(p, options.browser)
@@ -211,6 +220,7 @@ with tempfile.TemporaryDirectory(prefix='737-question-banks-') as profile:
             page.evaluate('data=>localStorage.setItem("737-cbt-intro-native-v2",JSON.stringify(data))', saved)
             intro = context.new_page()
             watch(intro)
+            intro.bring_to_front()
             intro.goto(origin + 'cbt/player.html', wait_until='commit')
             intro.locator('#fullscreen').tap()
             intro.locator('#start-lesson').tap(timeout=60000)

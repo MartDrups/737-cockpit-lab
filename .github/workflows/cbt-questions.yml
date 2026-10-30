@@ -17,6 +17,10 @@ jobs:
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, webkit]
     steps:
       - uses: actions/checkout@v6
         with:
@@ -31,17 +35,15 @@ jobs:
       - name: Install browser checks
         run: |
           python -m pip install playwright
-          python -m playwright install --with-deps chromium webkit
+          python -m playwright install --with-deps ${{ matrix.browser }}
       - name: Check grouped questions and completion
         env:
           CHECK_PUBLIC: ${{ github.event_name == 'workflow_run' || github.event_name == 'workflow_dispatch' }}
         run: |
           if [ "$CHECK_PUBLIC" = true ]; then
-            python tests/check-cbt-question-banks.py --browser chromium --url https://martdrups.github.io/737-cockpit-lab/ --output artifacts/questions-chromium
-            python tests/check-cbt-question-banks.py --browser webkit --url https://martdrups.github.io/737-cockpit-lab/ --output artifacts/questions-webkit
+            python tests/check-cbt-question-banks.py --browser ${{ matrix.browser }} --url https://martdrups.github.io/737-cockpit-lab/ --output artifacts/questions-${{ matrix.browser }}
           else
-            python tests/check-cbt-question-banks.py --browser chromium --output artifacts/questions-chromium
-            python tests/check-cbt-question-banks.py --browser webkit --output artifacts/questions-webkit
+            python tests/check-cbt-question-banks.py --browser ${{ matrix.browser }} --output artifacts/questions-${{ matrix.browser }}
           fi
       - name: Print verification reports
         if: always()
@@ -55,6 +57,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cbt-question-bank-checks
+          name: cbt-question-bank-checks-${{ matrix.browser }}
           path: artifacts/questions-*
           retention-days: 7
