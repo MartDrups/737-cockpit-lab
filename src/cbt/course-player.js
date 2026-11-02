@@ -55,9 +55,18 @@
   }
   if(operation.kind==='move'){
    const element=$('scene-layers').querySelector('[data-actor="'+operation.id+'"]');if(!element)return;
-   const points=operation.path?.length?operation.path:[{x:parseFloat(element.style.left),y:parseFloat(element.style.top)},operation.destination];
+   // A preceding movement can still own the displayed position through its
+   // fill effect. Read that position before cancelling it, including mid-flight.
+   const current=getComputedStyle(element),left=current.left,top=current.top;
+   element._sourceMotion?.cancel();element.style.left=left;element.style.top=top;
+   const points=operation.path?.length?operation.path:[{x:parseFloat(left),y:parseFloat(top)},operation.destination];
    const keyframes=operation.keyframes||points.map(p=>({left:p.x+'px',top:p.y+'px'}));
-   element.animate(keyframes,{duration:operation.duration*1000,fill:'forwards',easing:'linear'});
+   const motion=element.animate(keyframes,{duration:operation.duration*1000,fill:'forwards',easing:'linear'});element._sourceMotion=motion;
+   motion.onfinish=()=>{
+    if(element._sourceMotion!==motion)return;
+    const end=getComputedStyle(element);element.style.left=end.left;element.style.top=end.top;
+    motion.cancel();element._sourceMotion=null;
+   };
   }
  }
  function operations(){

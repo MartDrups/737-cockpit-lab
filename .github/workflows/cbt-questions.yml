@@ -2,7 +2,7 @@ name: Check CBT question banks
 
 on:
   push:
-    branches: [feat/cbt-question-banks-20261030]
+    branches: [feat/cbt-question-banks-20261030, cbt-fidelity-20261102]
   workflow_run:
     workflows: [Publish 737 Cockpit Lab copy]
     types: [completed]
@@ -34,7 +34,7 @@ jobs:
           sha256sum --check --quiet PUBLIC_SHA256SUMS
       - name: Install browser checks
         run: |
-          python -m pip install playwright
+          python -m pip install playwright pillow
           python -m playwright install --with-deps ${{ matrix.browser }}
       - name: Check grouped questions and completion
         env:
@@ -53,10 +53,21 @@ jobs:
           for report in Path('artifacts').glob('questions-*/questions.json'):
               print(report.parent.name, report.read_text())
           PY
+      - name: Check original movement geometry and pause
+        run: python tests/check-cbt-fidelity.py --browser ${{ matrix.browser }} --output artifacts/fidelity-${{ matrix.browser }}
+      - name: Compare every lossless movie frame
+        run: python tests/check-cbt-movie-frames.py --browser ${{ matrix.browser }} --output artifacts/movie-frames-${{ matrix.browser }}
+      - name: Decode and audit the complete CBT delivery
+        if: matrix.browser == 'chromium'
+        run: python scripts/audit-cbt.py --output artifacts/cbt-asset-audit
       - name: Save browser evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cbt-question-bank-checks-${{ matrix.browser }}
-          path: artifacts/questions-*
+          path: |
+            artifacts/questions-*
+            artifacts/fidelity-*
+            artifacts/movie-frames-*
+            artifacts/cbt-asset-audit
           retention-days: 7

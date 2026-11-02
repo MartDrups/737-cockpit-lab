@@ -1,6 +1,6 @@
 {
-  "version": "github-cbt-questions-ce1d93382163ada69ec6",
-  "totalBytes": 165592262,
+  "version": "github-cbt-fidelity-e17d032cc8ea33a32824",
+  "totalBytes": 165592806,
   "shell": [
     "index.html",
     "manifest.webmanifest",
@@ -61,8 +61,8 @@
   "assets": [
     {
       "url": "index.html",
-      "size": 9229,
-      "revision": "cab0860bcfb62fd382766f103529f3c44a473f602e0b3150fcf80df64cebc4d7"
+      "size": 9227,
+      "revision": "071d477222ce647366ab6f4816aa440cc0b35d276c6196e546622792ee42da5f"
     },
     {
       "url": "manifest.webmanifest",
@@ -291,8 +291,8 @@
     },
     {
       "url": "cbt/player.html",
-      "size": 5991,
-      "revision": "bbae32067d2ad3068f79d1bc37fc3ba2f721855efe732e7f8dcba9135945a821"
+      "size": 5988,
+      "revision": "3341b446e1d161739b621abfe068dd7a6cba06eaecc5479ad5e31927efe89feb"
     },
     {
       "url": "cbt/player.css",
@@ -316,13 +316,13 @@
     },
     {
       "url": "cbt/course-player.html",
-      "size": 5813,
-      "revision": "7830fb81785a7ec25e3ecc356f527b7c80577e7d88815a068290ca5dd2dfcfde"
+      "size": 5810,
+      "revision": "b2c0f712f8d57247e2ee225c56a5800a4f52df9fb0092642583d90e17259ef13"
     },
     {
       "url": "cbt/course-player.js",
-      "size": 33562,
-      "revision": "7b12449fd012ab47cc46b0cf527133fd9e8f9464ff635935cc57374a425951df"
+      "size": 34114,
+      "revision": "b9d5771de464b5b47cafd4d3fb8de4d409cbcc780a20f2419b378a58ce522a52"
     },
     {
       "url": "cbt/course-movies.js",
