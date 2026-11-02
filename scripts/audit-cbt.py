@@ -14,6 +14,7 @@ import io
 import json
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import xml.etree.ElementTree as ET
 from PIL import Image
@@ -25,6 +26,8 @@ ap.add_argument('--output', type=Path, required=True)
 ap.add_argument('--media-cache', type=Path)
 ap.add_argument('--workers', type=int, default=6)
 args = ap.parse_args()
+if not shutil.which('ffmpeg'):
+    ap.error('FFmpeg is required for a complete audio/video decode; install ffmpeg first.')
 args.output.mkdir(parents=True, exist_ok=True)
 report = {'checkedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
           'errors': [], 'unresolvedDynamicFields': [], 'untranslatedResponses': [],

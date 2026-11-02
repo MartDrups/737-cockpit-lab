@@ -59,7 +59,10 @@ jobs:
         run: python tests/check-cbt-movie-frames.py --browser ${{ matrix.browser }} --output artifacts/movie-frames-${{ matrix.browser }}
       - name: Decode and audit the complete CBT delivery
         if: matrix.browser == 'chromium'
-        run: python scripts/audit-cbt.py --output artifacts/cbt-asset-audit
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          python scripts/audit-cbt.py --output artifacts/cbt-asset-audit
       - name: Save browser evidence
         if: always()
         uses: actions/upload-artifact@v4
