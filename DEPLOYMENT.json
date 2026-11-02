@@ -1,12 +1,12 @@
 {
   "url": "https://martdrups.github.io/737-cockpit-lab/",
   "repository": "https://github.com/MartDrups/737-cockpit-lab",
-  "publishedCommit": "97fdced85beae82a9b246b07714f93117471225a",
-  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/41036170398",
+  "publishedCommit": "6a9d06d7f87fa461ea20ccc85733096fd7854fbb",
+  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/41504768458",
   "workflowResult": "success",
-  "version": "github-cbt-questions-ce1d93382163ada69ec6",
+  "version": "github-cbt-fidelity-e17d032cc8ea33a32824",
   "websiteFiles": 8665,
-  "websiteBytes": 261570983,
+  "websiteBytes": 261571175,
   "originalUrl": "https://737cockpitlab.pages.dev",
   "originalUnchanged": true,
   "publicBrowsers": {
@@ -752,5 +752,254 @@
       "chromiumCIReason": "Installed Chrome supports the original H.264 ending video; the runner Chromium build does not."
     },
     "offlineVerification": "One action downloads all nine original electrical-question packs. Both browsers resume and finish after a cold restart locally (WebKit origin stopped); published-site checks disable network in the existing context. No full-core redownload performed."
+  },
+  "cbtFidelity": {
+    "revision": "cbt-fidelity-2026-11-02",
+    "checkedAt": "2026-11-02T18:59:00.112029+00:00",
+    "publishedCommit": "6a9d06d7f87fa461ea20ccc85733096fd7854fbb",
+    "version": "github-cbt-fidelity-e17d032cc8ea33a32824",
+    "report": "CBT_FIDELITY.md",
+    "fixed": "Repeated movement now starts from the displayed position, commits its endpoint and releases the completed animation.",
+    "regressionReproducedBeforeFix": true,
+    "lessonDataAudioAndGraphicsUnchanged": true,
+    "nativeOriginalProgramAvailable": false,
+    "nativeFunctionalEquivalenceVerified": false,
+    "copies": {
+      "cloudflareVersion": "114c16358cdcbe23edca",
+      "cloudflareCBTAssets": 222,
+      "githubCBTAssets": 222,
+      "onlyCloudflare": [],
+      "onlyGithub": [],
+      "changed": [
+        "cbt/course-player.html",
+        "cbt/course-player.js",
+        "cbt/player-layout.js",
+        "cbt/player.css",
+        "cbt/player.html",
+        "cbt/player.js"
+      ],
+      "cloudflareCourseAssets": 7891,
+      "githubCourseAssets": 7891,
+      "onlyCloudflareCourse": [],
+      "onlyGithubCourse": [],
+      "changedCourse": [],
+      "packManifestByteIdentical": true
+    },
+    "physicalAudit": {
+      "checkedAt": "2026-11-02T18:47:14.087148+00:00",
+      "errors": 0,
+      "unresolvedDynamicFields": 500,
+      "untranslatedResponses": 326,
+      "unprovedMovies": 267,
+      "unprovedMovieRanges": 1,
+      "inventoryAssets": 8113,
+      "files": 8116,
+      "physicalBytes": 209273242,
+      "types": {
+        ".wav": 95,
+        ".mp3": 6303,
+        ".svg": 763,
+        ".png": 289,
+        ".json": 632,
+        ".js": 5,
+        ".html": 4,
+        ".txt": 1,
+        ".css": 1,
+        ".mp4": 23
+      },
+      "lessonManifests": 631,
+      "scenes": 7389,
+      "uniqueReferences": 7471,
+      "missingReferences": 0,
+      "symbolReferences": 75648,
+      "svgFiles": 763,
+      "movieInstances": 1114,
+      "movieAtlases": 192,
+      "movieFrames": 3840,
+      "mediaFiles": 6421,
+      "mediaErrors": 0,
+      "passedPhysicalAssets": true,
+      "fileManifestSHA256": "39cd4836ea7660a102d47311727474568f6721a09eb68c7d8f66d7bbad4c1fea"
+    },
+    "prepublicationWorkflow": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/41503876855",
+    "publicQuestionWorkflow": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/41504901921",
+    "publicFullscreenWorkflow": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/41504901886",
+    "browsers": {
+      "chromium": {
+        "motion": {
+          "browser": "chromium",
+          "checks": [
+            "VOR LOC arrow carries its completed position into the next movement",
+            "interrupting a movement preserves its displayed position",
+            "pause freezes motion; resume reaches exact source endpoint without accumulating animations",
+            "replay restores source geometry"
+          ],
+          "errors": [],
+          "allMovements": {
+            "checked": 914,
+            "failures": []
+          },
+          "missingSourceActors": [
+            {
+              "scene": "224a17i/F-3.4",
+              "actor": "574"
+            },
+            {
+              "scene": "fo4b01i/F-1.2",
+              "actor": "55"
+            },
+            {
+              "scene": "fo5b01i/F-2.8",
+              "actor": "497"
+            },
+            {
+              "scene": "348c13i/F-4.4",
+              "actor": "758"
+            }
+          ]
+        },
+        "movieFrames": {
+          "movieDefinitions": 290,
+          "atlasLayouts": 192,
+          "frames": 3840,
+          "playbackChecks": 1183,
+          "failures": [],
+          "browser": "chromium"
+        },
+        "publicActualVOR": {
+          "browser": "chromium",
+          "url": "https://martdrups.github.io/737-cockpit-lab/",
+          "realScenes": [
+            "F-3.3",
+            "F-3.4",
+            "F-3.5"
+          ],
+          "start": {
+            "offset": null,
+            "easing": "linear",
+            "composite": "auto",
+            "top": "128px",
+            "left": "930px",
+            "computedOffset": 0
+          },
+          "endpoint": {
+            "left": "512px",
+            "top": "132px"
+          },
+          "phoneOverflow": false,
+          "errors": []
+        }
+      },
+      "webkit": {
+        "motion": {
+          "browser": "webkit",
+          "checks": [
+            "VOR LOC arrow carries its completed position into the next movement",
+            "interrupting a movement preserves its displayed position",
+            "pause freezes motion; resume reaches exact source endpoint without accumulating animations",
+            "replay restores source geometry"
+          ],
+          "errors": [],
+          "allMovements": {
+            "checked": 914,
+            "failures": []
+          },
+          "missingSourceActors": [
+            {
+              "scene": "224a17i/F-3.4",
+              "actor": "574"
+            },
+            {
+              "scene": "fo4b01i/F-1.2",
+              "actor": "55"
+            },
+            {
+              "scene": "fo5b01i/F-2.8",
+              "actor": "497"
+            },
+            {
+              "scene": "348c13i/F-4.4",
+              "actor": "758"
+            }
+          ]
+        },
+        "movieFrames": {
+          "movieDefinitions": 290,
+          "atlasLayouts": 192,
+          "frames": 3840,
+          "playbackChecks": 1183,
+          "failures": [],
+          "browser": "webkit"
+        },
+        "publicActualVOR": {
+          "browser": "webkit",
+          "url": "https://martdrups.github.io/737-cockpit-lab/",
+          "realScenes": [
+            "F-3.3",
+            "F-3.4",
+            "F-3.5"
+          ],
+          "start": {
+            "composite": "auto",
+            "easing": "linear",
+            "offset": null,
+            "computedOffset": 0,
+            "left": "930px",
+            "top": "128px"
+          },
+          "endpoint": {
+            "left": "512px",
+            "top": "132px"
+          },
+          "phoneOverflow": false,
+          "errors": []
+        }
+      }
+    },
+    "upgrade": {
+      "browser": "chromium",
+      "before": {
+        "version": "github-cbt-fidelity-e17d032cc8ea33a32824",
+        "hash": "7b12449fd012ab47cc46b0cf527133fd9e8f9464ff635935cc57374a425951df"
+      },
+      "after": {
+        "version": "github-cbt-fidelity-e17d032cc8ea33a32824",
+        "hash": "b9d5771de464b5b47cafd4d3fb8de4d409cbcc780a20f2419b378a58ce522a52",
+        "current": "F-3.5",
+        "saved": {
+          "index": 12,
+          "visited": [
+            "F-3.3",
+            "F-3.4",
+            "F-3.5"
+          ],
+          "completed": [
+            "F-3.3"
+          ],
+          "settings": {
+            "audio": false,
+            "text": true,
+            "speed": "normal"
+          },
+          "comments": {
+            "F-3.5": "CBT fidelity upgrade verification"
+          },
+          "finished": false,
+          "movies": {}
+        }
+      },
+      "oldCachedCodeHashMatched": true,
+      "progressNotesAndSettingsPreserved": true
+    },
+    "publicHashesMatched": {
+      "sw.js": "d266bed524a6f06ca49f028389758daa001bab924ea0e7c1e9c7c94651738d66",
+      "cbt/course-player.js.gz": "132e0fedbf00d9fb965ecab91086b59fa3083a7e39697de9dfb6a6eb34b8a3de",
+      "cbt/course-player.html": "b2c0f712f8d57247e2ee225c56a5800a4f52df9fb0092642583d90e17259ef13"
+    },
+    "tlsVerification": true,
+    "knownMissingLessonUnchanged": "fo1d01i",
+    "publicQuestionWorkflowResult": "success",
+    "publicFullscreenWorkflowResult": "success",
+    "prepublicationWorkflowResult": "success"
   }
 }
