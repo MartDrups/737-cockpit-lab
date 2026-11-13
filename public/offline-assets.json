@@ -1,6 +1,6 @@
 {
-  "version": "github-cbt-fidelity-e17d032cc8ea33a32824",
-  "totalBytes": 165592806,
+  "version": "github-cbt-continuous-1bad8411c0a677275cc4",
+  "totalBytes": 165601945,
   "shell": [
     "index.html",
     "manifest.webmanifest",
@@ -61,8 +61,8 @@
   "assets": [
     {
       "url": "index.html",
-      "size": 9227,
-      "revision": "071d477222ce647366ab6f4816aa440cc0b35d276c6196e546622792ee42da5f"
+      "size": 9231,
+      "revision": "96db6f8975e5ad02fdc13d79816c723463d2c596b1f1788d0bb62e161c6d9d2d"
     },
     {
       "url": "manifest.webmanifest",
@@ -91,8 +91,8 @@
     },
     {
       "url": "cbt-library.js",
-      "size": 19905,
-      "revision": "77ed34f738b038804061cf6a8b26bab25cef73279638caf026cb0e327611c6d8"
+      "size": 22790,
+      "revision": "6a58506f432b8c5fa9f49a9d5a8e0e6bbba50f746147ad576aa87249611c216b"
     },
     {
       "url": "cbt-style.css",
@@ -291,23 +291,23 @@
     },
     {
       "url": "cbt/player.html",
-      "size": 5988,
-      "revision": "3341b446e1d161739b621abfe068dd7a6cba06eaecc5479ad5e31927efe89feb"
+      "size": 5994,
+      "revision": "81b357e159428c72bc5cc7cdab8ce626e8e980e39b4fcfc9d0141a7490b48fd5"
     },
     {
       "url": "cbt/player.css",
-      "size": 8748,
-      "revision": "7278d04932656d0b12a68b5debbf5666bb0012fdfb620b4d432f9b381af3527b"
+      "size": 9679,
+      "revision": "5483c90bceab0da8f872c90bde6563778d2723b039bd904e8286baefa2c3a40c"
     },
     {
       "url": "cbt/player-layout.js",
-      "size": 4978,
-      "revision": "1121a6b51771deaa6aefd37bb6b85f33371d82ee7d872ad8180617be8c7c99f7"
+      "size": 9885,
+      "revision": "3938490fe0df4b97e09f8e7b040b9cde12207d5cceec6038f43cfdf3dd497921"
     },
     {
       "url": "cbt/player.js",
-      "size": 23567,
-      "revision": "358098f827fa70f46267a35d1d6a95428d23ad31cdd168bc9a6be741d05b2815"
+      "size": 23690,
+      "revision": "42f6f9cd493e07845a6d8c39f8e0c78bb38d514f61245af48ef0b451fd18a4dc"
     },
     {
       "url": "cbt/lesson.json",
@@ -316,13 +316,13 @@
     },
     {
       "url": "cbt/course-player.html",
-      "size": 5810,
-      "revision": "b2c0f712f8d57247e2ee225c56a5800a4f52df9fb0092642583d90e17259ef13"
+      "size": 5816,
+      "revision": "fc8d1a0e647990f4d8be383f2c4ffabee09b3a5cb124a595ad94b0ec2caea89d"
     },
     {
       "url": "cbt/course-player.js",
-      "size": 34114,
-      "revision": "b9d5771de464b5b47cafd4d3fb8de4d409cbcc780a20f2419b378a58ce522a52"
+      "size": 34391,
+      "revision": "185e0db5e1f8b981ca9288d68e021c0ca5682bf2e323a69076eaee459b368cb3"
     },
     {
       "url": "cbt/course-movies.js",
