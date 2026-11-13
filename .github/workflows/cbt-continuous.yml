@@ -1,0 +1,108 @@
+name: Check continuous CBT navigation
+
+on:
+  push:
+    branches: [cbt-continuous-20261113]
+  workflow_run:
+    workflows: [Publish 737 Cockpit Lab copy]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/cbt-continuous-20261113'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Build only CBT player modules
+        run: |
+          python scripts/build-cbt.py
+          sha256sum --check --quiet PUBLIC_SHA256SUMS
+          node tests/check-cbt-question-data.cjs
+          node tests/check-cbt-sequence-data.cjs
+          node --check src/cbt/course-navigation.js
+          node --check src/cbt/course-player.js
+          node --check src/cbt/player-layout.js
+          python -m py_compile tests/check-cbt-continuous.py
+          git diff --exit-code -- public/cbt/course public/cbt/lesson.json.gz public/cbt-course-data.js.gz
+      - name: Install browser checks
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium webkit
+      - name: Check navigation in both browsers
+        run: |
+          python tests/check-cbt-continuous.py --browser chromium --output artifacts/continuous-chromium
+          python tests/check-cbt-continuous.py --browser webkit --output artifacts/continuous-webkit
+      - name: Check existing questions, progress and completion
+        run: |
+          python tests/check-cbt-question-banks.py --browser chromium --output artifacts/questions-chromium
+          python tests/check-cbt-question-banks.py --browser webkit --output artifacts/questions-webkit
+      - name: Check fullscreen and mobile layout
+        run: |
+          python tests/check-cbt-fullscreen.py --browser chromium --out artifacts/fullscreen-chromium
+          python tests/check-cbt-fullscreen.py --browser webkit --out artifacts/fullscreen-webkit
+      - name: Commit verified delivery to the working branch
+        run: |
+          git add public PUBLIC_SHA256SUMS
+          if ! git diff --cached --quiet; then
+            git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Build verified continuous CBT navigation"
+            git push origin HEAD:cbt-continuous-20261113
+          fi
+          git rev-parse HEAD | sed 's/^/CBT_BUNDLE_COMMIT=/'
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          inventory=json.loads(Path('public/offline-assets.json').read_text())
+          files=[p for p in Path('public').rglob('*') if p.is_file()]
+          print(json.dumps({'version':inventory['version'],'websiteFiles':len(files),'websiteBytes':sum(p.stat().st_size for p in files)}))
+          PY
+      - name: Save browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cbt-continuous-bundle
+          path: artifacts/
+          retention-days: 7
+
+  published:
+    if: github.event_name != 'push' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, webkit]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Verify delivered files and system ordering
+        run: |
+          sha256sum --check --quiet PUBLIC_SHA256SUMS
+          node tests/check-cbt-sequence-data.cjs
+      - name: Install browser checks
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps ${{ matrix.browser }}
+      - name: Check public lesson navigation
+        run: python tests/check-cbt-continuous.py --browser ${{ matrix.browser }} --url https://martdrups.github.io/737-cockpit-lab/ --output artifacts/continuous-${{ matrix.browser }}
+      - name: Save browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cbt-continuous-public-${{ matrix.browser }}
+          path: artifacts/
+          retention-days: 7

@@ -8,7 +8,7 @@
   let sceneStart = 0, blocked = false, dialogPaused = false, pauseStart = 0, scheduledRun;
   let saved;
   try { saved = JSON.parse(localStorage.getItem(key) || 'null'); } catch {}
-  const settings = {audio: true, text: true, speed: 'normal', ...saved?.settings};
+  const settings = {audio: true, text: true, speed: 'normal', ...saved?.settings, ...window.CBTNavigation.takeSettings('intro')};
   const visited = new Set(saved?.visited || []), completed = new Set(saved?.completed || []);
   const comments = saved?.comments || {};
   let selected = new Set(), choice = saved?.choice || 0, matrix = saved?.matrix || [], wrong = 0;
@@ -350,5 +350,6 @@
     stateText('Готов к запуску');
     narration.src = lesson.scenes[saved?.index || 0]?.audio?.file || '';
     window.CBTNative = {get current(){return scene?.id;},get state(){return {index,paused,heard,blocked,visited:[...visited],completed:[...completed],settings,choice,matrix};},get lesson(){return lesson;},goTo:id=>enter(lesson.scenes.findIndex(s=>s.id===id))};
+    if(new URLSearchParams(location.search).get('autostart')==='1')start();
   }).catch(() => { $('load-message').textContent = 'Не удалось получить материалы урока. Проверьте интернет или завершите загрузку в окне «Приложение».'; $('retry').hidden = false; stateText('Урок не загружен'); });
 })();

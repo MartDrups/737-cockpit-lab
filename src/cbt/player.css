@@ -21,3 +21,13 @@ html.player-expanded{height:100%;overflow:hidden}
 .lesson-completion-dialog h2{margin:8px 0 12px;font-size:27px;line-height:1.2}
 .lesson-completion-dialog .lesson-completion-mark{font:40px/1 sans-serif;color:var(--lime);margin:0}
 .lesson-completion-dialog .dialog-actions{justify-content:center}
+
+/* Keep lesson navigation inside the player in normal and expanded layouts. */
+.lesson-sequence{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--line);flex-shrink:0}
+.lesson-sequence[hidden]{display:none}
+.lesson-sequence p{grid-column:1/-1;margin:0;font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.lesson-sequence button{min-width:0;white-space:normal;overflow-wrap:anywhere;line-height:1.35;text-align:left}
+.lesson-sequence #next-lesson{justify-self:stretch}
+.lesson-completion-dialog [data-completion-next]{white-space:normal;overflow-wrap:anywhere;max-width:100%}
+@media(min-width:700px){.lesson-sequence{grid-template-columns:auto auto minmax(0,1fr)}.lesson-sequence p{grid-column:auto;max-width:32vw}}
+@media(max-width:480px){.lesson-sequence{padding:7px 10px;gap:5px 8px}.lesson-sequence button{font-size:12px;padding:8px 9px}}

@@ -54,14 +54,61 @@
     }
   });
   if(parent!==window)parent.postMessage({type:'CBT_FULLSCREEN',action:'state'},location.origin);
+  if(parent===window&&new URLSearchParams(location.search).get('expanded')==='1')expandedState(true);
+  let navigationState=null,navigationBar=null;
+  function navigateLesson(direction){
+    const destination=navigationState?.[direction];
+    if(!destination)return;
+    const engine=window.CBTCourseNative||window.CBTNative;
+    window.CBTNavigation.handoff(destination.id,engine?.state.settings);
+    if(parent!==window)parent.postMessage({type:'CBT_NAVIGATE_LESSON',direction,currentId:navigationState.currentId},location.origin);
+    else{
+      const nextURL=new URL('../'+window.CBTNavigation.playerURL(destination.id,true),location.href);
+      if(expanded)nextURL.searchParams.set('expanded','1');
+      location.assign(nextURL);
+    }
+  }
+  function navigation(state){
+    navigationState=state;
+    if(!state){if(navigationBar)navigationBar.hidden=true;return}
+    if(!navigationBar){
+      navigationBar=document.createElement('nav');navigationBar.id='lesson-sequence';navigationBar.className='lesson-sequence';
+      navigationBar.setAttribute('aria-label','Уроки текущей системы');
+      navigationBar.innerHTML='<p data-sequence-position></p><button id="previous-lesson">← Предыдущий урок</button><button id="next-lesson">Следующий урок →</button>';
+      document.querySelector('.player-toolbar').after(navigationBar);observer.observe(navigationBar);
+      navigationBar.querySelector('#previous-lesson').onclick=()=>navigateLesson('previous');
+      navigationBar.querySelector('#next-lesson').onclick=()=>navigateLesson('next');
+    }
+    navigationBar.hidden=false;
+    navigationBar.querySelector('[data-sequence-position]').textContent=state.groupTitle+' · '+state.index+' / '+state.total;
+    for(const [id,direction,label]of [['previous-lesson','previous','Предыдущий урок'],['next-lesson','next','Следующий урок']]){
+      const button=navigationBar.querySelector('#'+id),item=state[direction];
+      button.disabled=!item;button.title=item?item.title:direction==='next'?'Последний урок этой системы':'Первый урок этой системы';
+      button.setAttribute('aria-label',item?label+': '+item.title:button.title);
+      button.textContent=item?(direction==='next'?'Далее: '+item.title+' →':'← Предыдущий урок'):direction==='next'?'Последний урок системы':'Первый урок системы';
+    }
+    updateCompletionNext();schedule();
+  }
+  if(parent!==window){
+    addEventListener('message',event=>{
+      if(event.origin===location.origin&&event.source===parent&&event.data?.type==='CBT_SEQUENCE_STATE')navigation(event.data.state);
+    });
+    parent.postMessage({type:'CBT_SEQUENCE_READY'},location.origin);
+  }
   let completionDialog;
+  function updateCompletionNext(){
+    const button=completionDialog?.querySelector('[data-completion-next]');if(!button)return;
+    button.hidden=!navigationState?.next;
+    button.textContent=navigationState?.next?'Следующий урок: '+navigationState.next.title+' →':'Следующий урок';
+    button.onclick=()=>{dismissCompletion();navigateLesson('next')};
+  }
   function dismissCompletion(){if(completionDialog?.open)completionDialog.close()}
   function complete({title,detail,repeat,resume}){
     if(!completionDialog){
       completionDialog=document.createElement('dialog');
       completionDialog.id='lesson-completion-dialog';completionDialog.className='lesson-completion-dialog';
       completionDialog.setAttribute('aria-labelledby','lesson-completion-title');
-      completionDialog.innerHTML='<p class="lesson-completion-mark" aria-hidden="true">✓</p><h2 id="lesson-completion-title"></h2><p data-completion-detail></p><div class="dialog-actions"><button data-completion-resume class="primary">Продолжить</button><button data-completion-catalog class="primary">К урокам</button><button data-completion-repeat>Повторить</button></div>';
+      completionDialog.innerHTML='<p class="lesson-completion-mark" aria-hidden="true">✓</p><h2 id="lesson-completion-title"></h2><p data-completion-detail></p><div class="dialog-actions"><button data-completion-resume class="primary">Продолжить</button><button data-completion-next class="primary" hidden>Следующий урок →</button><button data-completion-catalog class="primary">К урокам</button><button data-completion-repeat>Повторить</button></div>';
       document.body.append(completionDialog);
     }
     completionDialog.querySelector('h2').textContent=title;
@@ -75,7 +122,8 @@
       if(parent!==window)parent.postMessage({type:'CBT_RETURN_TO_CATALOG'},location.origin);
       else location.assign(new URL('../',location.href).href+'#cbt');
     };
+    updateCompletionNext();
     if(!completionDialog.open)completionDialog.showModal();
   }
-  window.CBTPlayerLayout={fit,fullscreen,complete,dismissCompletion};
+  window.CBTPlayerLayout={fit,fullscreen,complete,dismissCompletion,navigation};
 })();

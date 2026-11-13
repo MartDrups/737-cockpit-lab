@@ -90,11 +90,24 @@
   target.querySelector('#cbt-offline-only').onchange=e=>{offlineOnly=e.target.checked;groups()};
   target.querySelector('#cbt-refresh').onclick=refresh;groups();refresh();
  }
- function open(id){
+ function sendSequence(){
+  const frame=target?.querySelector('.cbt-player-shell iframe');
+  if(frame&&opened)frame.contentWindow.postMessage({type:'CBT_SEQUENCE_STATE',state:window.CBTNavigation.state(course,opened)},location.origin);
+ }
+ function open(id,{continuous=false}={}){
   const lesson=banks.find(course,id);if(!lesson||lesson.status!=='ready')return;
+  const currentFrame=continuous?target?.querySelector('.cbt-player-shell iframe'):null;
+  if(currentFrame){
+   opened=id;
+   target.querySelector('.cbt-lesson-head h2').textContent=lesson.title;
+   target.querySelector('.cbt-lesson-head p').textContent=(lesson.questionBank?lesson.questionCount+' вопросов · '+lesson.sceneCount+' экранов':lesson.sceneCount+' сцен')+' · '+course.groups.find(g=>g.id===lesson.group).title;
+   currentFrame.title=lesson.title;currentFrame.onload=sendSequence;
+   currentFrame.src=window.CBTNavigation.playerURL(id,true);return;
+  }
   lessonFullscreen(false);opened=id;
   target.classList.add('cbt-lesson-open');document.body.classList.add('cbt-lesson-active');
   target.innerHTML=`<section class="cbt-lesson-head"><button class="cbt-back" data-cbt-back>← К урокам</button><div><h2>${esc(lesson.title)}</h2><p>${lesson.questionBank?lesson.questionCount+' вопросов · '+lesson.sceneCount+' экранов':lesson.sceneCount+' сцен'} · ${esc(course.groups.find(g=>g.id===lesson.group).title)}</p></div></section><div class="cbt-player-shell"><iframe src="${id==='intro'?'cbt/player.html':'cbt/course-player.html?lesson='+encodeURIComponent(id)}" title="${esc(lesson.title)}" allow="autoplay; fullscreen" allowfullscreen></iframe></div><details class="cbt-help"><summary>Как пройти урок</summary><p>Нажмите «Начать урок», чтобы включить оригинальную озвучку. Слушайте пояснения и выполняйте задания на сцене. Доступны пауза, повтор, масштаб и подписи; прогресс сохраняется на этом устройстве.</p><p>Для офлайна вернитесь к урокам, нажмите «Скачать урок» и дождитесь сообщения о завершении. На телефоне удобно повернуть экран.</p></details>`;
+  const frame=target.querySelector('.cbt-player-shell iframe');frame.onload=sendSequence;
   target.querySelector('[data-cbt-back]').onclick=()=>render(target);
   if(id==='intro'){
    const mark=document.createElement('div');mark.className='cbt-finish';mark.innerHTML=`<label><input type="checkbox" data-cbt-viewed ${done(id)?'checked':''}> Я прошёл урок</label><p>Отметка сохраняется на этом устройстве.</p>`;target.append(mark);mark.querySelector('input').onchange=e=>localStorage.setItem('737-cbt-intro-viewed',e.target.checked?'yes':'no');
@@ -121,6 +134,13 @@
    if(event.data.action==='toggle')lessonFullscreen(!expandedFrame);
    else if(event.data.action==='exit')lessonFullscreen(false);
    else if(event.data.action==='state')frame.contentWindow.postMessage({type:'CBT_FULLSCREEN_STATE',active:expandedFrame===frame},location.origin);
+   return;
+  }
+  if(event.data?.type==='CBT_SEQUENCE_READY'){sendSequence();return;}
+  if(event.data?.type==='CBT_NAVIGATE_LESSON'){
+   if(event.data.currentId!==opened||!['previous','next'].includes(event.data.direction))return;
+   const state=window.CBTNavigation.state(course,opened),next=state?.[event.data.direction];
+   if(next)open(next.id,{continuous:true});
    return;
   }
   if(event.data?.type==='CBT_RETURN_TO_CATALOG'){render(target);return;}

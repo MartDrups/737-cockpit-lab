@@ -7,7 +7,8 @@
  const url=path=>new URL(path,root).href,escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  let lesson,scene,index=0,token=0,started=false,paused=false,blocked=false,heard=false,zoom=1,clipIndex=0,timer=null,remaining=0,timerAt=0,scheduled=null,startTime=0,pauseTime=0,dialogPaused=false;
  let saved={};const storage='737-cbt-course-'+(item?.id||'unknown');try{saved=JSON.parse(localStorage.getItem(storage)||'{}')}catch{}
- const settings={audio:true,text:true,speed:'normal',...saved.settings},visited=new Set(saved.visited||[]),completed=new Set(saved.completed||[]),comments=saved.comments||{};
+ const navigationSettings=window.CBTNavigation.takeSettings(item?.id);
+ const settings={audio:true,text:true,speed:'normal',...saved.settings,...navigationSettings},visited=new Set(saved.visited||[]),completed=new Set(saved.completed||[]),comments=saved.comments||{};
  let selected=new Set(),operationTimers=[],movieControllers=new Map(),appliedOperations=new Set(),feedbackActive=false,queuedOperations=[],postStarted=false;
  let sequenceIndex=0,waitingForAudio=false,waitingForUser=false,sequenceDone=false,activeClip=null,audioActive=false,voiceTimer=null,voiceRemaining=0,voiceAt=0,exerciseReady=false,audioGateDelay=0,renderPending=false,renderResume=false;
  const state=text=>$('player-state').textContent=text;
@@ -254,16 +255,17 @@
  $('text-toggle').onclick=()=>{settings.text=!settings.text;labels();persist()};$('enable-audio').onclick=()=>{if(!settings.audio)audioSetting(true);audio.play().then(()=>$('enable-audio').hidden=true).catch(()=>{})};
  $('zoom-in').onclick=()=>{zoom=Math.min(3,zoom+.5);fit()};$('zoom-out').onclick=()=>{zoom=Math.max(1,zoom-.5);fit()};$('zoom-fit').onclick=()=>{zoom=1;fit()};$('fullscreen').onclick=()=>window.CBTPlayerLayout.fullscreen();
  audio.onended=voiceEnded;audio.onerror=()=>{if(started&&(scene.audio?.length||activeClip)&&settings.audio)error('Озвучка не загружена. Завершите сохранение урока или повторите с интернетом.')};
- function start(reset=false){if(reset){visited.clear();completed.clear();saved={};settings.audio=true;settings.text=true}started=true;$('loading').hidden=true;$('lesson').hidden=false;$('lesson-speed').value=settings.speed;enter(reset?0:Math.min(saved.index||0,lesson.scenes.length-1))}
+ function start(reset=false,keepSettings=false){if(reset){visited.clear();completed.clear();saved={};if(!keepSettings){settings.audio=true;settings.text=true}}started=true;$('loading').hidden=true;$('lesson').hidden=false;$('lesson-speed').value=settings.speed;enter(reset?0:Math.min(saved.index||0,lesson.scenes.length-1))}
  $('start-lesson').onclick=()=>start(!!saved.finished);$('restart-lesson').onclick=()=>start(true);$('review-lesson').onclick=()=>start(true);document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(true)});addEventListener('pagehide',()=>{if(started)persist();clear()});
  if(!item||item.player==='intro'){$('load-error').textContent='Такого урока нет в каталоге.';$('load-error').hidden=false;return}
+ window.CBTPlayerLayout.navigation(window.CBTNavigation.state(window.CBT_COURSE,item.id));
  const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'null')}catch{return null}};
  const fetchLesson=topic=>fetch(url(topic.manifest)).then(r=>{if(!r.ok)throw new Error();return r.json()});
  const loading=item.questionBank?Promise.all(banks.parts(window.CBT_COURSE,item).map(fetchLesson)).then(parts=>banks.compose(item,parts)):fetchLesson(item);
  $('lesson-title').textContent=item.title;loading.then(data=>{
   lesson=data;lesson.glossary=lesson.glossary||[];
   if(item.questionBank){
-   const previous=banks.restore(item,lesson,read);Object.assign(saved,previous);Object.assign(settings,previous.settings||{});Object.assign(comments,previous.comments||{});
+   const previous=banks.restore(item,lesson,read);Object.assign(saved,previous);Object.assign(settings,previous.settings||{},navigationSettings);Object.assign(comments,previous.comments||{});
    (previous.visited||[]).forEach(id=>visited.add(id));(previous.completed||[]).forEach(id=>completed.add(id));
   }
   $('lesson-progress').max=lesson.scenes.length;
@@ -272,5 +274,6 @@
   $('start-lesson').disabled=false;$('start-lesson').textContent=saved.finished?(item.questionBank?'Повторить проверку':'Повторить урок'):saved.index?(item.questionBank?'Продолжить проверку':'Продолжить урок'):item.questionBank?'Начать проверку':'Начать урок';
   $('restart-lesson').hidden=!saved.index;state('Готов к запуску');
   window.CBTCourseNative={get current(){return scene?.id},get state(){return {index,paused,heard,blocked,exerciseReady,waitingForUser,waitingForAudio,sequenceIndex,visited:[...visited],completed:[...completed],settings,finished:!!saved.finished,movies:Object.fromEntries([...movieControllers].map(([id,m])=>[id,{frame:m.frame,...m.snapshot}]))}},get lesson(){return lesson},goTo:id=>enter(lesson.scenes.findIndex(s=>s.id===id))};
+  if(new URLSearchParams(location.search).get('autostart')==='1')start(!!saved.finished,true);
  }).catch(()=>{$('load-error').textContent='Урок не загружен. Подключитесь к интернету или вернитесь в каталог и сохраните этот урок целиком.';$('load-error').hidden=false;state('Материал не загружен')});
 })();
