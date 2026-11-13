@@ -255,7 +255,7 @@
  $('text-toggle').onclick=()=>{settings.text=!settings.text;labels();persist()};$('enable-audio').onclick=()=>{if(!settings.audio)audioSetting(true);audio.play().then(()=>$('enable-audio').hidden=true).catch(()=>{})};
  $('zoom-in').onclick=()=>{zoom=Math.min(3,zoom+.5);fit()};$('zoom-out').onclick=()=>{zoom=Math.max(1,zoom-.5);fit()};$('zoom-fit').onclick=()=>{zoom=1;fit()};$('fullscreen').onclick=()=>window.CBTPlayerLayout.fullscreen();
  audio.onended=voiceEnded;audio.onerror=()=>{if(started&&(scene.audio?.length||activeClip)&&settings.audio)error('Озвучка не загружена. Завершите сохранение урока или повторите с интернетом.')};
- function start(reset=false,keepSettings=false){if(reset){visited.clear();completed.clear();saved={};if(!keepSettings){settings.audio=true;settings.text=true}}started=true;$('loading').hidden=true;$('lesson').hidden=false;$('lesson-speed').value=settings.speed;enter(reset?0:Math.min(saved.index||0,lesson.scenes.length-1))}
+ function start(reset=false){if(reset){visited.clear();completed.clear();saved={};settings.audio=true;settings.text=true}started=true;$('loading').hidden=true;$('lesson').hidden=false;$('lesson-speed').value=settings.speed;enter(reset?0:Math.min(saved.index||0,lesson.scenes.length-1))}
  $('start-lesson').onclick=()=>start(!!saved.finished);$('restart-lesson').onclick=()=>start(true);$('review-lesson').onclick=()=>start(true);document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(true)});addEventListener('pagehide',()=>{if(started)persist();clear()});
  if(!item||item.player==='intro'){$('load-error').textContent='Такого урока нет в каталоге.';$('load-error').hidden=false;return}
  window.CBTPlayerLayout.navigation(window.CBTNavigation.state(window.CBT_COURSE,item.id));
@@ -274,6 +274,6 @@
   $('start-lesson').disabled=false;$('start-lesson').textContent=saved.finished?(item.questionBank?'Повторить проверку':'Повторить урок'):saved.index?(item.questionBank?'Продолжить проверку':'Продолжить урок'):item.questionBank?'Начать проверку':'Начать урок';
   $('restart-lesson').hidden=!saved.index;state('Готов к запуску');
   window.CBTCourseNative={get current(){return scene?.id},get state(){return {index,paused,heard,blocked,exerciseReady,waitingForUser,waitingForAudio,sequenceIndex,visited:[...visited],completed:[...completed],settings,finished:!!saved.finished,movies:Object.fromEntries([...movieControllers].map(([id,m])=>[id,{frame:m.frame,...m.snapshot}]))}},get lesson(){return lesson},goTo:id=>enter(lesson.scenes.findIndex(s=>s.id===id))};
-  if(new URLSearchParams(location.search).get('autostart')==='1')start(!!saved.finished,true);
+  if(new URLSearchParams(location.search).get('autostart')==='1')start();
  }).catch(()=>{$('load-error').textContent='Урок не загружен. Подключитесь к интернету или вернитесь в каталог и сохраните этот урок целиком.';$('load-error').hidden=false;state('Материал не загружен')});
 })();

@@ -3,7 +3,7 @@ import gzip
 import json
 import time
 from pathlib import Path
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 from system_browser_support import configure, launch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -75,6 +75,9 @@ with sync_playwright() as p:
         initial = saved(first_data, min(2, len(first_data['scenes'])-1))
         next_saved = saved(second_data, min(3, len(second_data['scenes'])-1))
         next_saved['settings'] = {'audio': True, 'text': True, 'speed': 'slow'}
+        next_saved['finished'] = True
+        next_saved['visited'] = [s['id'] for s in second_data['scenes']]
+        next_saved['completed'] = [s['id'] for s in second_data['scenes'] if (s.get('exercise') or {}).get('supported')]
         store(page, first['id'], initial)
         store(page, second['id'], next_saved)
         frame = open_item(page, first)
@@ -86,6 +89,7 @@ with sync_playwright() as p:
         frame.locator('#next-lesson').click()
         state = wait_lesson(frame, second['id'], True)
         assert state['index'] == next_saved['index'], state
+        assert state['finished'], 'Navigation must retain completion of an already completed lesson'
         assert state['settings'] == initial['settings'], state
         assert page.evaluate('window.__continuousFrame===document.querySelector(".cbt-player-shell iframe")')
         assert page.evaluate('document.documentElement.classList.contains("cbt-fullscreen")')
@@ -160,7 +164,7 @@ with sync_playwright() as p:
               const data=await new Promise(resolve=>{const c=new MessageChannel();c.port1.onmessage=e=>resolve(e.data);r.active.postMessage({type:'CBT_STATUS'},[c.port2])});
               return data.lessons[id]?.ready;
             }""", arg=item['id'], timeout=240000)
-            page.wait_for_function('id=>!document.querySelector("[data-cbt-download="+id+"]").disabled', arg=item['id'])
+            expect(page.locator('[data-cbt-download="'+item['id']+'"]')).to_be_enabled(timeout=30000)
         frame = open_item(page, first)
         wait_lesson(frame, first['id'])
         if not args.url:
