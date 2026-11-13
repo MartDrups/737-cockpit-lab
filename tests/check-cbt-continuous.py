@@ -177,7 +177,8 @@ with sync_playwright() as p:
         frame.locator('#previous-lesson').click()
         wait_lesson(frame, first['id'], True)
         assert frame.locator('#media-error').is_hidden()
-        report['checks'].append('Next and previous saved lessons autostart offline; local origin server stopped for both browsers')
+        report['offlineSimulation'] = 'Browser context offline; server remains public' if args.url else 'Local origin server stopped before navigation in both browsers'
+        report['checks'].append('Next and previous saved lessons autostart offline')
         assert not report['errors'], report['errors']
     except Exception:
         page.screenshot(path=str(out/'failure.png'))

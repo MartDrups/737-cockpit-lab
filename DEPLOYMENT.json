@@ -1,12 +1,12 @@
 {
   "url": "https://martdrups.github.io/737-cockpit-lab/",
   "repository": "https://github.com/MartDrups/737-cockpit-lab",
-  "publishedCommit": "6a9d06d7f87fa461ea20ccc85733096fd7854fbb",
-  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/41504768458",
+  "publishedCommit": "2514420366bc081263ab930d931ed3bf70314c23",
+  "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/43400699154",
   "workflowResult": "success",
-  "version": "github-cbt-fidelity-e17d032cc8ea33a32824",
+  "version": "github-cbt-continuous-1bad8411c0a677275cc4",
   "websiteFiles": 8665,
-  "websiteBytes": 261571175,
+  "websiteBytes": 261573701,
   "originalUrl": "https://737cockpitlab.pages.dev",
   "originalUnchanged": true,
   "publicBrowsers": {
@@ -1001,5 +1001,212 @@
     "publicQuestionWorkflowResult": "success",
     "publicFullscreenWorkflowResult": "success",
     "prepublicationWorkflowResult": "success"
+  },
+  "cbtContinuousNavigation": {
+    "revision": "cbt-continuous-2026-11-13",
+    "publishedCommit": "2514420366bc081263ab930d931ed3bf70314c23",
+    "version": "github-cbt-continuous-1bad8411c0a677275cc4",
+    "report": "CBT_CONTINUOUS.md",
+    "sourceDirectory": "src/cbt/",
+    "buildCommand": "python scripts/build-cbt.py",
+    "behavior": "Previous and next lessons within the same system, including a next action on completion; autostart at the target lesson's saved position without returning to the catalogue.",
+    "groupBoundariesPreserved": true,
+    "unavailableLessonsSkipped": true,
+    "groupedQuestionBanksPreserved": true,
+    "iframeReused": true,
+    "fullscreenPreserved": true,
+    "separateProgressNotesAndCompletionPreserved": true,
+    "settingsTransferred": [
+      "audio",
+      "text",
+      "speed"
+    ],
+    "sourceLessonDataAudioAndGraphicsUnchanged": true,
+    "ordering": {
+      "groups": 65,
+      "availableEntries": 418,
+      "questionBanks": 54,
+      "firstAndLastBoundariesChecked": true
+    },
+    "localVerification": {
+      "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/43399929121",
+      "result": "success",
+      "browsers": [
+        {
+          "browser": "chromium",
+          "origin": "http://127.0.0.1:42059/737-cockpit-lab/",
+          "checks": [
+            "Next lesson autostarts in the same iframe and fullscreen; settings, old progress and notes survive without false completion",
+            "Previous lesson resumes its own saved scene",
+            "Phone navigation stays inside the player; double tap cannot skip two lessons",
+            "Real lesson completion opens the next item with one click, including a grouped question bank",
+            "The last item never crosses into another system",
+            "Direct player links also retain expanded mode when moving to the next lesson",
+            "Next and previous saved lessons autostart offline; local origin server stopped for both browsers"
+          ],
+          "errors": []
+        },
+        {
+          "browser": "webkit",
+          "origin": "http://127.0.0.1:40687/737-cockpit-lab/",
+          "checks": [
+            "Next lesson autostarts in the same iframe and fullscreen; settings, old progress and notes survive without false completion",
+            "Previous lesson resumes its own saved scene",
+            "Phone navigation stays inside the player; double tap cannot skip two lessons",
+            "Real lesson completion opens the next item with one click, including a grouped question bank",
+            "The last item never crosses into another system",
+            "Direct player links also retain expanded mode when moving to the next lesson",
+            "Next and previous saved lessons autostart offline; local origin server stopped for both browsers"
+          ],
+          "errors": []
+        }
+      ],
+      "offlineMethod": "Local origin server stopped before next/previous navigation in both Chromium and WebKit.",
+      "phoneViewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "regressions": {
+      "questionsAndProgress": [
+        {
+          "browser": "chromium",
+          "origin": "http://127.0.0.1:41897/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "54 question banks replace 267 question rows; all lessons and practice stay separate",
+            "Old progress and notes imported; wrong answer rejected; consecutive questions keep the same iframe and fullscreen",
+            "Reload resumes at the current question",
+            "Lesson completion is visible; skipped scenes are not falsely marked complete",
+            "Intro player also shows a completion dialog after the final scene",
+            "One download action saves all original question packs",
+            "Cold offline resume, remaining real answers, completion and return to catalogue work"
+          ],
+          "browserExecutable": "/usr/bin/google-chrome",
+          "offlineSimulation": "Network disabled before cold Chromium restart",
+          "version": "github-cbt-continuous-1bad8411c0a677275cc4"
+        },
+        {
+          "browser": "webkit",
+          "origin": "http://127.0.0.1:41103/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "54 question banks replace 267 question rows; all lessons and practice stay separate",
+            "Old progress and notes imported; wrong answer rejected; consecutive questions keep the same iframe and fullscreen",
+            "Reload resumes at the current question",
+            "Lesson completion is visible; skipped scenes are not falsely marked complete",
+            "Intro player also shows a completion dialog after the final scene",
+            "One download action saves all original question packs",
+            "Cold offline resume, remaining real answers, completion and return to catalogue work"
+          ],
+          "offlineSimulation": "Origin server stopped before cold WebKit restart",
+          "version": "github-cbt-continuous-1bad8411c0a677275cc4"
+        }
+      ],
+      "fullscreen": [
+        {
+          "browser": "chromium",
+          "origin": "http://127.0.0.1:37153/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "iPad landscape: entire viewport, upper controls and text, same live lesson",
+            "Settings and text controls remain usable; closing a dialog keeps fullscreen",
+            "Orientation and phone resizing retain graphics, text and controls",
+            "Escape and repeated button toggles restore the lesson without resetting it",
+            "Fullscreen works without a network connection",
+            "Intro player expands too; leaving CBT removes the fullscreen lock",
+            "Direct player link supports the same controls without the browser Fullscreen API"
+          ],
+          "version": "github-cbt-continuous-1bad8411c0a677275cc4"
+        },
+        {
+          "browser": "webkit",
+          "origin": "http://127.0.0.1:38277/737-cockpit-lab/",
+          "errors": [],
+          "checks": [
+            "iPad landscape: entire viewport, upper controls and text, same live lesson",
+            "Settings and text controls remain usable; closing a dialog keeps fullscreen",
+            "Orientation and phone resizing retain graphics, text and controls",
+            "Escape and repeated button toggles restore the lesson without resetting it",
+            "Fullscreen works without a network connection",
+            "Intro player expands too; leaving CBT removes the fullscreen lock",
+            "Direct player link supports the same controls without the browser Fullscreen API"
+          ],
+          "version": "github-cbt-continuous-1bad8411c0a677275cc4"
+        }
+      ],
+      "publicQuestionWorkflow": {
+        "url": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/43400797243",
+        "result": "success"
+      },
+      "publicFullscreenWorkflow": {
+        "url": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/43400797256",
+        "result": "success"
+      }
+    },
+    "publicVerification": {
+      "workflowRun": "https://github.com/MartDrups/737-cockpit-lab/actions/runs/43400797091",
+      "result": "success",
+      "browsers": [
+        {
+          "browser": "webkit",
+          "origin": "https://martdrups.github.io/737-cockpit-lab/",
+          "checks": [
+            "Next lesson autostarts in the same iframe and fullscreen; settings, old progress and notes survive without false completion",
+            "Previous lesson resumes its own saved scene",
+            "Phone navigation stays inside the player; double tap cannot skip two lessons",
+            "Real lesson completion opens the next item with one click, including a grouped question bank",
+            "The last item never crosses into another system",
+            "Direct player links also retain expanded mode when moving to the next lesson",
+            "Next and previous saved lessons autostart with the browser context set offline"
+          ],
+          "errors": []
+        },
+        {
+          "browser": "chromium",
+          "origin": "https://martdrups.github.io/737-cockpit-lab/",
+          "checks": [
+            "Next lesson autostarts in the same iframe and fullscreen; settings, old progress and notes survive without false completion",
+            "Previous lesson resumes its own saved scene",
+            "Phone navigation stays inside the player; double tap cannot skip two lessons",
+            "Real lesson completion opens the next item with one click, including a grouped question bank",
+            "The last item never crosses into another system",
+            "Direct player links also retain expanded mode when moving to the next lesson",
+            "Next and previous saved lessons autostart with the browser context set offline"
+          ],
+          "errors": []
+        }
+      ],
+      "tlsVerification": true,
+      "offlineMethod": "Browser context offline; local server shutdown provides the separate definitive WebKit offline check."
+    },
+    "deliveredModules": [
+      {
+        "url": "cbt-library.js",
+        "size": 22790,
+        "revision": "6a58506f432b8c5fa9f49a9d5a8e0e6bbba50f746147ad576aa87249611c216b"
+      },
+      {
+        "url": "cbt/player.css",
+        "size": 9679,
+        "revision": "5483c90bceab0da8f872c90bde6563778d2723b039bd904e8286baefa2c3a40c"
+      },
+      {
+        "url": "cbt/player-layout.js",
+        "size": 9885,
+        "revision": "3938490fe0df4b97e09f8e7b040b9cde12207d5cceec6038f43cfdf3dd497921"
+      },
+      {
+        "url": "cbt/player.js",
+        "size": 23690,
+        "revision": "42f6f9cd493e07845a6d8c39f8e0c78bb38d514f61245af48ef0b451fd18a4dc"
+      },
+      {
+        "url": "cbt/course-player.js",
+        "size": 34391,
+        "revision": "185e0db5e1f8b981ca9288d68e021c0ca5682bf2e323a69076eaee459b368cb3"
+      }
+    ],
+    "buildEnvironment": "Built and browser-tested in GitHub Actions because the attached execution environment was unavailable."
   }
 }
